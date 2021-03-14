@@ -66,7 +66,7 @@
 			<td align="center" style="background: #00e1d4; color: #fff; margin: 50; padding: 50; "  >
 
 				<i><p>BMP</p>
-                                                                                        <p>Calzada San Juan 2-16</p>
+                                                                                        <p>Calzadas San Juan 2-16</p>
 
 
                                                                                         <p>Banco Mi Pistio!    Simepre de tu lado.
