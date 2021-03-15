@@ -52,7 +52,7 @@
 
                      <b><p>Gracias por utilizar la plataforma....</p></b>
 
-               <b><p>Atentamente, el equipo de Banco Mi Pistio.</p></b>
+               <b><p>Atentamente, el equipo de Laboratorio La Bendición.</p></b>
             </td>
 
 
