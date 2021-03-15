@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <br> Regresa a tu pantalla principal.
                                 <br>
                                 <br>
-                                <a href="http://192.168.1.8:8888/BancoMiPistio/index.php/welcome" class="btn btn-primary">Regresar a pantalla principal</a>
+                                <a href="http://192.168.1.8:8888/LabLaBendicion/index.php/welcome" class="btn btn-primary">Regresar a pantalla principal</a>
                             </p>
                         </div>
                     </div>
