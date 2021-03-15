@@ -69,7 +69,7 @@
                                                                                         <p>Calzadas Sans Juan 2-16</p>
 
 
-                                                                                        <p>Banco Mi Pistio!    Simepre de tu lado.
+                                                                                        <p>Laboratorio La Bendición!    Simepre de tu lado.
                                                                                         </p><i>
 
 
