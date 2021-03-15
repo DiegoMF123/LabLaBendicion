@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="error-details col-sm-6 col-sm-offset-3">
                             <h3> Oops! Tu usuario no tiene acceso a esta pantalla | Acceso Denegado | Error 5</h3>
                             <p> Lo sentimos!
-                                <br> Si quieress tener acceso a esta pantalla necesitas tener otro tipo de rol(Administrador)
+                                <br> Si quieres tener acceso a esta pantalla necesitas tener otro tipo de rol(Administrador)
                                 <br> Regresa a tu pantalla principal.
                                 <br>
                                 <br>
