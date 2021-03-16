@@ -200,7 +200,7 @@
 
                                        <!-- Boton que direcciona a la vista para agregar un nuevo punto de atención, lo llamamos por medio del controlador pda y usamos la funcion nuevo para poder
                                      mostrar la vista-->
-                                         <a  href="http://192.168.1.14:8888/BancoMiPistio/index.php/pda/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Agregar Nuevo Punto de atención">
+                                         <a  href="http://192.168.1.14:8888/LabLaBendicion/index.php/pda/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Agregar Nuevo Punto de atención">
 
                                            <span class="material-icons">
 
@@ -414,7 +414,7 @@
 
 
 
-                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/admin"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
+                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/usuario"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
 
 
 
@@ -450,7 +450,7 @@
 
                                          <i class="fa fa-briefcase"></i>
 
-                                         <span class="menu-title">Quejas</span>
+                                         <span class="menu-title">Mantenimiento</span>
 
                                          <i class="arrow"></i>
 
@@ -460,7 +460,7 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/quejasauto"><i class="fa fa-caret-right"></i>Asignar Tipo de queja / Listado de quejas</a></li>
+                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas/Clasificación/Mantenimiento</a></li>
 
                                              <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Principal</title>
-               <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/Ico.ico">
+               <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/img/LOGO1.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -17,8 +17,8 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #008A9C;">
-        <a class="navbar-brand" href="#" style="color: white">BMP</a>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #001582;">
+        <a class="navbar-brand" href="#" style="color: white">Lab La Bendicion</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -54,12 +54,12 @@
 
     <center>
     <div >
-      <div class="col-md-4" aling="center">
+      <div class="col-md-5" aling="center">
         <div class="card">
-          <img src="http://blog.atlanticdevices.com/FOTOSBLOG/S1C.jpg" class="card-img-top" alt="..." height="300">
+          <img src="<?php echo base_url(); ?>/assets/img/LOGO.png" class="card-img-top" alt="..." height="200">
           <div class="card-body">
-            <h5 class="card-title">Entrar al sistema Banco Mi pistio</h5>
-            <p class="card-text">Bienvenido:<?php $_SESSION["username"]; ?>Lugar en donde podras accesar a dar tus quejas.</p>
+            <h5 class="card-title">Entrar al sistema del Laboratorio La Bendición</h5>
+            <p class="card-text">Bienvenido:<?php $_SESSION["username"]; ?>Lugar en donde podras accesar a dar tus muestras médicas.</p>
 
             <!-- Boton que sirve para poder redireccionar a la vista Principal de elistado de puntos de atención activos,en el controlador welcome y la funcion admin -->
             <a href="<?php echo base_url(); ?>index.php/welcome/usuario" class="btn btn-primary btn-block btn-sm">Entrar</a>
@@ -76,11 +76,13 @@
 <br>
 <br>
 <br>
+<br>
+<hr>
 
     <footer class="footer">
-      <nav class="navbar navbar-light" style="background-color: #0055C3">
+      <nav class="navbar navbar-light" style="background-color: #001582">
 
-        <a class="navbar-brand" href="#" style="color: white">Creado por: Banco Mi Pistio S.A.</a>
+        <a class="navbar-brand" href="#" style="color: white">Creado por: Laboratorio La Bendición S.A.</a>
       </nav>
       </footer>
 

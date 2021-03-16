@@ -98,6 +98,7 @@ $db['default'] = array(
 );
 
 */
+
 //Conexion a base de datos remota
 $active_group = 'default';
 $query_builder = TRUE;

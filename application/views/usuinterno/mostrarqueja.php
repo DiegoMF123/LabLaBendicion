@@ -227,7 +227,7 @@
 
                                         <li class="list-header">Navegacion</li>
 
-                                        <li> <a href="<?php echo base_url(); ?>index.php/welcome/centralizador"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
+                                        <li> <a href="<?php echo base_url(); ?>index.php/welcome/usuario"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
 
                                         <li class="list-header">Prueba</li>
 
@@ -259,7 +259,7 @@
 
                                             <i class="fa fa-briefcase"></i>
 
-                                            <span class="menu-title">Quejas</span>
+                                            <span class="menu-title">Contacto / Quejas y Denuncias/</span>
 
                                             <i class="arrow"></i>
 
@@ -269,41 +269,12 @@
 
                                             <ul class="collapse">
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/quejasauto"><i class="fa fa-caret-right"></i>Asignar Tipo de queja / Listado de quejas</a></li>
-                                                  <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso de queja por mal servicio o servicio no conforme.</a></li>
 
 
                                             </ul>
 
                                         </li>
-
-                                        <li>
-
-                                            <a href="#">
-
-                                            <i class="fa fa-briefcase"></i>
-
-                                            <span class="menu-title">Configuración</span>
-
-                                            <i class="arrow"></i>
-
-                                            </a>
-
-                                            <!--Submenu-->
-
-                                            <ul class="collapse">
-
-                                                <li><a href="<?php echo base_url(); ?>index.php/users"><i class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/userspda"><i class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
-
-
-
-                                            </ul>
-
-                                        </li>
-
-
-
 
 
 

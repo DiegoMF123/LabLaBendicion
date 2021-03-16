@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 					switch ($rol) {
 						case '1':
 							// cargamos la vista principal que se manda a llamar despues de haberse logeado
-							$this->load->view('admin/principal');
+							$this->load->view('usuario/principal');
 							break;
 						case '2':
 							$this->load->view('operador/principal');
@@ -124,168 +124,13 @@ class Welcome extends CI_Controller {
 
 
 
-				public function operador(){
-					$this->load->helper('url');
-					$this->load->library('session');
-					$this->load->model("model_pda");
-
-					$rol= $_SESSION["role"];
-
-					switch ($rol) {
-						case '1':
 
 
-							$this->load->view('operador/vstprin');
-
-
-
-							break;
-						case '2':
-
-						$this->load->view('operador/vstprin');
-
-							break;
-						case '3':
-
-				redirect('restrinct');
-
-							break;
-						case '4':
-
-				redirect('restrinct');
-							break;
-							case '5':
-
-								redirect('restrinct');
-								break;
-
-						default:
-						redirect('restrinct');
-							break;
-				}
-
-
-
-			}
-
-				public function receptor(){
-					$this->load->helper('url');
-					$this->load->library('session');
-					$this->load->model("model_pda");
-
-						$rol= $_SESSION["role"];
-										switch ($rol) {
-											case '1':
-
-											$this->load->view('receptor/vstprin');
-
-												break;
-											case '2':
-
-												redirect('restrinct');
-												break;
-											case '3':
-
-									redirect('restrinct');
-
-												break;
-											case '4':
-
-									redirect('restrinct');
-												break;
-												case '5':
-
-
-													$this->load->view('receptor/vstprin');
-
-													break;
-
-											default:
-											redirect('restrinct');
-												break;
-									}
-
-				}
-
-				public function centralizador(){
-
-					$this->load->helper('url');
-					$this->load->library('session');
-					$this->load->model("model_pda");
-
-						$rol= $_SESSION["role"];
-										switch ($rol) {
-											case '1':
-
-											$this->load->view('centralizador/vstprin');
-
-												break;
-											case '2':
-
-												redirect('restrinct');
-												break;
-											case '3':
-
-										$this->load->view('centralizador/vstprin');
-
-												break;
-											case '4':
-
-									redirect('restrinct');
-												break;
-												case '5':
-
-												redirect('restrinct');
-													break;
-
-											default:
-											redirect('restrinct');
-												break;
-									}
-
-				}
-
-				public function usuario(){
-
-					$this->load->helper('url');
-					$this->load->library('session');
-					$this->load->model("model_pda");
-
-						$rol= $_SESSION["role"];
-										switch ($rol) {
-											case '1':
-
-											$this->load->view('usuario/vstprin');
-
-												break;
-											case '2':
-
-												redirect('restrinct');
-												break;
-											case '3':
-											redirect('restrinct');
-
-												break;
-											case '4':
-											$this->load->view('usuario/vstprin');
-
-												break;
-												case '5':
-
-												redirect('restrinct');
-													break;
-
-											default:
-											redirect('restrinct');
-												break;
-									}
-
-				}
 
 
 // Tenemos la función admin, donde mostramos los datos, que este caso es el listado de puntos de atención
 
-				public function admin(){
+				public function usuario(){
 					    // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
 					$this->load->helper('url');
 					  // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
@@ -313,7 +158,7 @@ class Welcome extends CI_Controller {
 												  // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
 												$data["response"]=trim(isset($_REQUEST["response"]));
 												        // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-												$this->load->view('admin/admin',$data);
+												$this->load->view('usuario/admin',$data);
 
 
 											}else{
@@ -328,7 +173,7 @@ class Welcome extends CI_Controller {
 													$data["response"]=trim(isset($_REQUEST["response"]));
 													$data["tiporegion"]= $this->model_pda->tipo_region();
 														$data["estado"]= $this->model_pda->estado($id);
-													$this->load->view('admin/admin',$data);
+													$this->load->view('usuario/admin',$data);
 													// code...
 												}else{
 													// si no se ejecuta nada, se queda normal
@@ -336,7 +181,7 @@ class Welcome extends CI_Controller {
 														$data["estado"]= $this->model_pda->estado($id);
 													$data["tiporegion"]= $this->model_pda->tipo_region();
 														$data["response"]=trim(isset($_REQUEST["response"]));
-														$this->load->view('admin/admin',$data);
+														$this->load->view('usuario/admin',$data);
 												}
 											}
 
@@ -364,12 +209,84 @@ class Welcome extends CI_Controller {
 							break;
 				}
 
-
-
-
-
-
 				}
+
+
+
+								public function usuinterno(){
+
+									$this->load->helper('url');
+									$this->load->library('session');
+									$this->load->model("model_pda");
+
+										$rol= $_SESSION["role"];
+														switch ($rol) {
+															case '1':
+
+															$this->load->view('usuario/vstprin');
+
+																break;
+															case '2':
+
+																redirect('restrinct');
+																break;
+															case '3':
+															redirect('restrinct');
+
+																break;
+															case '4':
+															$this->load->view('usuario/vstprin');
+
+																break;
+																case '5':
+
+																redirect('restrinct');
+																	break;
+
+															default:
+															redirect('restrinct');
+																break;
+													}
+
+								}
+
+
+																public function usuexterno(){
+
+																	$this->load->helper('url');
+																	$this->load->library('session');
+																	$this->load->model("model_pda");
+
+																		$rol= $_SESSION["role"];
+																						switch ($rol) {
+																							case '1':
+
+																							$this->load->view('usuario/vstprin');
+
+																								break;
+																							case '2':
+
+																								redirect('restrinct');
+																								break;
+																							case '3':
+																							redirect('restrinct');
+
+																								break;
+																							case '4':
+																							$this->load->view('usuario/vstprin');
+
+																								break;
+																								case '5':
+
+																								redirect('restrinct');
+																									break;
+
+																							default:
+																							redirect('restrinct');
+																								break;
+																					}
+
+																}
 
 
 

@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Quejas por autoconsulta</title>
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/Ico.ico">
+        <title>Mantenimiento de solicitudes</title>
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
         <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
         <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
@@ -103,7 +103,7 @@
 
                  <div class="pageheader hidden-xs">
 
-                     <h3><i class="fa fa-home"></i> Quejas por autoconsulta </h3>
+                     <h3><i class="fa fa-home"></i>Mantenimiento de solicitudes</h3>
                  </div>
                  <div id="page-content">
                     <div class="row">
@@ -112,7 +112,7 @@
 
                          <div class="panel-heading">
 
-                             <h3 class="panel-title">Listado de quejas por autoconsulta</h3>
+                             <h3 class="panel-title">Listado de solicitudes</h3>
                          </div>
                          <?php if ($response =="1") {
                            echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
@@ -126,7 +126,7 @@
 
 
                                  <!-- Boton para direccionar a la vista de creacion de nuevo tipo de queja -->
-                               <a  href="http://192.168.0.4:8888/BancoMiPistio/index.php/quejasauto/nuevatipoq" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Agregar Nuevo Tipo de queja">
+                               <a  href="http://192.168.0.4:8888/BancoMiPistio/index.php/quejasauto/nuevatipoq" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
 
@@ -146,13 +146,13 @@
 
                                       <tr>
                                           <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>ID</th>
+                                          <th>Prueba</th>
 
-                                          <th>Siglas de la queja</th>
+                                          <th>Prueba</th>
 
-                                          <th>Descripcion</th>
+                                          <th>Prueba</th>
 
-                                          <th>Estado</th>
+                                          <th>Prueba</th>
 
                                           <th>
                                       </tr>
@@ -211,7 +211,7 @@
 
 
 
-                           <i><img src="<?php echo base_url(); ?>/assets/img/bmps.png" width="60"> <font size="5" face="georgia">Banco MP </font></i>
+                           <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60"> <font size="5" face="georgia">Menú Lab</font></i>
 
 
 
@@ -237,7 +237,7 @@
 
 
 
-                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/admin"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
+                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/usuario"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
 
 
 
@@ -273,7 +273,7 @@
 
                                          <i class="fa fa-briefcase"></i>
 
-                                         <span class="menu-title">Quejas</span>
+                                         <span class="menu-title">Mantenimiento</span>
 
                                          <i class="arrow"></i>
 
@@ -283,7 +283,7 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/quejasauto"><i class="fa fa-caret-right"></i>Listado de quejas</a></li>
+                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas/Clasificación/Mantenimiento</a></li>
 
                                                <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 

@@ -39,11 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="error-details col-sm-6 col-sm-offset-3">
                             <h3> Oops! Tu usuario no tiene acceso a esta pantalla | Acceso Denegado | Error 5</h3>
                             <p> Lo sentimos!
-                                <br> Si quieres tener acceso a esta pantalla necesitas tener otro tipo de rol(Administrador)
+                                <br> Si quieres tener acceso a esta pantalla necesitas tener otro tipo de usuario
                                 <br> Regresa a tu pantalla principal.
                                 <br>
                                 <br>
-                                <a href="http://192.168.1.8:8888/LabLaBendicion/index.php/welcome" class="btn btn-primary">Regresar a pantalla principal</a>
+                                <a href="http://192.168.0.4:8888/LabLaBendicion/index.php/welcome" class="btn btn-primary">Regresar a pantalla principal</a>
                             </p>
                         </div>
                     </div>

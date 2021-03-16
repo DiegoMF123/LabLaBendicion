@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class Quejasauto extends CI_Controller{
+class Mantenimientomm extends CI_Controller{
 
   public function index(){
         // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
@@ -19,7 +19,7 @@ class Quejasauto extends CI_Controller{
 
         $data["datosqueja"]= $this->model_quejasauto->listadoq();
         $data["response"]=trim(isset($_REQUEST["response"]));
-        $this->load->view('admin/quejasporauto',$data);
+        $this->load->view('usuario/quejasporauto',$data);
 
 
         break;
@@ -83,7 +83,7 @@ class Quejasauto extends CI_Controller{
           $data["des"]=$des;
         $data["response"]=trim(isset($_REQUEST["response"]));
                 // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-        $this->load->view('admin/nuevotipoqueja',$data);
+        $this->load->view('usuario/nuevotipoqueja',$data);
 
 
         break;
@@ -185,7 +185,7 @@ class Quejasauto extends CI_Controller{
     case '1':
     $data["estado"]= $this->model_pda->estado($id);
     $data["datosqueja"]= $this->model_quejasauto->selectidlistadoq($id);
-    $this->load->view('admin/editaquejaauto',$data);
+    $this->load->view('usuario/editaquejaauto',$data);
 
       break;
     case '2':
