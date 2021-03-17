@@ -133,94 +133,11 @@
                           <div class="col-md-12">
                      <div class="panel">
                          <div class="panel-heading">
-                             <h3 class="panel-title">Listado de solicitud de muestras médicas</h3>
+                             <h3 class="panel-title">Bienvenido Usuario</h3>
                          </div>
 
                          <div class="panel-body">
-                           <!-- Se abren llaves php para poder realizar un if con codigo php, es este caso declaramos una variable
-                         llamada "response" en la cual le estamos indicando que si es == 1, nos mostrara un mensaje, en este caso
-                       si los datos se actualizan y hacen bien su proceso en el controlador Pda y en el respectivo modelo. -->
-                           <?php if ($response =="1") {
-                             echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                   Datos Actualizados Exitosamente.
-                                 </div>";
-                           } ?>
-                           <!--Formulario que sirve para poder realizar la filtracion por regiones de un punto de atención-->
-                           <form class="" action="" method="GET">
 
-                               <div class="row">
-
-                                   <div class="col-md-2">
-
-                                       <label for="">Seleccione la Región a buscar</label>
-
-                                   </div>
-
-                                     <div class="col-md-3 col-xs-12">
-                                       <!-- Para poder llamar los datos de la base de datos, que en este caso son las regiones
-                                      abrimos llaves php y realizamos un nuevo foreach que en este caso le declaramos una variable que es la que
-                                    vamos a llamar en el controlador para poder mandarselos a nuestro modelo y que en el modelo nos retorne los datos
-                                  que necesitamos, luego de as declaramos otra variable que es la que vamos a usar practicamente en nuestra vista para poder
-                                  mostrar los datos o el dato que nos devuelva nuestra consulta del modelo-->
-                                       <select class="form-control" name="region">
-                                         <option value="" hidden selected>Seleccione una opción</option>
-                                    <?php foreach ($tiporegion as $tiporegion) {
-                                      // code...
-                                    ?>
-                                    <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
-                                  sera la el nombre de la region, pero para ello necesitamos el id y el nombre de la region que se seleccione segun el ID-->
-                                      <option value="<?=$tiporegion->idRegion  ?>"><?= $tiporegion->region ?></option>
-
-
-                                <?php    } ?>
-                                </select>
-
-                                                     </div>
-
-                                   <div class="col-md-4">
-
-                                     <!-- Boton filtrar que nos va a servir para poder mandar la peticion a nuestro controlador y que capture nuestros datos
-                                   que estamos solicitando-->
-
-                                     <input type="submit" value="Filtrar" class="btn btn-primary btn-block">
-
-
-                                   </div>
-
-
-                                   <div class="col-md-1">
-
-
-                                   </div>
-
-                                   <div class="col-md-2">
-
-                                     <div class="btn-group" role="group" aria-label="...">
-
-
-                                       <!-- Boton que direcciona a la vista para agregar un nuevo punto de atención, lo llamamos por medio del controlador pda y usamos la funcion nuevo para poder
-                                     mostrar la vista-->
-                                         <a  href="http://192.168.1.14:8888/LabLaBendicion/index.php/pda/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Agregar Nuevo Punto de atención">
-
-                                           <span class="material-icons">
-
-                                             add_circle_outline
-
-                                           </span>
-
-                                         </a>
-
-
-
-                                       </div>
-
-                                   </div>
-
-
-
-                               </div>
-
-                           </form>
 
                            <br>
 
@@ -410,23 +327,15 @@
                                  <ul id="mainnav-menu" class="list-group">
 
 
-                                     <li class="list-header">Navegación</li>
-
-
-
-                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/usuario"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
-
-
-
-                                     <li class="list-header">Opciones</li>
+                                     <li class="list-header">Opciones De Navegación</li>
 
                                      <li>
 
                                          <a href="#">
 
-                                         <i class="fa fa-table"></i>
+                                         <i class="fa fa-home"></i>
 
-                                         <span class="menu-title">Principal</span>
+                                         <span class="menu-title">Inicio</span>
 
                                          <i class="arrow"></i>
 
@@ -436,13 +345,12 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/welcome/"><i class="fa fa-caret-right"></i>Pantalla Principal</a></li>
-
-
+                                             <li><a href="<?php echo base_url(); ?>index.php/welcome"><i class="fa fa-caret-right"></i>Pantalla Principal</a></li>
 
                                          </ul>
 
                                      </li>
+
 
                                      <li>
 
@@ -460,7 +368,7 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas/Clasificación/Mantenimiento</a></li>
+                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
                                              <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 

@@ -5,55 +5,36 @@ $(document).ready(function(){
         var errores = '';
 
         // Validado Nombre ==============================
-        if( $('#dpi').val() == '' ){
-            errores += '<p>Ingrese DPI</p>';
-            $('#dpi').css("border-bottom-color", "#F14B4B")
+        if( $('#tiposoli').val() == '' ){
+            errores += '<p>Ingrese un tipo de solicitante</p>';
+            $('#tiposoli').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#dpi').css("border-bottom-color", "#d1d1d1")
+            $('#tiposoli').css("border-bottom-color", "#d1d1d1")
         }
 
         // Validado Correo ==============================
-        if( $('#nombre').val() == '' ){
-            errores += '<p>Ingrese un nombre</p>';
-            $('#nombre').css("border-bottom-color", "#F14B4B")
+        if( $('#tiposolid').val() == '' ){
+            errores += '<p>Ingrese un tipo de solicitud</p>';
+            $('#tiposolid').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#nombre').css("border-bottom-color", "#d1d1d1")
+            $('#tiposolid').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#rol').val() == '' ){
-            errores += '<p>Elija un rol</p>';
-            $('#rol').css("border-bottom-color", "#F14B4B")
+        if( $('#desc').val() == '' ){
+            errores += '<p>Ingrese una descripción</p>';
+            $('#desc').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#rol').css("border-bottom-color", "#d1d1d1")
+            $('#desc').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#usuario').val() == '' ){
-            errores += '<p>Ingrese una usuario</p>';
-            $('#usuario').css("border-bottom-color", "#F14B4B")
+        if( $('#numsoli').val() == '' ){
+            errores += '<p>Ingrese un número de solicitud</p>';
+            $('#numsoli').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#usuario').css("border-bottom-color", "#d1d1d1")
-        }
-        // Validado Mensaje ==============================
-        if( $('#password').val() == '' ){
-            errores += '<p>Ingrese un password</p>';
-            $('#password').css("border-bottom-color", "#F14B4B")
-        } else{
-            $('#password').css("border-bottom-color", "#d1d1d1")
+            $('#numsoli').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#cofirmarusername').val() == '' ){
-            errores += '<p>No ha confirmado el usuario ingresado</p>';
-            $('#cofirmarusername').css("border-bottom-color", "#F14B4B")
-        } else{
-            $('#cofirmarusername').css("border-bottom-color", "#d1d1d1")
-        }
 
-        if( $('#confirmarpassword').val() == '' ){
-            errores += '<p>No ha confirmado la contraseña ingresada</p>';
-            $('#confirmarpassword').css("border-bottom-color", "#F14B4B")
-        } else{
-            $('#confirmarpassword').css("border-bottom-color", "#d1d1d1")
-        }
 
 
         // ENVIANDO MENSAJE ============================

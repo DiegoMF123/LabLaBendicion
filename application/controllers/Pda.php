@@ -43,7 +43,7 @@ class Pda extends CI_Controller{
         // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
         $data["response"]=trim(isset($_REQUEST["response"]));
         // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-        $this->load->view('admin/nuevopda',$data);
+        $this->load->view('usuario/nuevopda',$data);
 
 
         break;

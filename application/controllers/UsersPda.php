@@ -29,11 +29,11 @@ class UsersPda extends CI_Controller {
                     // con la función donde se encuentra la consulta en donde llamaremos los datos.
                     $data["tiporegion"]= $this->model_pda->puntosdactivos();
                     $data["response"]=trim(isset($_REQUEST["response"]));
-                    $this->load->view('admin/pdausuarios',$data);
+                    $this->load->view('usuario/pdausuarios',$data);
 
                   }else{
                     if (isset($_REQUEST["region"])) {
-                      // esta variable codigo la llenamos con el valor del name que toma cuando se elige una region de la vista admin y
+                      // esta variable codigo la llenamos con el valor del name que toma cuando se elige una region de la vista usuario y
                       // mandamos el id
                       $codigo = $_REQUEST["region"];
                       // declaramos la vari data para poder mostrar los datos del usuario, mandamos a traer la variable
@@ -43,14 +43,14 @@ class UsersPda extends CI_Controller {
                       $data["response"]=trim(isset($_REQUEST["response"]));
                         // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
                       $data["tiporegion"]= $this->model_pda->puntosdactivos();
-                        $this->load->view('admin/pdausuarios',$data);
+                        $this->load->view('usuario/pdausuarios',$data);
                       // code...
                     }else{
                       // esta función dejara nada más los valores como esta si no se realiza ninguna busqueda
                     $data["usuarios"]= $this->model_userpda->user();
                       $data["tiporegion"]= $this->model_pda->puntosdactivos();
                       $data["response"]=trim(isset($_REQUEST["response"]));
-                        $this->load->view('admin/pdausuarios',$data);
+                        $this->load->view('usuario/pdausuarios',$data);
                     }
                   }
 
@@ -124,7 +124,7 @@ public function nuevo(){
       $data["tipocargos"]= $this->model_pda->tipo_cargo();
       $data["tiporol"]= $this->model_user->tipo_rol();
       $data["response"]=trim(isset($_REQUEST["response"]));
-      $this->load->view('admin/nuevousuariopda',$data);
+      $this->load->view('usuario/nuevousuariopda',$data);
       break;
     case '2':
       // code...
@@ -200,7 +200,7 @@ public function update(){
       $data["estado"]= $this->model_pda->estado($id);
       $data["datos"]= $this->model_userpda->selectindi($id);
       $data["tipocargos"]= $this->model_pda->tipo_cargo();
-      $this->load->view('admin/editarusuariopda',$data);
+      $this->load->view('usuario/editarusuariopda',$data);
 
 
       break;

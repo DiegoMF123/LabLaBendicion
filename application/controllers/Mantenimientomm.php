@@ -19,7 +19,7 @@ class Mantenimientomm extends CI_Controller{
 
         $data["datosqueja"]= $this->model_quejasauto->listadoq();
         $data["response"]=trim(isset($_REQUEST["response"]));
-        $this->load->view('usuario/quejasporauto',$data);
+        $this->load->view('usuario/mantenimientomm',$data);
 
 
         break;
@@ -49,47 +49,33 @@ class Mantenimientomm extends CI_Controller{
 
   }
 
-  //funcion nuevatipoq, esta función hace referencia cuando se quiera agregar una nueva queja
-  public function nuevatipoq(){
+  //Función nuevo paara mostrar la vista para agregar un nuevo usuario
+
+  public function nuevo(){
+      // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
     $this->load->helper('url');
+      // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
     $this->load->library('session');
-    $this->load->model('model_pda');
-  $this->load->model('model_quejasauto');
+    // Cargamos el modelo que vamos a utilizar para esta función nuevo
+    $this->load->model('model_user');
+
+    // Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
+    // mostrará las vistas respectivas.
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
-
-      $correlativo = $this->model_quejasauto->siglas();
-      $descripcion = $this->model_quejasauto->descripcion();
-
-      foreach ($descripcion as $key) {
-
-
-        $des = "".$key->Descripcion."";
-        // code...
-      }
-
-
-
-      foreach ($correlativo as $key) {
-
-
-        $rs = "".$key->Correlativo."";
-        // code...
-      }
-
-          // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
-          $data["rs"]=$rs;
-          $data["des"]=$des;
+      //la variable data va a traer los de la base de datos y los va a mostrar en "tiporol" y luego cargamos el modelo respectivo
+      // con la función donde se encuentra la consulta en donde llamaremos los datos.
+        $data["tiporol"]= $this->model_user->tipo_rol();
+        // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
         $data["response"]=trim(isset($_REQUEST["response"]));
-                // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-        $this->load->view('usuario/nuevotipoqueja',$data);
+        // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
+        $this->load->view('usuario/nuevasoli',$data);
 
 
         break;
       case '2':
-            // El rol 2 tiene restricción a esta vistas por ende redireccionará a la vista restrinct
-
+      // El rol 2 tiene restricción a esta vistas por ende redireccionará a la vista restrinct
           redirect('restrinct');
 
 

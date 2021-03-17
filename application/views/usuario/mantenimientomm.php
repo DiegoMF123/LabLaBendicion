@@ -126,7 +126,7 @@
 
 
                                  <!-- Boton para direccionar a la vista de creacion de nuevo tipo de queja -->
-                               <a  href="http://192.168.0.4:8888/BancoMiPistio/index.php/quejasauto/nuevatipoq" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
+                               <a  href="http://192.168.0.4:8888/LabLaBendicion/index.php/mantenimientomm/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
 
@@ -233,23 +233,15 @@
                                  <ul id="mainnav-menu" class="list-group">
 
 
-                                     <li class="list-header">Navegación</li>
-
-
-
-                                     <li> <a href="<?php echo base_url(); ?>index.php/welcome/usuario"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
-
-
-
-                                     <li class="list-header">Opciones</li>
+                                     <li class="list-header">Opciones De Navegación</li>
 
                                      <li>
 
                                          <a href="#">
 
-                                         <i class="fa fa-table"></i>
+                                         <i class="fa fa-home"></i>
 
-                                         <span class="menu-title">Principal</span>
+                                         <span class="menu-title">Inicio</span>
 
                                          <i class="arrow"></i>
 
@@ -259,13 +251,12 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/welcome/"><i class="fa fa-caret-right"></i>Pantalla Principal</a></li>
-
-
+                                             <li><a href="<?php echo base_url(); ?>index.php/welcome"><i class="fa fa-caret-right"></i>Pantalla De Inicio</a></li>
 
                                          </ul>
 
                                      </li>
+
 
                                      <li>
 
@@ -283,7 +274,7 @@
 
                                          <ul class="collapse">
 
-                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas/Clasificación/Mantenimiento</a></li>
+                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
                                                <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 

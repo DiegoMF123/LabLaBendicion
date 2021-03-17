@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Creacion de nuevo usuario</title>
-        <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/Ico.ico">
+        <title> Creacion de nueva solicitud</title>
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
 
         <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
@@ -126,7 +126,7 @@
 
                 <div id="content-container">
                     <div class="pageheader hidden-xs">
-                        <h3><i class="fa fa-home"></i> Creación de Nuevo Usuario</h3>
+                        <h3><i class="fa fa-home"></i> Creación de Nueva Solicitud</h3>
 
 
                     </div>
@@ -137,7 +137,7 @@
 
                                 <div class="panel">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">Datos del nuevo Usuario</h3>
+                                        <h3 class="panel-title">Datos de la nueva Solicitud</h3>
                                     </div>
 
                                     <div class="panel">
@@ -162,13 +162,13 @@
 
 
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Dpi</label>
+                                                        <label class="col-md-1 col-xs-12 control-label">Tipo solicitante</label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="dpi" id="dpi" placeholder="Ingrese Dpi" required/>
+                                                            <input type="text" class="form-control" name="tiposoli" id="tiposolit" placeholder="Ingrese solcitante" required/>
                                                         </div>
-                                                        <label class="col-md-1 col-xs-12 control-label">Nombre</label>
+                                                        <label class="col-md-1 col-xs-12 control-label">Tipo solicitud</label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese Nombre" required/>
+                                                            <input type="text" class="form-control" name="tiposolid" id="tiposolid" placeholder="Ingrese solicitud" required/>
                                                         </div>
                                                     </div>
 
@@ -177,129 +177,66 @@
                                                     <br>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Rol</label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                          <select class="form-control" name="rol" id="rol" required>
-                                                             <option value="" hidden selected >Seleccione una opción</option>
-                                                             <!-- Para poder llamar los datos de la base de datos, que en este caso son los roles
-                                                            abrimos llaves php y realizamos un nuevo foreach que en este caso le declaramos una variable que es la que
-                                                          vamos a llamar en el controlador para poder mandarselos a nuestro modelo y que en el modelo nos retorne los datos
-                                                        que necesitamos, luego de as declaramos otra variable que es la que vamos a usar practicamente en nuestra vista para poder
-                                                        mostrar los datos o el dato que nos devuelva nuestra consulta del modelo-->
-                                                        <?php foreach ($tiporol as $tiporol) {
-                                                         // code...
-                                                        ?>
-                                                        <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
-                                                      sera el nombre del tipo de rol, pero para ello necesitamos el id y el nombre del tipo de rol que se seleccione segun el ID-->
-                                                         <option value="<?=$tiporol->idTipo_Usuario  ?>"><?= $tiporol->Tipo ?></option>
 
+                                                          <label class="col-md-1 col-xs-12 control-label">Descripción</label>
 
-                                                        <?php    } ?>
-                                                        </select>
-                                                        </div>
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <textarea rows="4" maxlength="200" id="mensaje"  name="desc" rows="4" cols="107" placeholder="Escribe aqui tu mensaje." required></textarea>
+                                                              <div id="contador">0/200</div>
+                                                              <!-- Contador y limitar letras en campo -->
+                                                                <script>
+                                                                    const mensaje = document.getElementById('mensaje');
+                                                                    const contador = document.getElementById('contador');
+                                                                        mensaje.addEventListener('input', function(e) {
+                                                                            const target = e.target;
+                                                                            const longitudMax = target.getAttribute('maxlength');
+                                                                            const longitudAct = target.value.length;
+                                                                            contador.innerHTML = `${longitudAct}/${longitudMax}`;
+                                                                        });
+                                                                </script>
+                                                          </div>
 
-                                                        <label class="col-md-1 col-xs-12 control-label">Usuario</label>
-                                                        <div class="col-md-3 col-xs-12">
-
-                                                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Ingrese Usuario" required/>
-
-                                                        </div>
                                                     </div>
                                                     <br>
 
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Contraseña</label>
+                                                        <label class="col-md-1 col-xs-12 control-label">No de solicitud</label>
                                                         <div class="col-md-3 col-xs-12">
 
-                                                            <input type="password" class="form-control" name="password" id="password" placeholder="Ingrese Contraseña" pattern="[A-Za-z0-9]{8,20}" title="La contraseña de seguridad válido consiste en una cadena con 8 a 20 caracteres, cada uno de los cuales es una letra o un dígito" required/>
+                                                            <input type="text" class="form-control" name="numsoli" id="numsoli" placeholder="Ingrese el numero del expediente"required/>
 
                                                         </div>
                                                     </div>
-
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title">Validación para el nuevo usuario</h3>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="col-xs-12">
-                                                            <div >
-                                                                <label >
-                                                               Vuelva a escribir el usuario y contraseña para validarlos
-                                                              </label>
-
-                                                            </div>
-                                                            <br>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Nombre de Usuario</label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                          <!--llamamos el Script que esta arriba con un onkeyup para que puedar realizar la validacion del mismo-->
-                                                            <input type="text" class="form-control" name="cofirmarusername" id="cofirmarusername" placeholder="Usuario" required onkeyup="comprobar();"/><div id="mensaje"></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Contraseña</label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                          <!--llamamos el Script que esta arriba con un onkeyup para que puedar realizar la validacion del mismo-->
-                                                            <input type="password" class="form-control" name="confirmarpassword" id="confirmarpassword" placeholder="Contraseña" required onkeyup="comprobacion();"/><div id="mensaje2"></div>
-                                                        </div>
-                                                    </div>
-
-
 
                                                     <br>
-
 
                                                     <div class="panel-footer">
                                                         <div class="form-group">
                                                             <div class="col-md-5 col-xs-12">
                                                               <!--  Boton guardar, y guardar los datos y mandar los datos a modificar ingresados al controlador -->
-                                                                <input  type="submit" class="btn btn-info" name="btnSend" value="Guardar" id="btnSend">
+                                                                <input  type="submit" class="btn btn-primary" name="btnSend" value="Guardar" id="btnSend" >
                                                                 <!--  Boton Cancelar los datos y direccionar a la vista donde se muestran el listado de usuarios creados-->
                                                                   <!--llamamos el Script que esta arriba con un onclick para que puedar realizar la validacion del mismo-->
-                                                                <a href="<?php echo base_url(); ?>index.php/users" type="button" class="btn btn-info" onclick="limpiarFormulario()">Cancelar</a>
+                                                                <a href="<?php echo base_url(); ?>index.php/mantenimientomm" type="button" class="btn btn-danger" onclick="limpiarFormulario()">Cancelar</a>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </form>
 
 
-
-
-
-
-
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                     <br>
-
-
-
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
-
                     <nav id="mainnav-container">
-
                         <div class="navbar-header">
-
                             <a href="<?php echo base_url(); ?>" class="navbar-brand">
-
-
-
-                                <i><img src="<?php echo base_url(); ?>/assets/img/bmps.png" width="60"> <font size="5" face="georgia">Menú BMP</font></i>
-
+                                <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60"> <font size="5" face="georgia">Menú Lab</font></i>
                             </a>
-
                         </div>
 
                         <div id="mainnav">
@@ -312,27 +249,24 @@
 
                                         <ul id="mainnav-menu" class="list-group">
 
-                                            <li class="list-header">Navegación</li>
-
-                                            <li> <a href="<?php echo base_url(); ?>index.php/welcome/admin"> <i class="fa fa-home"></i> <span class="menu-title"> Inicio </span> </a> </li>
-
-                                            <li class="list-header">Opciones</li>
-
+                                            <li class="list-header">Opciones De Navegación</li>
                                             <li>
 
                                                 <a href="#">
 
-                                                    <i class="fa fa-table"></i>
+                                                <i class="fa fa-home"></i>
 
-                                                    <span class="menu-title">Principal</span>
+                                                <span class="menu-title">Inicio</span>
 
-                                                    <i class="arrow"></i>
+                                                <i class="arrow"></i>
 
                                                 </a>
 
+                                                <!--Submenu-->
+
                                                 <ul class="collapse">
 
-                                                    <li><a href="<?php echo base_url(); ?>index.php/welcome/"><i class="fa fa-caret-right"></i>Pantalla Principal</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>index.php/welcome"><i class="fa fa-caret-right"></i>Pantalla De Inicio</a></li>
 
                                                 </ul>
 
@@ -344,7 +278,7 @@
 
                                                 <i class="fa fa-briefcase"></i>
 
-                                                <span class="menu-title">Quejas</span>
+                                                <span class="menu-title">Mantenimiento</span>
 
                                                 <i class="arrow"></i>
 
@@ -354,7 +288,7 @@
 
                                                 <ul class="collapse">
 
-                                                    <li><a href="<?php echo base_url(); ?>index.php/quejasauto"><i class="fa fa-caret-right"></i>Asignar Tipo de queja / Listado de quejas</a></li>
+                                                    <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
                                                       <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 

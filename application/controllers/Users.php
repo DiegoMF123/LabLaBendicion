@@ -19,7 +19,7 @@ class Users extends CI_Controller{
       // usuarios que esta declarada en el foreach, cargamos el modelo a donde queremos que vaya a traer los datos en la
         $data["usuarios"]= $this->model_user->user();
         $data["response"]=trim(isset($_REQUEST["response"]));
-        $this->load->view('admin/asusuarios',$data);
+        $this->load->view('usuario/asusuarios',$data);
 
 
         break;
@@ -70,7 +70,7 @@ class Users extends CI_Controller{
         // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
         $data["response"]=trim(isset($_REQUEST["response"]));
         // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-        $this->load->view('admin/nuevoasusu',$data);
+        $this->load->view('usuario/nuevoasusu',$data);
 
 
         break;
@@ -141,7 +141,7 @@ class Users extends CI_Controller{
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('model_user');
-    //esta variable id almacena el id que le enviamos de la vista admin en el botón editar para poder
+    //esta variable id almacena el id que le enviamos de la vista usuario en el botón editar para poder
     // editar el punto de atención que queremos hacer cambios
     $id = trim($_REQUEST["id"]);
     $rol= $_SESSION["role"];
@@ -157,7 +157,7 @@ class Users extends CI_Controller{
       // le cargamos la variable id para que muestre los datos segun el id seleccionado
       $data["datos"]= $this->model_user->selectid($id);
         // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
-      $this->load->view('admin/editarasusuarios',$data);
+      $this->load->view('usuario/editarasusuarios',$data);
 
         break;
       case '2':
