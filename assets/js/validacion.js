@@ -6,13 +6,19 @@ $(document).ready(function(){
 
         // Validado Nombre ==============================
         if( $('#tiposoli').val() == '' ){
-            errores += '<p>Ingrese un tipo de solicitante</p>';
+            errores += '<p>Seleccione un tipo de solicitante</p>';
             $('#tiposoli').css("border-bottom-color", "#F14B4B")
         } else{
             $('#tiposoli').css("border-bottom-color", "#d1d1d1")
         }
 
-        // Validado Correo ==============================
+        if( $('#numfac').val() == '' ){
+            errores += '<p>Ingrese un número de solicitud</p>';
+            $('#numfac').css("border-bottom-color", "#F14B4B")
+        } else{
+            $('#numfac').css("border-bottom-color", "#d1d1d1")
+        }
+
         if( $('#tiposolid').val() == '' ){
             errores += '<p>Ingrese un tipo de solicitud</p>';
             $('#tiposolid').css("border-bottom-color", "#F14B4B")
@@ -20,11 +26,11 @@ $(document).ready(function(){
             $('#tiposolid').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#desc').val() == '' ){
+        if( $('#mensaje').val() == '' ){
             errores += '<p>Ingrese una descripción</p>';
-            $('#desc').css("border-bottom-color", "#F14B4B")
+            $('#mensaje').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#desc').css("border-bottom-color", "#d1d1d1")
+            $('#mensaje').css("border-bottom-color", "#d1d1d1")
         }
 
         if( $('#numsoli').val() == '' ){
@@ -41,7 +47,7 @@ $(document).ready(function(){
         if( errores == '' == false){
             var mensajeModal = '<div class="modal_wrap">'+
                                     '<div class="mensaje_modal">'+
-                                        '<h3>Errores encontrados</h3>'+
+                                        '<h3>Errores Detectatos</h3>'+
                                         errores+
                                         '<span id="btnClose">Cerrar</span>'+
                                     '</div>'+

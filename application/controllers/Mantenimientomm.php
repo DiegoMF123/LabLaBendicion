@@ -7,20 +7,13 @@ class Mantenimientomm extends CI_Controller{
     $this->load->helper('url');
       // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
     $this->load->library('session');
-        // Cargamos el modelo que vamos a utilizar para esta función index
-    $this->load->model('model_quejasauto');
-    // Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
-    // mostrará las vistas respectivas.
+  
+
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
-      // declaramos la vari data para poder mostrar los datos del usuario, mandamos a traer la variable
-      // usuarios que esta declarada en el foreach, cargamos el modelo a donde queremos que vaya a traer los datos en la
 
-        $data["datosqueja"]= $this->model_quejasauto->listadoq();
-        $data["response"]=trim(isset($_REQUEST["response"]));
-        $this->load->view('usuario/mantenimientomm',$data);
-
+        $this->load->view('usuario/mantenimientomm');
 
         break;
       case '2':
@@ -57,19 +50,15 @@ class Mantenimientomm extends CI_Controller{
       // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
     $this->load->library('session');
     // Cargamos el modelo que vamos a utilizar para esta función nuevo
-    $this->load->model('model_user');
+    $this->load->model('Model_Solicitud');
 
     // Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
     // mostrará las vistas respectivas.
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
-      //la variable data va a traer los de la base de datos y los va a mostrar en "tiporol" y luego cargamos el modelo respectivo
-      // con la función donde se encuentra la consulta en donde llamaremos los datos.
-        $data["tiporol"]= $this->model_user->tipo_rol();
-        // Esta variable data tambien se declara para poder hacer llamar la variable response que se encuentre en la vista de nuevopda.
-        $data["response"]=trim(isset($_REQUEST["response"]));
-        // Cargamos la vista y mandamos la variable data para que pueda cargar las peticiones que queremos que nos muestre
+
+        $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
         $this->load->view('usuario/nuevasoli',$data);
 
 

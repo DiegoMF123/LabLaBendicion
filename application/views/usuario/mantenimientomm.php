@@ -372,11 +372,8 @@
                  </ul>
 
              </div>
-
-
              <div class="hide-fixed pull-right pad-rgt">Actualmente v1.0</div>
-
-
+             <p class="pad-lft">&#0169; 2021 Sistema Laboratorio "La Bendición S.A"</p>
 
          </footer>
 

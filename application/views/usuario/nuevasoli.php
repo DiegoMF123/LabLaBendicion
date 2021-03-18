@@ -164,7 +164,22 @@
                                                     <div class="form-group">
                                                         <label class="col-md-1 col-xs-12 control-label">Tipo solicitante</label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="tiposoli" id="tiposolit" placeholder="Ingrese solcitante" required/>
+                                                          <select class="form-control" name="tiposoli" id="tiposoli" required>
+                                                              <option value="" hidden selected>Seleccione una opción</option>
+                                                                  <?php foreach ($tiposolicitante as $tiposolicitante) {
+                                                                    // code...
+                                                                    ?>
+
+                                                                      <option value="<?=$tiposolicitante->idTipoSolicitante  ?>"><?= $tiposolicitante->Abreviaturats ?> <?= $tiposolicitante->Tiposolicitante ?></option>
+
+
+                                                                    <?php    } ?>
+                                                          </select>
+
+                                                        </div>
+                                                        <label class="col-md-1 col-xs-12 control-label">Número de Factura</label>
+                                                        <div class="col-md-3 col-xs-12">
+                                                            <input type="text" class="form-control" name="numfac" id="numfac" placeholder="Ingrese solcitante" required/>
                                                         </div>
                                                         <label class="col-md-1 col-xs-12 control-label">Tipo solicitud</label>
                                                         <div class="col-md-3 col-xs-12">
@@ -181,7 +196,7 @@
                                                           <label class="col-md-1 col-xs-12 control-label">Descripción</label>
 
                                                           <div class="col-md-3 col-xs-12">
-                                                              <textarea rows="4" maxlength="200" id="mensaje"  name="desc" rows="4" cols="107" placeholder="Escribe aqui tu mensaje." required></textarea>
+                                                              <textarea rows="4" maxlength="200" id="mensaje"  name="desc" rows="4" cols="107" placeholder="Escribe aqui tu descripcion, debe contener al menos 10 caracteres para que pueda ser valida. " required></textarea>
                                                               <div id="contador">0/200</div>
                                                               <!-- Contador y limitar letras en campo -->
                                                                 <script>
@@ -360,9 +375,8 @@
                         </ul>
                     </div>
 
-                    <div class="hide-fixed pull-right pad-rgt">Currently v2.2</div>
-
-                    <p class="pad-lft">&#0169; 2015 Your Company</p>
+                    <div class="hide-fixed pull-right pad-rgt">Actualmente v1.0</div>
+                    <p class="pad-lft">&#0169; 2021 Sistema Laboratorio "La Bendición S.A"</p>
                 </footer>
 
                 <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>

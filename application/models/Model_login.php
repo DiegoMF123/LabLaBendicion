@@ -6,13 +6,14 @@ class Model_Login extends CI_Model
 
     $this->load->database();
     $query = $this->db->query("
-        select Dpi, Usuario, Password, Nombre, idTipo_Usuariofk from Usuarios
+        select Nombre, Usuario, Password, TipoUsuario_idTipoUsuario from Usuarios
         where Usuario ='".$user."'
         and Password='".$pass."'
       ");
     return $query->result();
 
   }
+
 
   public function id(){
 
