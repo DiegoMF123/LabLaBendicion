@@ -17,6 +17,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
         <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
         <!-- scropt para Dar color a la tabla en la parte de los encabezados -->
         <style type="text/css">
@@ -28,6 +29,8 @@
         }
 
         </style>
+
+       
 
     </head>
 
@@ -146,11 +149,13 @@
 
                                       <tr>
                                           <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>Prueba</th>
+                                          <th>ID</th>
 
-                                          <th>Prueba</th>
+                                          <th>Tipo de solicitante</th>
 
-                                          <th>Prueba</th>
+                                          <th>Tipo de solicitud</th>
+
+                                          <th>Estado</th>
 
                                           <th>Prueba</th>
 
@@ -158,24 +163,24 @@
                                       </tr>
                                   </thead>
                                   <tbody align="center">
-                                    <?php foreach ($datosqueja as $datoq){
+                                    <?php foreach ($datosoli as $datosoli){
                                       // code...
                                       ?>
                                       <tr>
                                             <!-- Llamado de campos de los datos que queremos mostrar  -->
-                                            <td><?= $datoq->idTipo_Queja ?></td>
+                                            <td><?= $datosoli->idTipo_Queja ?></td>
 
-                                            <td><?= $datoq->Correlativo ?></td>
+                                            <td><?= $datosoli->Correlativo ?></td>
 
-                                             <td><?= $datoq->Descripcion ?></td>
+                                             <td><?= $datosoli->Descripcion ?></td>
 
-                                             <td><?= $datoq->NombreEstado ?></td>
+                                             <td><?= $datosoli->NombreEstado ?></td>
 
                                           <td>
                                             <div class="btn-group">
                                               <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
                                             los datos del usuario que queremos editar-->
-                                              <a href="<?php echo base_url(); ?>index.php/quejasauto/modificatipoq?id=<?= $datoq->idTipo_Queja  ?>"  class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                              <a href="<?php echo base_url(); ?>index.php/quejasauto/modificatipoq?id=<?= $datosoli->idTipo_Queja  ?>"  class="btn btn-default"><i class="fa fa-edit"></i></a>
                                             </div>
                                           </td>
                                       </tr>

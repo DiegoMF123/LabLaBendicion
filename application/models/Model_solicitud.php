@@ -10,8 +10,16 @@ class Model_Solicitud extends CI_Model
 
       ");
     return $query->result();
+  }
 
+  public function tiposolicitud(){
 
+    $this->load->database();
+    $query = $this->db->query("
+    Select * from TipoSolicitud
+
+      ");
+    return $query->result();
   }
 
 
