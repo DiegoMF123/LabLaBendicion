@@ -58,10 +58,23 @@ class Mantenimientomm extends CI_Controller{
     switch ($rol) {
       case '1':
 
-        $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
-        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-        $this->load->view('usuario/nuevasoli',$data);
-
+        if (empty($_REQUEST["numsoli"])) {
+          // code...
+          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+          $this->load->view('usuario/nuevasoli',$data);
+        }else{
+          if (isset($_REQUEST["numsoli"])) {
+            $numsoli=$_REQUEST["numsoli"];
+            $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
+            $this->load->view('usuario/datosexpediente',$data);      
+          // code...
+          }else{
+            $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+              $this->load->view('usuario/nuevasoli',$data);
+          }
+        }
 
         break;
       case '2':
@@ -74,13 +87,8 @@ class Mantenimientomm extends CI_Controller{
       redirect('restrinct');
 
         break;
-      case '4':
-          redirect('restrinct');
-        break;
-        case '5':
-
-          redirect('restrinct');
-          break;
+      
+     
 
       default:
       redirect('restrinct');

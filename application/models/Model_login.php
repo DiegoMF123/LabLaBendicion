@@ -15,15 +15,6 @@ class Model_Login extends CI_Model
   }
 
 
-  public function id(){
-
-    $this->load->database();
-    $query = $this->db->query("
-        SELECT MAX(idDetalleQueja) AS id FROM Detalle_De_Queja;
-      ");
-    return $query->result();
-
-  }
 
 }
 

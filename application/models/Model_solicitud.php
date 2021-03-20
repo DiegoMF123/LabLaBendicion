@@ -22,6 +22,17 @@ class Model_Solicitud extends CI_Model
     return $query->result();
   }
 
+  public function buscarsoli($numsoli){
+
+    $this->load->database();
+    $query=$this->db->query("
+
+    select NIT, Nombre from Expediente where Correlativo = '".$numsoli."'
+    
+    ");
+    return $query->result();
+  }
+
 
 
 }

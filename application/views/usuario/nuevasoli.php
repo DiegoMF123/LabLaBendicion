@@ -42,37 +42,7 @@
     }
     </script>
 
-    <!--Función script para poder hacer una validacion sobre si coincide el nombre de usuario
-       y el password-->
-
-    <script type="text/javascript">
-    function comprobar() {
-        var usuario = document.registrationForm.usuario.value;
-        var cofirmarusername = document.registrationForm.cofirmarusername.value;
-
-        if (usuario != cofirmarusername) {
-            document.getElementById("mensaje").innerHTML = "El usuario no coincide";
-        } else {
-            document.getElementById("mensaje").innerHTML = "El usuario coincide";
-        }
-    }
-    </script>
-
-    <!--Función script para poder hacer una validacion sobre si coincide el nombre de usuario
-               y el password-->
-
-    <script type="text/javascript">
-    function comprobacion() {
-        var password = document.registrationForm.password.value;
-        var confirmarpassword = document.registrationForm.confirmarpassword.value;
-
-        if (password != confirmarpassword) {
-            document.getElementById("mensaje2").innerHTML = "La contraseña no coincide";
-        } else {
-            document.getElementById("mensaje2").innerHTML = "La contraseña coincide";
-        }
-    }
-    </script>
+  
 
     <script type="text/javascript">
     $(document).ready(Principal);
@@ -215,7 +185,8 @@
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="registrationForm" name="registrationForm" class="form-horizontal"
-                                                action="guardar" method="GET">
+                                                action="" method="POST">
+
 
 
 
@@ -290,10 +261,10 @@
                                                         mensaje.addEventListener('input', function(e) {
                                                             const target = e.target;
                                                             const longitudMax = target.getAttribute(
-                                                            'maxlength');
+                                                                'maxlength');
                                                             const longitudAct = target.value.length;
                                                             contador.innerHTML =
-                                                            `${longitudAct}/${longitudMax}`;
+                                                                `${longitudAct}/${longitudMax}`;
                                                         });
                                                         </script>
                                                     </div>
@@ -301,33 +272,41 @@
                                                 </div>
                                                 <br>
 
-                                                <div class="form-group">
+                                               
+
+                                                    
                                                     <label class="col-md-1 col-xs-12 control-label">No de
                                                         solicitud</label>
                                                     <div class="col-md-3 col-xs-12">
 
                                                         <input type="text" class="form-control" name="numsoli"
                                                             id="numsoli" placeholder="Ingrese el numero del expediente"
-                                                            maxlength="24" onKeyPress="return soloNumeros(event)"
+                                                            maxlength="25" onKeyPress="return soloNumeros(event)"
                                                             required />
+                                                            <br>
 
-                                                    </div>
-
-                                                    <button type="button" name="button" class="btn btn-success"
-                                                        data-toggle="modal" data-target="#staticBackdrop1">Buscar
-                                                        expediente</button>
+                                                     
+                                                
 
 
                                                 </div>
 
+                                                
                                                 <br>
+                                                
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <br>
+
+
 
                                                 <div class="panel-footer">
                                                     <div class="form-group">
                                                         <div class="col-md-5 col-xs-12">
                                                             <!--  Boton guardar, y guardar los datos y mandar los datos a modificar ingresados al controlador -->
-                                                            <input type="submit" class="btn btn-primary" name="btnSend"
-                                                                value="Guardar" id="btnSend">
+                                                            <input type="submit" data-toggle="modal" data-target="#staticBackdrop1" class="btn btn-primary" name="btnSend"
+                                                                value="Buscar" id="btnSend">
                                                             <!--  Boton Cancelar los datos y direccionar a la vista donde se muestran el listado de usuarios creados-->
                                                             <!--llamamos el Script que esta arriba con un onclick para que puedar realizar la validacion del mismo-->
                                                             <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
@@ -347,8 +326,19 @@
                         </div>
                     </div>
                 </div>
+                    
+               
+                <?php
+                                                  foreach ($datosexp as $dato) {
+                                                      // code...
+                                                        }
+                                                        ?>
+  
+
                 <div class="modal fade bs-example-modal-lg" id="staticBackdrop1">
+           
                     <div class="modal-dialog modal-lg">
+       
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
@@ -356,16 +346,19 @@
                                 <h4 class="modal-title" id="myModalLabel"><label>Datos del expediente</label></h4>
                             </div>
                             <div class="modal-body">
+           
+
                                 <div class="contendor_kn">
                                     <div class="panel panel-default">
                                         <div class="panel-body">
+                                        
                                             <form id="registrationForm" name="registrationForm" class="form-horizontal"
                                                 action="updatedata" method="GET">
                                                 <div class="col-md-5">
 
                                                     <label class="col-sm-1 control-label">NIT </label>
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" value="" name="nit"
+                                                        <input type="text" class="form-control" value="<?= $dato->NIT?>" name="nit"
                                                             id="nit" placeholder="NIT" readonly>
                                                         <br>
                                                     </div>
@@ -375,13 +368,12 @@
                                                 <div class="col-md-7">
                                                     <label class="col-sm-2 control-label">Nombre</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" class="form-control" name="nombre"
+                                                        <input type="text" class="form-control" name="nombre" <?= $dato->Nombre?>
                                                             id="nombre" value="" placeholder="Nombre" readonly>
 
                                                         <br>
                                                     </div>
                                                 </div>
-
 
                                                 <div class="col-md-12 col-lg-12 col-xs-12" style="text-align:center;">
                                                     <br>
@@ -399,16 +391,26 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                          
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-success" data-toggle="modal"
                                     data-target="#staticBackdrop2"><span
                                         class="glyphicon glyphicon-floppy-saved"></span>&nbsp;<b>Siguiente</b></button>
                                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><i
                                         class="fa fa-close"></i><strong> Cerrar</strong></button>
+                                      
                             </div>
+                        
+
                         </div>
                     </div>
+                  
                 </div>
+                
+
+
+                
 
                 <div class="modal fade bs-example-modal-lg" id="staticBackdrop2">
                     <div class="modal-dialog modal-lg">
