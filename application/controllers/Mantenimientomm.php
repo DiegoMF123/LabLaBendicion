@@ -98,6 +98,60 @@ class Mantenimientomm extends CI_Controller{
 
   }
 
+  public function nuevoprueba(){
+    // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
+  $this->load->helper('url');
+    // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
+  $this->load->library('session');
+  // Cargamos el modelo que vamos a utilizar para esta función nuevo
+  $this->load->model('Model_Solicitud');
+
+  // Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
+  // mostrará las vistas respectivas.
+  $rol= $_SESSION["role"];
+  switch ($rol) {
+    case '1':
+
+      if (empty($_REQUEST["numsoli"])) {
+        // code...
+        $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+        $this->load->view('usuario/nuevasolicitud',$data);
+      }else{
+        if (isset($_REQUEST["numsoli"])) {
+          $numsoli=$_REQUEST["numsoli"];
+          $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
+          $this->load->view('usuario/nuevasolicitud',$data);      
+        // code...
+        }else{
+          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+            $this->load->view('usuario/nuevasolicitud',$data);
+        }
+      }
+
+      break;
+    case '2':
+    // El rol 2 tiene restricción a esta vistas por ende redireccionará a la vista restrinct
+        redirect('restrinct');
+
+
+      break;
+    case '3':
+    redirect('restrinct');
+
+      break;
+    
+   
+
+    default:
+    redirect('restrinct');
+      // code...
+      break;
+  }
+
+}
+
   public function correlativo(){
  $this->load->model('model_quejasauto');
  $correlativo = $this->model_quejasauto->siglas();
@@ -143,12 +197,12 @@ class Mantenimientomm extends CI_Controller{
 
       $data["guardar"] = $this->model_quejasauto->guardar($sigcor,$desc,$fecha,$rs);
 
-    header("Location:  http://192.168.0.4:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq?response=1");
+    header("Location:  http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq?response=1");
       die();
     }
 
     else {
-      header("Location:  http://192.168.0.4:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq");
+      header("Location:  http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq");
       die();
       }
 
@@ -215,7 +269,7 @@ public function updatedata(){
 // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
   $data["datosqueja"]= $this->model_quejasauto->update($id,$estado,$desc,$fechamodifi);
 
-  header("Location: http://192.168.0.4:8888/LabLaBendicion/index.php/quejasauto?response=1");
+  header("Location: http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto?response=1");
               die();
 
             }

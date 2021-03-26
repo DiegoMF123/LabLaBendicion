@@ -5,20 +5,34 @@ $(document).ready(function(){
           var errores = '';
 
           // Validado Region ==============================
-          if( $('#tipo').val() == '' ){
-              errores += '<p>Seleccione una Region</p>';
-              $('#tipo').css("border-bottom-color", "#F14B4B")
+          if( $('#tiposoporte').val() == '' ){
+              errores += '<p>Seleccione un tipo de soporte</p>';
+              $('#tiposoporte').css("border-bottom-color", "#F14B4B")
           } else{
-              $('#tipo').css("border-bottom-color", "#d1d1d1")
+              $('#tiposoporte').css("border-bottom-color", "#d1d1d1")
           }
 
           // Validado Nombre ==============================
-          if( $('#nombrepda').val() == '' ){
-              errores += '<p>Ingrese un nombre para el punto de atención</p>';
-              $('#nombrepda').css("border-bottom-color", "#F14B4B")
+          if( $('#numsoporte').val() == '' ){
+              errores += '<p>Ingrese el número de soporte</p>';
+              $('#numsoporte').css("border-bottom-color", "#F14B4B")
           } else{
-              $('#nombrepda').css("border-bottom-color", "#d1d1d1")
+              $('#numsoporte').css("border-bottom-color", "#d1d1d1")
           }
+
+          if( $('#telefono').val() == '' ){
+            errores += '<p>Ingrese un numero de teléfono(●	Se permite el ingreso de números positivos de hasta 8 cifras )</p>';
+            $('#telefono').css("border-bottom-color", "#F14B4B")
+        } else{
+            $('#telefono').css("border-bottom-color", "#d1d1d1")
+        }
+
+        if( $('#email').val() == '' ){
+            errores += '<p>Ingrese un email</p>';
+            $('#email').css("border-bottom-color", "#F14B4B")
+        } else{
+            $('#email').css("border-bottom-color", "#d1d1d1")
+        }
 
 
           // ENVIANDO MENSAJE ============================
@@ -33,7 +47,6 @@ $(document).ready(function(){
 
               $('body').append(mensajeModal);
           }
-
           // CERRANDO MODAL ==============================
           $('#btnClose').click(function(){
               $('.modal_wrap').remove();

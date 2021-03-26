@@ -33,6 +33,16 @@ class Model_Solicitud extends CI_Model
     return $query->result();
   }
 
+  public function tiposoporte(){
+     $this->load->database();
+     $query=$this->db->query("
+
+     select * from TipoSoporte
+
+     ");
+     return $query->result();
+  }
+
 
 
 }

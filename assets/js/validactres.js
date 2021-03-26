@@ -5,40 +5,39 @@ $(document).ready(function(){
         var errores = '';
 
         // Validado Nombre ==============================
-        if( $('#region').val() == '' ){
-            errores += '<p>Elija un region</p>';
-            $('#region').css("border-bottom-color", "#F14B4B")
+        if( $('#tipodemuestra').val() == '' ){
+            errores += '<p>Elija un tipo de muestra</p>';
+            $('#tipodemuestra').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#region').css("border-bottom-color", "#d1d1d1")
+            $('#tipodemuestra').css("border-bottom-color", "#d1d1d1")
         }
-
         // Validado Correo ==============================
-        if( $('#pda').val() == '' ){
-            errores += '<p>Elija un punto de atención activo</p>';
-            $('#pda').css("border-bottom-color", "#F14B4B")
+        if( $('#presentacion').val() == '' ){
+            errores += '<p>Ingresa una descripción para tu presentación</p>';
+            $('#presentacion').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#pda').css("border-bottom-color", "#d1d1d1")
+            $('#presentacion').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#dpi').val() == '' ){
-            errores += '<p>Ingrese un DPI</p>';
-            $('#dpi').css("border-bottom-color", "#F14B4B")
+        if( $('#cantunid').val() == '' ){
+            errores += '<p>Selecciona una cantidad de unidades</p>';
+            $('#dcantunidpi').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#dpi').css("border-bottom-color", "#d1d1d1")
+            $('#cantunid').css("border-bottom-color", "#d1d1d1")
         }
 
-        if( $('#correo').val() == '' ){
-            errores += '<p>Ingrese un correo</p>';
-            $('#correo').css("border-bottom-color", "#F14B4B")
+        if( $('#unidadmed').val() == '' ){
+            errores += '<p>Ingrese una unidad de medida</p>';
+            $('#unidadmed').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#correo').css("border-bottom-color", "#d1d1d1")
+            $('#unidadmed').css("border-bottom-color", "#d1d1d1")
         }
         // Validado Mensaje ==============================
-        if( $('#cargo').val() == '' ){
-            errores += '<p>Elija un cargo</p>';
-            $('#cargo').css("border-bottom-color", "#F14B4B")
+        if( $('#adjunto').val() == '' ){
+            errores += '<p>Adjunte un archivo</p>';
+            $('#adjunto').css("border-bottom-color", "#F14B4B")
         } else{
-            $('#cargo').css("border-bottom-color", "#d1d1d1")
+            $('#adjunto').css("border-bottom-color", "#d1d1d1")
         }
 
 

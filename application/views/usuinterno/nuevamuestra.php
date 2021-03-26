@@ -30,48 +30,10 @@
     <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validacion.js">
+    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validactres.js">
     </script>
     <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script>
-  $(document).ready(function(){
-  var current = 1,current_step,next_step,steps;
-  steps = $("fieldset").length;
-  $(".next").click(function(){
-    current_step = $(this).parent();
-    next_step = $(this).parent().next();
-    next_step.show();
-    current_step.hide();
-    setProgressBar(++current);
-  });
-  $(".previous").click(function(){
-    current_step = $(this).parent();
-    next_step = $(this).parent().prev();
-    next_step.show();
-    current_step.hide();
-    setProgressBar(--current);
-  });
-  setProgressBar(current);
-  // Change progress bar action
-  function setProgressBar(curStep){
-    var percent = parseFloat(100 / steps) * curStep;
-    percent = percent.toFixed();
-    $(".progress-bar")
-      .css("width",percent+"%")
-      .html(percent+"%");   
-  }
-});
-  </script>
-
-  <script>
-  #regiration_form fieldset:not(:first-of-type) {
-    display: none;
-  }
-  </script>
 
     <!--Script para poder cancelar el ingreso de los datos y dejarlos a como estaba-->
     <script>
@@ -80,7 +42,7 @@
     }
     </script>
 
-  
+
 
     <script type="text/javascript">
     $(document).ready(Principal);
@@ -191,7 +153,7 @@
 
             <div id="content-container">
                 <div class="pageheader hidden-xs">
-                    <h3><i class="fa fa-home"></i> Creación de Nueva Solicitud</h3>
+                    <h3><i class="fa fa-home"></i> Creación de muestras medicas</h3>
 
 
                 </div>
@@ -202,7 +164,7 @@
 
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Datos de la nueva Solicitud</h3>
+                                    <h3 class="panel-title">Datos para la muestra</h3>
                                 </div>
 
                                 <div class="panel">
@@ -212,20 +174,28 @@
                                         <div class="panel-body">
 
 
-                                          
+                                            <!-- Se abren llaves php para poder realizar un if con codigo php, es este caso declaramos una variable
+                                            llamada "response" en la cual le estamos indicando que si es == 1, nos mostrara un mensaje, en este caso
+                                          si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
+                                            <?php if ($response =="1") {
+                                                echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
+                                                      Se guardaron correctamente los datros del nuevo usuario
+                                                    </div>";
+                                              } ?>
+
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="registrationForm" name="registrationForm" class="form-horizontal"
-                                                action="" method="POST">
+                                                action="" method="GET">
 
 
 
 
                                                 <div class="form-group">
                                                     <label class="col-md-1 col-xs-12 control-label">Tipo
-                                                        solicitante</label>
+                                                        de muestra</label>
                                                     <div class="col-md-3 col-xs-12">
-                                                        <select class="form-control" name="tiposoli" id="tiposoli"
-                                                            required>
+                                                        <select class="form-control" name="tipodemuestra"
+                                                            id="tipodemuestra" required>
                                                             <option value="" hidden selected>Seleccione una opción
                                                             </option>
                                                             <?php foreach ($tiposolicitante as $tiposolicitante) {
@@ -241,33 +211,36 @@
                                                         </select>
 
                                                     </div>
-                                                    <label class="col-md-1 col-xs-12 control-label">Número de
-                                                        Factura</label>
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <input type="text" class="form-control" name="numfac"
-                                                            id="numfac" placeholder="Ingrese el numero de la factura"
-                                                            required />
+
+
+                                                    <div class="form-group">
+
+                                                        <label
+                                                            class="col-md-1 col-xs-12 control-label">Presentación</label>
+
+                                                        <div class="col-md-3 col-xs-12">
+                                                            <textarea rows="4" maxlength="200" id="mensaje" name="presentacion"
+                                                                rows="4" cols="107"
+                                                                placeholder="Escribe aqui tu descripcion, debe contener al menos 10 caracteres para que pueda ser valida. "
+                                                                required></textarea>
+                                                            <div id="contador">0/200</div>
+                                                            <!-- Contador y limitar letras en campo -->
+                                                            <script>
+                                                            const mensaje = document.getElementById('mensaje');
+                                                            const contador = document.getElementById('contador');
+                                                            mensaje.addEventListener('input', function(e) {
+                                                                const target = e.target;
+                                                                const longitudMax = target.getAttribute(
+                                                                    'maxlength');
+                                                                const longitudAct = target.value.length;
+                                                                contador.innerHTML =
+                                                                    `${longitudAct}/${longitudMax}`;
+                                                            });
+                                                            </script>
+                                                        </div>
+
                                                     </div>
-                                                    <label class="col-md-1 col-xs-12 control-label">Tipo
-                                                        solicitud</label>
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <select class="form-control" name="tiposolid" id="tiposolid"
-                                                            required>
-                                                            <option value="" hidden selected>Seleccione una opción
-                                                            </option>
-                                                            <?php foreach ($tiposolicitud as $tiposolicitud) {
-                                                                    // code...
-                                                                    ?>
-
-                                                            <option value="<?=$tiposolicitud->idTipoSolicitud  ?>">
-                                                                <?= $tiposolicitud->Abreviatura ?>
-                                                                <?= $tiposolicitud->NombreTipo ?></option>
-
-
-                                                            <?php    } ?>
-                                                        </select>
-
-                                                    </div>
+                                                 
                                                 </div>
 
 
@@ -275,56 +248,54 @@
                                                 <br>
 
                                                 <div class="form-group">
-
-                                                    <label class="col-md-1 col-xs-12 control-label">Descripción</label>
-
+                                                            
+                                                <label class="col-md-1 col-xs-12 control-label">Cantidad unidades
+                                                    </label>
                                                     <div class="col-md-3 col-xs-12">
-                                                        <textarea rows="4" maxlength="200" id="mensaje" name="desc"
-                                                            rows="4" cols="107"
-                                                            placeholder="Escribe aqui tu descripcion, debe contener al menos 10 caracteres para que pueda ser valida. "
-                                                            required></textarea>
-                                                        <div id="contador">0/200</div>
-                                                        <!-- Contador y limitar letras en campo -->
-                                                        <script>
-                                                        const mensaje = document.getElementById('mensaje');
-                                                        const contador = document.getElementById('contador');
-                                                        mensaje.addEventListener('input', function(e) {
-                                                            const target = e.target;
-                                                            const longitudMax = target.getAttribute(
-                                                                'maxlength');
-                                                            const longitudAct = target.value.length;
-                                                            contador.innerHTML =
-                                                                `${longitudAct}/${longitudMax}`;
-                                                        });
-                                                        </script>
+                                                    <input type="text" class="form-control" name="cantunid"
+                                                            id="cantunid"
+                                                            placeholder="Ingrese el número de unidades"
+                                                            maxlength="4" onKeyPress="return soloNumeros(event)"
+                                                            required />
+
                                                     </div>
 
-                                                </div>
-                                                <br>
-
-                                               
-
-                                                    
-                                                    <label class="col-md-1 col-xs-12 control-label">No de
-                                                        solicitud</label>
+                                                    <label class="col-md-1 col-xs-12 control-label">
+                                                        Unidad de Medida</label>
                                                     <div class="col-md-3 col-xs-12">
 
-                                                        <input type="text" class="form-control" name="numsoli"
-                                                            id="numsoli" placeholder="Ingrese el numero del expediente"
+                                                        <input type="text" class="form-control" name="unidadmed"
+                                                            id="unidadmed"
+                                                            placeholder="Ingrese el numero del expediente"
                                                             maxlength="25" onKeyPress="return soloNumeros(event)"
                                                             required />
-                                                            <br>
 
-                                                     
-                                                
+
+
+
+                                                    </div>
+
+                                                    <label class="col-md-1 col-xs-12 control-label">
+                                                        Adjunto</label>
+                                                    <div class="col-md-3 col-xs-12">
+
+                                                        <input type="text" class="form-control" name="adjunto"
+                                                            id="adjunto" placeholder="Ingrese el numero del expediente"
+                                                            maxlength="25" onKeyPress="return soloNumeros(event)"
+                                                            required />
+
+
+
+
+                                                    </div>
+
+
 
 
                                                 </div>
 
-                                                
-                                                <br>
-                                                
-                                                <br>
+
+                                              
                                                 <br>
                                                 <br>
                                                 <br>
@@ -336,10 +307,10 @@
                                                         <div class="col-md-5 col-xs-12">
                                                             <!--  Boton guardar, y guardar los datos y mandar los datos a modificar ingresados al controlador -->
                                                             <input type="submit" class="btn btn-primary" name="btnSend"
-                                                                value="Buscar" id="btnSend">
+                                                                value="Crear" id="btnSend">
                                                             <!--  Boton Cancelar los datos y direccionar a la vista donde se muestran el listado de usuarios creados-->
                                                             <!--llamamos el Script que esta arriba con un onclick para que puedar realizar la validacion del mismo-->
-                                                            <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
+                                                            <a href="<?php echo base_url(); ?>index.php/welcome"
                                                                 type="button" class="btn btn-danger"
                                                                 onclick="limpiarFormulario()">Cancelar</a>
                                                         </div>
@@ -356,9 +327,72 @@
                         </div>
                     </div>
                 </div>
-                    
-               
-          
+
+
+
+
+                <div class="modal fade bs-example-modal-lg" id="staticBackdrop2">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel"><label>Datos de prueba para el segundo
+                                        modal</label></h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="contendor_kn">
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <form id="registrationForm" name="registrationForm" class="form-horizontal"
+                                                action="updatedata" method="GET">
+                                                <div class="col-md-5">
+
+                                                    <label class="col-sm-1 control-label">NIT </label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" class="form-control" value="" name="nit"
+                                                            id="nit" placeholder="NIT" readonly>
+                                                        <br>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-md-7">
+                                                    <label class="col-sm-2 control-label">Nombre</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" name="nombre"
+                                                            id="nombre" value="" placeholder="Nombre" readonly>
+
+                                                        <br>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-12 col-lg-12 col-xs-12" style="text-align:center;">
+                                                    <br>
+                                                    <div class="col-md-4">
+                                                    </div>
+                                                    <div class="col-md-4">
+
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-success"><span
+                                        class="glyphicon glyphicon-floppy-saved"></span>&nbsp;<b>Guardar</b></button>
+                                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal"><i
+                                        class="fa fa-close"></i><strong> Anterior</strong></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <nav id="mainnav-container">
                     <div class="navbar-header">

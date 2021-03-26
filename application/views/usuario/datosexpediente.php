@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Editar punto de atención</title>
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/Ico.ico">
+    <title>Datos del expediente</title>
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
 
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400"
@@ -43,30 +43,6 @@
         document.getElementById("registrationForm").reset();
     }
     </script>
-
-
-
-    <script type="text/javascript">
-    function confirmar() {
-        event.preventDefault();
-
-        Swal.fire({
-            title: '¿Está seguro de guardar los cambios realizados?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si',
-            cancelButtonText: "No",
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-        }).then((result) => {
-            if (result.value) {
-                document.formulario.submit();
-            }
-            return false;
-        })
-    }
-    </script>
-
 
 
 </head>
@@ -149,7 +125,7 @@
 
                                             <!--  Empieza el formulario para editar los datos del tipo de queja -->
                                             <form id="registrationForm" name="formulario" class="form-horizontal"
-                                                action="updatedata" method="GET" onsubmit="return confirmar()">
+                                                action="" method="GET">
                                                 <?php
                                                   foreach ($datosexp as $dato) {
                                                       // code...
@@ -181,9 +157,8 @@
                                                 <div class="panel-footer">
                                                     <div class="form-group">
                                                         <div class="col-md-5 col-xs-12">
-                                                            <!--  Boton guardar los datos y mandar los datos ingresados al controlador -->
-                                                            <input type="submit" class="btn btn-info" name="btnSend"
-                                                                value="Guardar" id="btnSend">
+                                                           
+
                                                             <script type="text/javascript">
                                                             function back() {
                                                                 history.back();
@@ -192,9 +167,15 @@
 
                                                             <input type="button" class="btn btn-info" name=""
                                                                 value="Regresar" id="" onclick="back()">
+
+                                                                <a href="<?php echo base_url(); ?>index.php/soportecontacto"
+                                                                type="button" class="btn btn-primary"
+                                                                class="btn btn-primary" onclick="limpiarFormulario()"
+                                                                value="Cancelar">Siguiente</a>
+
                                                             <!--  Boton Cancelar los datos a editar y direcciona a la vista donde se muestran el listado de tipos de quejas-->
-                                                            <a href="<?php echo base_url(); ?>index.php/quejasauto"
-                                                                type="button" class="btn btn-info"
+                                                            <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
+                                                                type="button" class="btn btn-danger"
                                                                 class="btn btn-primary" onclick="limpiarFormulario()"
                                                                 value="Cancelar">Cancelar</a>
 
