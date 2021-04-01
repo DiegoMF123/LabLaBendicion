@@ -30,13 +30,17 @@
     <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validacion.js">
-    </script>
+    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validacion.js"></script>
     <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/js/sweetalert2.all.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/sweetalert2.min.css">
+
     <script>
     $(document).ready(function() {
         var current = 1,
@@ -69,12 +73,11 @@
     </script>
 
     <style>
-     #regiration_form fieldset:not(:first-of-type) {
-  display: none;
-}
-    
+    #regiration_form fieldset:not(:first-of-type) {
+        display: none;
+    }
     </style>
-   
+
 
     <!--Script para poder cancelar el ingreso de los datos y dejarlos a como estaba-->
     <script>
@@ -133,6 +136,29 @@
     }
     </script>
 
+    <script type="text/javascript">
+    function confirmar() {
+        event.preventDefault();
+
+        Swal.fire({
+            title: '¿Está seguro que desea crear la solictud?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: "No",
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+        }).then((result) => {
+            if (result.value) {
+                document.formulario.submit();
+
+
+            }
+            return false;
+        })
+    }
+    </script>
+
 
 
 
@@ -163,24 +189,31 @@
                         </li>
 
                         <li id="dropdown-user" class="dropdown">
+
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-                                <!--Abrimos llaves de php para poder llamar el tipo de variable session PARA llamar
-                                   el campo nombre que es el que se muestra en la vista, "parte superior derecha donde indica
-                                   el nombre del usuario que se ha logeado"-->
-                                <div class="username hidden-xs"><?php echo $_SESSION["nombre"]; ?></div>
+
+
+                                <div class="username hidden-xs"> Bienvenido: <?php echo $_SESSION["nombre"]; ?></div>
+
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-right with-arrow">
 
+
                                 <ul class="head-list">
+
                                     <li>
-                                        <!-- Boton que sirve para poder redireccionar a la vista del login, cuando el usuario quiera salir, en este caso la funcion esta en el controlador
-                                          welcome y la funcion se llama salir -->
+
+
                                         <a href="<?php echo base_url(); ?>index.php/welcome/salir"> <i
-                                                class="fa fa-user fa-fw fa-lg"></i> Salir</a>
+                                                class="fa fa-sign-out fa-fw"></i> Salir </a>
+
                                     </li>
 
                                 </ul>
+
                             </div>
+
                         </li>
 
                     </ul>
@@ -214,10 +247,16 @@
 
                                         <div class="panel-body">
 
+                                            <?php if ($response =="1") {
+                             echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
+                                   Su solicitud ha sido creada exitosamente, su número de solicitud es: '".$ids."'.
+                                 </div>";
+                           } ?>
 
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
-                                            <form id="regiration_form" novalidate action="action.php"  method="post">
+                                            <form id="regiration_form" name="formulario" action="guardar"
+                                                method="GET" onsubmit="return confirmar()">
                                                 <fieldset>
 
                                                     <div class="form-group">
@@ -325,15 +364,15 @@
                                                     <br>
                                                     <br>
 
-                                                    <input type="button" name="next" class="next btn btn-primary"
-                                                        value="Siguiente" id="btnSend" />
+
 
                                                     <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
                                                         type="button" class="btn btn-danger"
                                                         onclick="limpiarFormulario()">Cancelar</a>
 
-                                                    <input type="submit" class="btn btn-primary" name="btnSend"
-                                                        value="Buscar" id="btnSend">
+                                                    <input type="button" name="next" class="next btn btn-primary"
+                                                        value="Buscar" />
+
                                                 </fieldset>
 
                                                 <fieldset>
@@ -367,17 +406,20 @@
                                                     <br>
                                                     <input type="button" name="previous"
                                                         class="previous btn btn-warning" value="Regresar" />
+
                                                     <input type="button" name="next" class="next btn btn-primary"
                                                         value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
-                                                    <h2>Pantalla de soporte y contacto</h2>
+                                                    <h2>Soporte y contacto</h2>
+                                                    <br>
                                                     <div class="form-group">
                                                         <label class="col-md-1 col-xs-12 control-label">Tipo
                                                             de soporte</label>
                                                         <div class="col-md-3 col-xs-12">
                                                             <select class="form-control" name="tiposoporte"
                                                                 id="tiposoporte" required>
+                                                            
                                                                 <option value="" hidden selected>Seleccione una opción
                                                                 </option>
                                                                 <?php foreach ($tiposoporte as $tiposoporte) {
@@ -388,8 +430,10 @@
                                                                     <?= $tiposoporte->Abreviatura ?>
                                                                     <?= $tiposoporte->Nombrets ?></option>
 
-
                                                                 <?php    } ?>
+
+
+
                                                             </select>
 
                                                         </div>
@@ -427,8 +471,9 @@
                                                     <br>
                                                     <input type="button" name="previous"
                                                         class="previous btn btn-warning" value="Regresar" />
-                                                    <input type="submit" name="submit" class="submit btn btn-success"
-                                                        value="Submit" />
+
+                                                    <input type="submit" name="btnSend" id="btnSend"
+                                                        class="submit btn btn-success" value="Guardar" />
                                                 </fieldset>
                                             </form>
 

@@ -44,7 +44,7 @@ class Welcome extends CI_Controller {
 
     }else {
 			// Si no se cumple, seguirá mostrando el login
-      header("Location: http://192.168.0.19:8888/LabLaBendicion/");
+      header("Location: http://192.168.0.7:8888/LabLaBendicion/");
       die();
     }
 
@@ -90,7 +90,7 @@ class Welcome extends CI_Controller {
 							);
 							$this->session->set_userdata($newdata);
 							// Si se cumple el logeo y si existen el usuario y la contraseña, redireccionará a esta url
-							header("Location: http://192.168.0.19:8888/LabLaBendicion/index.php/welcome");
+							header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/welcome");
 							die();
 
 						}else {
@@ -113,7 +113,7 @@ class Welcome extends CI_Controller {
 	// Cerramos la sesión
 	session_destroy();
 	// Nos redireccionará al login
-	header("Location: http://192.168.0.19:8888/LabLaBendicion/");
+	header("Location: http://192.168.0.7:8888/LabLaBendicion/");
 	die();
 	}
 

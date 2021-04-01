@@ -116,16 +116,49 @@ class Mantenimientomm extends CI_Controller{
         // code...
         $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+        $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
+        $codigo = $this->Model_Solicitud->codigo();
+
+        foreach ($codigo as $key) {
+
+          $ids = "".$key->idSolicitud."";
+          // code...
+        }
+        $data["ids"]=$ids;
+        $data["response"]=trim(isset($_REQUEST["response"]));
+
         $this->load->view('usuario/nuevasolicitud',$data);
       }else{
         if (isset($_REQUEST["numsoli"])) {
           $numsoli=$_REQUEST["numsoli"];
           $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
+          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+          $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
+          $codigo = $this->model_pda->codigo();
+
+        foreach ($codigo as $key) {
+
+          $ids = "".$key->IDPuntos_De_Atencion."";
+          // code...
+        }
+        $data["ids"]=$ids;
+        $data["response"]=trim(isset($_REQUEST["response"]));
+
           $this->load->view('usuario/nuevasolicitud',$data);      
         // code...
         }else{
+          $codigo = $this->model_pda->codigo();
+          foreach ($codigo as $key) {
+
+            $ids = "".$key->IDPuntos_De_Atencion."";
+            // code...
+          }
+          $data["ids"]=$ids;
+          $data["response"]=trim(isset($_REQUEST["response"]));
           $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+        $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
             $this->load->view('usuario/nuevasolicitud',$data);
         }
       }
@@ -152,57 +185,39 @@ class Mantenimientomm extends CI_Controller{
 
 }
 
-  public function correlativo(){
- $this->load->model('model_quejasauto');
- $correlativo = $this->model_quejasauto->siglas();
- $descripcion = $this->model_quejasauto->descripcion();
-
- foreach ($descripcion as $key) {
-
-
-   $des = "Con la descripcion-".$key->Descripcion." ";
-   // code...
- }
- echo $des;
-
-
-
- foreach ($correlativo as $key) {
-
-
-   $rs = "La queja ingresada con las siglas-".$key->Correlativo."";
-   // code...
- }
- echo $rs;
-
-  }
+ 
 
 // Función para guardar los datos del formulario de la vista nuevopda
   public function guardar(){
     $this->load->helper('url');
     $this->load->library('session');
-    $this->load->model('model_quejasauto');
-    $correlativo = $this->model_quejasauto->idqueja();
-    foreach ($correlativo as $key) {
+    $this->load->model('model_solicitud');
+    
+    
 
-      $rs = "".$key->id."-2020";
-      // code...
-    }
-// Estas variables vienen de las vista nuevopda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
-    $sigcor=trim($_REQUEST["sigcor"]);
+    $tiposoli=trim($_REQUEST["tiposoli"]);
+    $tiposolid=trim($_REQUEST["tiposolid"]);
     $desc=trim($_REQUEST["desc"]);
+    $numsoli=trim($_REQUEST["numsoli"]);
     $fecha= date('d-m-Y H:i:s');
+
+    $tiposoporte=trim($_REQUEST["tiposoporte"]);
+    $numsoporte=trim($_REQUEST["numsoporte"]);
+    $telefono=trim($_REQUEST["telefono"]);
+    $email=trim($_REQUEST["email"]);
+    
 
     if(empty($usuario)){
 
-      $data["guardar"] = $this->model_quejasauto->guardar($sigcor,$desc,$fecha,$rs);
+      $data["guardar"] = $this->model_solicitud->guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha);
+      $data["guardar"] = $this->model_solicitud->guardarsopcon($tiposoporte,$numsoporte,$telefono,$email);
 
-    header("Location:  http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq?response=1");
+    header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
       die();
     }
 
     else {
-      header("Location:  http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto/nuevatipoq");
+      header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm");
       die();
       }
 
@@ -269,7 +284,7 @@ public function updatedata(){
 // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
   $data["datosqueja"]= $this->model_quejasauto->update($id,$estado,$desc,$fechamodifi);
 
-  header("Location: http://192.168.0.19:8888/LabLaBendicion/index.php/quejasauto?response=1");
+  header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/quejasauto?response=1");
               die();
 
             }

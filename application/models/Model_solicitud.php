@@ -43,6 +43,71 @@ class Model_Solicitud extends CI_Model
      return $query->result();
   }
 
+  public function guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha){
+
+    $this->load->database();
+
+    $query = $this->db->query("
+
+    insert into Solicitud(
+    Nosolicitud,
+    Descripcion,
+    Fechacreacion,
+    idTipoSolicitud,
+    idTipoSolicitante
+     )values(
+       '".$numsoli."',
+       '".$desc."',
+       STR_TO_DATE('".$fecha."', '%d-%m-%Y %H:%i:%s'),
+       '".$tiposoli."',
+       '".$tiposolid."'
+       )
+
+    ");
+
+    
+ 
+  }
+
+  public function guardarsopcon($tiposoporte,$numsoporte,$telefono,$email){
+
+    $this->load->database();
+
+    $query = $this->db->query("
+
+    insert into SoporteContacto(
+      NumeroSoporte,
+      Telefono,
+      Correo,
+      TipoSoporte_idTipoSoporte
+     )values(
+       '".$numsoporte."',
+       '".$telefono."',
+       '".$email."',
+       '".$tiposoporte."'
+       )
+
+    ");
+
+  }
+
+  public function codigo(){
+
+
+
+    $this->load->database();
+
+    $query = $this->db->query("
+
+    SELECT MAX(idSolicitud)  AS idSolicitud FROM Solicitud;
+
+      ");
+
+    return $query->result();
+
+  }
+
+
 
 
 }

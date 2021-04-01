@@ -129,7 +129,7 @@
 
 
                                  <!-- Boton para direccionar a la vista de creacion de nuevo tipo de queja -->
-                               <a  href="http://192.168.0.19:8888/LabLaBendicion/index.php/mantenimientomm/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
+                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
 
@@ -139,7 +139,7 @@
 
                                </a>
 
-                               <a  href="http://192.168.0.19:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
+                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
 
