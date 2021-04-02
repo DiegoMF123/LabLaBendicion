@@ -253,7 +253,6 @@
                                  </div>";
                            } ?>
 
-
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="regiration_form" name="formulario" action="guardar"
                                                 method="GET" onsubmit="return confirmar()">

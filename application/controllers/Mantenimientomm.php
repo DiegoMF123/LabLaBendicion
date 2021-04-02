@@ -8,12 +8,14 @@ class Mantenimientomm extends CI_Controller{
       // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
     $this->load->library('session');
 
+    $this->load->model('Model_Solicitud');
 
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
+        $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
 
-        $this->load->view('usuario/mantenimientomm');
+        $this->load->view('usuario/mantenimientomm',$data);
 
         break;
       case '2':

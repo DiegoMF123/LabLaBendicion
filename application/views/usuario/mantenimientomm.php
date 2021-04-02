@@ -159,15 +159,24 @@
 
                                       <tr>
                                           <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>ID</th>
+                                          <th>No.Solicitud</th>
 
-                                          <th>Tipo de solicitante</th>
+                                          <th>No.Expediente</th>
+
+                                          <th>Descripción</th>
+
+                                          <th>Fecha de creación</th>
 
                                           <th>Tipo de solicitud</th>
 
-                                          <th>Estado</th>
+                                          <th>Tipo de solicitante</th>
 
-                                          <th>Prueba</th>
+                                          <th>No.Soporte</th>
+
+                                          <th>Teléfono</th>
+
+                                          <th>Correo</th>
+                                          
 
                                           <th>
                                       </tr>
@@ -178,19 +187,29 @@
                                       ?>
                                       <tr>
                                             <!-- Llamado de campos de los datos que queremos mostrar  -->
-                                            <td><?= $datosoli->idTipo_Queja ?></td>
+                                            <td><?= $datosoli->idSolicitud ?></td>
 
-                                            <td><?= $datosoli->Correlativo ?></td>
+                                            <td><?= $datosoli->Nosolicitud ?></td>
 
                                              <td><?= $datosoli->Descripcion ?></td>
 
-                                             <td><?= $datosoli->NombreEstado ?></td>
+                                             <td><?= $datosoli->Fechacreacion ?></td>
+
+                                             <td><?= $datosoli->Abreviatura ?> = <?= $datosoli->NombreTipo ?></td>
+
+                                             <td><?= $datosoli->Abreviaturats ?> = <?= $datosoli->Tiposolicitante ?></td>
+                                             
+                                             <td><?= $datosoli->NumeroSoporte ?></td>
+                                    
+                                             <td><?= $datosoli->Telefono ?></td>
+
+                                             <td><?= $datosoli->Correo ?></td>
 
                                           <td>
                                             <div class="btn-group">
                                               <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
                                             los datos del usuario que queremos editar-->
-                                              <a href="<?php echo base_url(); ?>index.php/quejasauto/modificatipoq?id=<?= $datosoli->idTipo_Queja  ?>"  class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                              <a href="#"  class="btn btn-default"><i class="fa fa-edit"></i></a>
                                             </div>
                                           </td>
                                       </tr>

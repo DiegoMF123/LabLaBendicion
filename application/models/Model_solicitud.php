@@ -2,6 +2,18 @@
 class Model_Solicitud extends CI_Model
 {
 
+  public function datosSolicitud(){
+    $this->load->database();
+    $query = $this->db->query("
+
+   select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, tsd.Abreviatura, tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo
+         from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc 
+         where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante;
+
+      ");
+    return $query->result();
+  }
+
   public function tiposolicitante(){
 
     $this->load->database();
