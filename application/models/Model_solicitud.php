@@ -6,9 +6,13 @@ class Model_Solicitud extends CI_Model
     $this->load->database();
     $query = $this->db->query("
 
-   select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, tsd.Abreviatura, tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo
-         from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc 
-         where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante;
+    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, est.Nombre, tsd.Abreviatura,
+  tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo
+  from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+ where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+ and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados;
+
+
 
       ");
     return $query->result();
@@ -40,7 +44,7 @@ class Model_Solicitud extends CI_Model
     $query=$this->db->query("
 
     select NIT, Nombre from Expediente where Correlativo = '".$numsoli."'
-    
+
     ");
     return $query->result();
   }
@@ -66,22 +70,24 @@ class Model_Solicitud extends CI_Model
     Descripcion,
     Fechacreacion,
     idTipoSolicitud,
-    idTipoSolicitante
+    idTipoSolicitante,
+    Estados_idEstados
      )values(
        '".$numsoli."',
        '".$desc."',
        STR_TO_DATE('".$fecha."', '%d-%m-%Y %H:%i:%s'),
        '".$tiposoli."',
-       '".$tiposolid."'
+       '".$tiposolid."',
+       '3'
        )
 
     ");
 
-    
- 
+
+
   }
 
-  public function guardarsopcon($tiposoporte,$numsoporte,$telefono,$email){
+  public function guardarsopcon($tiposoporte,$numsoporte,$telefono,$email,$rs){
 
     $this->load->database();
 
@@ -91,19 +97,22 @@ class Model_Solicitud extends CI_Model
       NumeroSoporte,
       Telefono,
       Correo,
-      TipoSoporte_idTipoSoporte
+      TipoSoporte_idTipoSoporte,
+      Solicitud_idSolicitud
      )values(
        '".$numsoporte."',
        '".$telefono."',
        '".$email."',
-       '".$tiposoporte."'
+       '".$tiposoporte."',
+       '".$rs."'
        )
 
     ");
 
   }
 
-  public function codigo(){
+
+  public function codigosolisoporte(){
 
 
 
@@ -111,13 +120,42 @@ class Model_Solicitud extends CI_Model
 
     $query = $this->db->query("
 
-    SELECT MAX(idSolicitud)  AS idSolicitud FROM Solicitud;
+         SELECT MAX(idSolicitud) + 1  AS idSolicitud FROM Solicitud;
 
       ");
 
-    return $query->result();
+  return $query->result();
 
   }
+
+  public function numerosolicitud(){
+
+
+
+    $this->load->database();
+
+    $query = $this->db->query("
+
+         SELECT MAX(idSolicitud)  AS idSolicitud FROM Solicitud;
+
+      ");
+
+  return $query->result();
+
+  }
+
+  public function expediente(){
+    $this->load->database();
+    $query = $this->db->query("
+    select Correlativo, NIT, Nombre from Expediente
+      ");
+    return $query->result();
+
+
+  }
+
+
+
 
 
 

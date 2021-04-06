@@ -150,7 +150,7 @@
 
                                             <!-- Boton que direcciona a la vista para agregar un nuevo punto de atención, lo llamamos por medio del controlador pda y usamos la funcion nuevo para poder
 mostrar la vista-->
-                                            <a href="http://192.168.0.19:8888/LabLaBendicion/index.php/muestra/nuevo"
+                                            <a href="http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo"
                                                 class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right"
                                                 title="Agregar Nuevo Punto de atención">
 

@@ -30,7 +30,6 @@
 
         </style>
 
-       
 
     </head>
 
@@ -176,7 +175,9 @@
                                           <th>Teléfono</th>
 
                                           <th>Correo</th>
-                                          
+
+                                          <th>Estado</th>
+
 
                                           <th>
                                       </tr>
@@ -198,12 +199,14 @@
                                              <td><?= $datosoli->Abreviatura ?> = <?= $datosoli->NombreTipo ?></td>
 
                                              <td><?= $datosoli->Abreviaturats ?> = <?= $datosoli->Tiposolicitante ?></td>
-                                             
+
                                              <td><?= $datosoli->NumeroSoporte ?></td>
-                                    
+
                                              <td><?= $datosoli->Telefono ?></td>
 
                                              <td><?= $datosoli->Correo ?></td>
+
+                                             <td><?= $datosoli->Nombre ?></td>
 
                                           <td>
                                             <div class="btn-group">

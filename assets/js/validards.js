@@ -75,7 +75,7 @@ $(document).ready(function(){
         if( errores == '' == false){
             var mensajeModal = '<div class="modal_wrap">'+
                                     '<div class="mensaje_modal">'+
-                                        '<h3>Errores Encontrados</h3>'+
+                                        '<h3>Errores Detectados</h3>'+
                                         errores+
                                         '<span id="btnClose">Cerrar</span>'+
                                     '</div>'+

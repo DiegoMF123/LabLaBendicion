@@ -69,7 +69,7 @@ class Mantenimientomm extends CI_Controller{
           if (isset($_REQUEST["numsoli"])) {
             $numsoli=$_REQUEST["numsoli"];
             $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
-            $this->load->view('usuario/datosexpediente',$data);      
+            $this->load->view('usuario/datosexpediente',$data);
           // code...
           }else{
             $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
@@ -89,8 +89,8 @@ class Mantenimientomm extends CI_Controller{
       redirect('restrinct');
 
         break;
-      
-     
+
+
 
       default:
       redirect('restrinct');
@@ -114,56 +114,39 @@ class Mantenimientomm extends CI_Controller{
   switch ($rol) {
     case '1':
 
-      if (empty($_REQUEST["numsoli"])) {
-        // code...
+    if (empty($_REQUEST["numsoli"])) {
+      // code...
+      $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
+      $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+      $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
+
+      $codigo = $this->Model_Solicitud->numerosolicitud();
+
+       foreach ($codigo as $key) {
+
+         $ids = $key->idSolicitud;
+         // code...
+       }
+       $data["ids"]=$ids;
+       $data["response"]=trim(isset($_REQUEST["response"]));
+
+      $this->load->view('usuario/nuevasolicitud',$data);
+    }else{
+      if (isset($_REQUEST["numsoli"])) {
+        $numsoli=$_REQUEST["numsoli"];
+        $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
+        $this->load->view('usuario/nuevasolicitud',$data);
+      // code...
+      }else{
         $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
         $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
-        $codigo = $this->Model_Solicitud->codigo();
 
-        foreach ($codigo as $key) {
-
-          $ids = "".$key->idSolicitud."";
-          // code...
-        }
-        $data["ids"]=$ids;
-        $data["response"]=trim(isset($_REQUEST["response"]));
-
-        $this->load->view('usuario/nuevasolicitud',$data);
-      }else{
-        if (isset($_REQUEST["numsoli"])) {
-          $numsoli=$_REQUEST["numsoli"];
-          $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
-          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
-          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-          $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
-          $codigo = $this->model_pda->codigo();
-
-        foreach ($codigo as $key) {
-
-          $ids = "".$key->IDPuntos_De_Atencion."";
-          // code...
-        }
-        $data["ids"]=$ids;
-        $data["response"]=trim(isset($_REQUEST["response"]));
-
-          $this->load->view('usuario/nuevasolicitud',$data);      
-        // code...
-        }else{
-          $codigo = $this->model_pda->codigo();
-          foreach ($codigo as $key) {
-
-            $ids = "".$key->IDPuntos_De_Atencion."";
-            // code...
-          }
-          $data["ids"]=$ids;
-          $data["response"]=trim(isset($_REQUEST["response"]));
-          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
-        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-        $data["tiposoporte"]= $this->Model_Solicitud->tiposoporte();
-            $this->load->view('usuario/nuevasolicitud',$data);
-        }
+          $this->load->view('usuario/nuevasolicitud',$data);
       }
+    }
+
+
 
       break;
     case '2':
@@ -176,8 +159,8 @@ class Mantenimientomm extends CI_Controller{
     redirect('restrinct');
 
       break;
-    
-   
+
+
 
     default:
     redirect('restrinct');
@@ -187,15 +170,42 @@ class Mantenimientomm extends CI_Controller{
 
 }
 
- 
+public function correlativo(){
+ $this->load->model('model_solicitud');
+ $correlativo = $this->model_solicitud->codigosolisoporte();
+
+ foreach ($correlativo as $key) {
+
+   $rs = $key->idSolicitud;
+   // code...
+ }
+ echo $rs;
+}
+
+public function expediente(){
+  $this->load->helper('url');
+  $this->load->library('session');
+  $this->load->model('model_solicitud');
+  $data["numsoli"]= $this->model_solicitud->expediente();
+
+  echo json_encode($data["numsoli"]);
+
+
+}
+
 
 // Función para guardar los datos del formulario de la vista nuevopda
   public function guardar(){
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('model_solicitud');
-    
-    
+
+    $correlativo = $this->model_solicitud->codigosolisoporte();
+    foreach ($correlativo as $key) {
+
+      $rs = $key->idSolicitud;
+      // code...
+    }
 
     $tiposoli=trim($_REQUEST["tiposoli"]);
     $tiposolid=trim($_REQUEST["tiposolid"]);
@@ -207,19 +217,19 @@ class Mantenimientomm extends CI_Controller{
     $numsoporte=trim($_REQUEST["numsoporte"]);
     $telefono=trim($_REQUEST["telefono"]);
     $email=trim($_REQUEST["email"]);
-    
+
 
     if(empty($usuario)){
 
       $data["guardar"] = $this->model_solicitud->guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha);
-      $data["guardar"] = $this->model_solicitud->guardarsopcon($tiposoporte,$numsoporte,$telefono,$email);
+      $data["guardar"] = $this->model_solicitud->guardarsopcon($tiposoporte,$numsoporte,$telefono,$email,$rs);
 
     header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
       die();
     }
 
     else {
-      header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm");
+      header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=2");
       die();
       }
 

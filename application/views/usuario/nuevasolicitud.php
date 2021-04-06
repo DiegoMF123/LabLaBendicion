@@ -30,7 +30,7 @@
     <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validacion.js"></script>
+    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validards.js"></script>
     <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -40,6 +40,14 @@
     <script src="<?php echo base_url(); ?>assets/js/sweetalert2.all.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/sweetalert2.min.css">
+
+    <script src="<?php echo base_url(); ?>assets/easyautocomplete/jquery.easy-autocomplete.min.js"></script>
+
+<!-- CSS file -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.min.css">
+
+<!-- Additional CSS Themes file - not required-->
+<link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.themes.min.css">
 
     <script>
     $(document).ready(function() {
@@ -253,6 +261,8 @@
                                  </div>";
                            } ?>
 
+                          
+
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="regiration_form" name="formulario" action="guardar"
                                                 method="GET" onsubmit="return confirmar()">
@@ -263,19 +273,19 @@
                                                             solicitante</label>
                                                         <div class="col-md-3 col-xs-12">
                                                             <select class="form-control" name="tiposoli" id="tiposoli"
-                                                                required>
+                                                                required />
                                                                 <option value="" hidden selected>Seleccione una opción
                                                                 </option>
-                                                                <?php foreach ($tiposolicitante as $tiposolicitante) {
-                                                                    // code...
-                                                                    ?>
+                                                                <?php if($tiposolicitante): foreach ($tiposolicitante as $tiposolicitante):   ?>
+
+
 
                                                                 <option
                                                                     value="<?=$tiposolicitante->idTipoSolicitante  ?>">
                                                                     <?= $tiposolicitante->Abreviaturats ?>
                                                                     <?= $tiposolicitante->Tiposolicitante ?></option>
 
-                                                                <?php    } ?>
+                                                                <?php     endforeach; endif; ?>
                                                             </select>
 
                                                         </div>
@@ -292,7 +302,7 @@
                                                             solicitud</label>
                                                         <div class="col-md-3 col-xs-12">
                                                             <select class="form-control" name="tiposolid" id="tiposolid"
-                                                                required>
+                                                                required />
                                                                 <option value="" hidden selected>Seleccione una opción
                                                                 </option>
                                                                 <?php foreach ($tiposolicitud as $tiposolicitud) {
@@ -319,7 +329,7 @@
                                                                 <textarea rows="4" maxlength="200" id="mensaje"
                                                                     name="desc" rows="4" cols="107"
                                                                     placeholder="Escribe aqui tu descripcion, debe contener al menos 10 caracteres para que pueda ser valida. "
-                                                                    required></textarea>
+                                                                    required/></textarea>
                                                                 <div id="contador">0/200</div>
                                                                 <!-- Contador y limitar letras en campo -->
                                                                 <script>
@@ -364,6 +374,33 @@
                                                     <br>
 
 
+                                                    <script type="text/javascript">
+
+                                                    var options = {
+
+                                            <?php
+                                            //  echo "url: 'http://192.168.1.9:8888/BancoMiPistio/index.php/userspda/dpi',".$nombredetuvariable;
+                                            ?>
+
+                                            url: "http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/expediente",
+                                            getValue: "No de solictud",
+
+                                            list: {
+
+                                              onSelectItemEvent: function() {
+                                                var value = $("#function-data").getSelectedItemData().Nit;
+
+                                                $("#data-holder").val(value).trigger("change");
+                                              }
+                                            }
+                                          };
+
+                                          $("#function-data").easyAutocomplete(options);
+
+
+                                                    </script>
+
+
 
                                                     <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
                                                         type="button" class="btn btn-danger"
@@ -378,23 +415,19 @@
                                                     <h2>Busqueda del expediente</h2>
                                                     <br>
                                                     <div class="form-group">
-                                                        <?php
-                                                  foreach ($datosexp as $dato) {
-                                                      // code...
-                                                        }
-                                                        ?>
+
                                                         <div class="form-group">
                                                             <label class="col-md-2 col-xs-12 control-label">NIT</label>
                                                             <div class="col-md-3 col-xs-12">
-                                                                <input type="text" class="form-control" name="NIT"
-                                                                    value="<?= $dato->NIT ?>" placeholder="" readonly />
+                                                                <input type="text" class="form-control" name="NIT" id="data-holder"
+                                                                    value="" placeholder="" readonly />
                                                             </div>
 
                                                             <label
                                                                 class="col-md-2 col-xs-12 control-label">Nombre</label>
                                                             <div class="col-md-3 col-xs-12">
                                                                 <input type="text" class="form-control" name="stipoq"
-                                                                    value="<?= $dato->Nombre ?>" placeholder=""
+                                                                    value="" placeholder=""
                                                                     readonly />
                                                             </div>
 
@@ -417,8 +450,8 @@
                                                             de soporte</label>
                                                         <div class="col-md-3 col-xs-12">
                                                             <select class="form-control" name="tiposoporte"
-                                                                id="tiposoporte" required>
-                                                            
+                                                                id="tiposoporte" required/>
+
                                                                 <option value="" hidden selected>Seleccione una opción
                                                                 </option>
                                                                 <?php foreach ($tiposoporte as $tiposoporte) {
