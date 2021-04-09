@@ -7,47 +7,35 @@
     <title> Creacion de nueva solicitud</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
 
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400"
-        rel="stylesheet">
+          <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+          <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/plugins/switchery/switchery.min.css" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
 
-    <link href="<?php echo base_url(); ?>/assets/plugins/datatables/media/css/dataTables.bootstrap.css"
-        rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"
-        rel="stylesheet">
+          <link href="<?php echo base_url(); ?>assets/css/demo/jasmine.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
-    <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-    <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validards.js"></script>
-    <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+          <link href="<?php echo base_url(); ?>assets/plugins/pace/pace.min.css" rel="stylesheet">
+          <script src="<?php echo base_url(); ?>assets/plugins/pace/pace.min.js"></script>
+          <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
+          <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validards.js"></script>
+          <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <script src="<?php echo base_url(); ?>assets/js/sweetalert2.all.js"></script>
-    <script src="<?php echo base_url(); ?>assets/js/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/sweetalert2.min.css">
+          <script src="<?php echo base_url(); ?>assets/easyautocomplete/jquery.easy-autocomplete.min.js"></script>
 
-    <script src="<?php echo base_url(); ?>assets/easyautocomplete/jquery.easy-autocomplete.min.js"></script>
+  <!-- CSS file -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.min.css">
 
-<!-- CSS file -->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.min.css">
-
-<!-- Additional CSS Themes file - not required-->
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.themes.min.css">
+  <!-- Additional CSS Themes file - not required-->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/easyautocomplete/easy-autocomplete.themes.min.css">
 
     <script>
     $(document).ready(function() {
@@ -179,6 +167,9 @@
 
         <header id="navbar">
             <div id="navbar-container" class="boxed">
+              <?php
+                $opcion = "opcion";
+               ?>
 
                 <div class="navbar-content clearfix">
                     <ul class="nav navbar-top-links pull-left">
@@ -261,7 +252,7 @@
                                  </div>";
                            } ?>
 
-                          
+
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="regiration_form" name="formulario" action="guardar"
@@ -358,24 +349,18 @@
                                                             <div class="col-md-3 col-xs-12">
 
                                                                 <input type="text" class="form-control" name="numsoli"
-                                                                    id="numsoli"
+                                                                    id="function-data" id="numsoli"
                                                                     placeholder="Ingrese el numero del expediente"
                                                                     maxlength="25"
                                                                     onKeyPress="return soloNumeros(event)" required />
                                                                 <br>
-
                                                             </div>
-
-
                                                         </div>
                                                     </div>
                                                     <br>
                                                     <br>
                                                     <br>
-
-
                                                     <script type="text/javascript">
-
                                                     var options = {
 
                                             <?php
@@ -383,24 +368,20 @@
                                             ?>
 
                                             url: "http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/expediente",
-                                            getValue: "No de solictud",
-
+                                            getValue: "Correlativo",
                                             list: {
-
                                               onSelectItemEvent: function() {
                                                 var value = $("#function-data").getSelectedItemData().Nit;
-
                                                 $("#data-holder").val(value).trigger("change");
+                                                var value = $("#function-data").getSelectedItemData().Nombre;
+                                                $("#data-holder2").val(value).trigger("change");
+
                                               }
                                             }
                                           };
-
                                           $("#function-data").easyAutocomplete(options);
 
-
                                                     </script>
-
-
 
                                                     <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
                                                         type="button" class="btn btn-danger"
@@ -417,16 +398,22 @@
                                                     <div class="form-group">
 
                                                         <div class="form-group">
-                                                            <label class="col-md-2 col-xs-12 control-label">NIT</label>
-                                                            <div class="col-md-3 col-xs-12">
-                                                                <input type="text" class="form-control" name="NIT" id="data-holder"
-                                                                    value="" placeholder="" readonly />
-                                                            </div>
+
+                                                          <label class="col-md-1 col-xs-12 control-label">Nit
+                                                              </label>
+                                                          <div class="col-md-3 col-xs-12">
+
+                                                              <input type="text" class="form-control" name="nombre" id="data-holder"  value="" readonly/>
+                                                              <br>
+
+                                                          </div>
+
+
 
                                                             <label
                                                                 class="col-md-2 col-xs-12 control-label">Nombre</label>
                                                             <div class="col-md-3 col-xs-12">
-                                                                <input type="text" class="form-control" name="stipoq"
+                                                                <input type="text" class="form-control" name="Nombre" id="data-holder2"
                                                                     value="" placeholder=""
                                                                     readonly />
                                                             </div>
@@ -584,9 +571,7 @@
                                                             class="fa fa-caret-right"></i>Análisis de muestras medicas /
                                                         Clasificación / Mantenimiento</a></li>
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i
-                                                            class="fa fa-caret-right"></i>Ingreso Quejas por Mal
-                                                        Servicio o servicio no conforme</a></li>
+                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
                                             </ul>
 
@@ -597,27 +582,25 @@
 
                                             <a href="#">
 
-                                                <i class="fa fa-briefcase"></i>
+                                            <i class="fa fa-briefcase"></i>
 
-                                                <span class="menu-title">Configuración</span>
+                                            <span class="menu-title">Configuración</span>
 
-                                                <i class="arrow"></i>
+                                            <i class="arrow"></i>
 
                                             </a>
 
                                             <!--Submenu-->
+
                                             <ul class="collapse">
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/users"><i
-                                                            class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a>
-                                                </li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/userspda"><i
-                                                            class="fa fa-caret-right"></i>Asignar Usuarios por pda</a>
-                                                </li>
+                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
+                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
 
 
                                             </ul>
+
                                         </li>
 
 
@@ -668,37 +651,21 @@
 
         </div>
 
-        <script src="<?php echo base_url(); ?>/assets/js/jquery-2.1.1.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
+          <script src="<?php echo base_url(); ?>assets/plugins/fast-click/fastclick.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/plugins/fast-click/fastclick.min.js"></script>
+          <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/js/scripts.js"></script>
+          <script src="<?php echo base_url(); ?>assets/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+          <script src="<?php echo base_url(); ?>assets/plugins/metismenu/metismenu.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/plugins/metismenu/metismenu.min.js"></script>
+          <script src="<?php echo base_url(); ?>assets/plugins/switchery/switchery.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.js"></script>
+          <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
-        <script src="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-
-        <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/jquery.dataTables.js"></script>
-
-
-        <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
-
-
-        <script
-            src="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js">
-        </script>
-
-
-        <script src="<?php echo base_url(); ?>/assets/plugins/screenfull/screenfull.js"></script>
-
-        <script src="<?php echo base_url(); ?>/assets/js/demo/tables-datatables.js"></script>
-
+          <script src="<?php echo base_url(); ?>assets/plugins/screenfull/screenfull.js"></script>
 </body>
 
 </html>

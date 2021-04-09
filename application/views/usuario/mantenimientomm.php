@@ -127,17 +127,6 @@
                            <div class="btn-group" role="group" aria-label="...">
 
 
-                                 <!-- Boton para direccionar a la vista de creacion de nuevo tipo de queja -->
-                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
-
-                                 <span class="material-icons">
-
-                                   add_circle_outline
-
-                                 </span>
-
-                               </a>
-
                                <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
@@ -212,7 +201,8 @@
                                             <div class="btn-group">
                                               <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
                                             los datos del usuario que queremos editar-->
-                                              <a href="#"  class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                              <a href="#"  class="btn btn-default "><i class="fa fa-edit"></i></a>
+
                                             </div>
                                           </td>
                                       </tr>
@@ -313,7 +303,7 @@
 
                                            <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
-                                               <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
+                                               <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
                                          </ul>
 
@@ -337,8 +327,8 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/users"><i class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
-                                             <li><a href="<?php echo base_url(); ?>index.php/userspda"><i class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
 
 

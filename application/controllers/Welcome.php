@@ -11,6 +11,8 @@ class Welcome extends CI_Controller {
 		    // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
 		$this->load->library('session');
     $usuario = $_SESSION["username"];
+		  $this->load->model('Model_Solicitud');
+			 $this->load->model('Model_Muestra');
 
 		// Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
 		// mostrará las vistas respectivas.
@@ -25,11 +27,13 @@ class Welcome extends CI_Controller {
 						 break;
 
 						 case '2':
- 						$this->load->view('usuinterno/principal');
+						 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+ 							$this->load->view('usuinterno/principal',$data);
  						 break;
 
 						 case '3':
- 						$this->load->view('usuexterno/principal');
+						 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+ 							$this->load->view('usuexterno/principal',$data);
  						 break;
 
 						default:

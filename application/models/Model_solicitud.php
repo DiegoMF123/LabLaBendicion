@@ -147,16 +147,76 @@ class Model_Solicitud extends CI_Model
   public function expediente(){
     $this->load->database();
     $query = $this->db->query("
-    select Correlativo, NIT, Nombre from Expediente
+    select Correlativo, Nit, Nombre from Expediente
       ");
     return $query->result();
 
 
   }
 
+  public function nombrenit($valor){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        select Nit, Nombre from Expediente where Correlativo = '".$valor."';
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estado(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 2,10 ;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function mostrardatoseditar($id){
+    $this->load->database();
+    $query = $this->db->query("
+
+    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, est.Nombre, tsd.Abreviatura,
+  tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo
+  from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+ where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+ and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados and soli.idSolicitud= '".$id."';
 
 
 
+      ");
+    return $query->result();
+  }
+
+
+public function update($id,$estado,$fechamodifi){
+
+$this->load->database();
+$query =  $this->db->query("
+update Solicitud
+  set idSolicitud='".$id."',
+     Fechamodificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
+     Estados_idEstados= '".$estado."'
+     where idSolicitud ='".$id."'
+");
+}
+
+public function eliminarsolicitud($id){
+      $this->load->database();
+      $query = $this->db->query("
+      delete from Solicitud
+      where idSolicitud ='".$id."'
+      ");
+
+  }
 
 
 

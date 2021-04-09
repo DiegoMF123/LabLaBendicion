@@ -97,27 +97,27 @@
     </script>
 
     <script type="text/javascript">
-    function confirmar() {
+
+        function confirmar(){
         event.preventDefault();
 
-        Swal.fire({
-            title: '¿Está seguro que desea crear la muestra?',
+            Swal.fire({
+            title: '¿Está seguro de guardar los cambios realizados?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
             cancelButtonText: "No",
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-        }).then((result) => {
+          }).then((result) => {
             if (result.value) {
-                document.formulario.submit();
-
-
+            document.formulario.submit();
             }
             return false;
-        })
-    }
-    </script>
+          })
+        }
+
+        </script>
 
 
 
@@ -207,116 +207,56 @@
                                           si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
                                             <?php if ($response =="1") {
                                                 echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                                      Se guardaron correctamente los datos de la muestra médica
+                                                      Se guardaron correctamente los datos modificados de la solicitud
                                                     </div>";
                                               } ?>
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
-                                            <form id="registrationForm" name="formulario" class="form-horizontal"
-                                                method="post" action="" enctype="multipart/form-data">
+                                            <form  id="registrationForm" name="formulario" class="form-horizontal" action="updatedata" method="GET" onsubmit="return confirmar()">
+
+                                              <?php
+                                                      foreach ($datosoli as $datosoli) {
+                                                        // code...
+                                                            }
+                                              ?>
+
+                                              <div class="form-group">
+                                                          <label class="col-md-2 col-xs-12 control-label">Número de solictud</label>
+                                                          <div class="col-md-3 col-xs-12">
+                                                              <input type="text" class="form-control" name="id" value="<?= $datosoli->idSolicitud ?>" placeholder="" readonly/>
+                                                          </div>
+
+                                                          <label class="col-md-2 col-xs-12 control-label">Estado</label>
+                                                                <div class="col-md-3 col-xs-12">
+                                                                  <select class="form-control" name="estado" required>
+                                                                    <!-- Para poder llamar los datos de la base de datos, que en este caso son los cargos
+                                                                   abrimos llaves php y realizamos un nuevo foreach que en este caso le declaramos una variable que es la que
+                                                                 vamos a llamar en el controlador para poder mandarselos a nuestro modelo y que en el modelo nos retorne los datos
+                                                               que necesitamos, luego de as declaramos otra variable que es la que vamos a usar practicamente en nuestra vista para poder
+                                                               mostrar los datos o el dato que nos devuelva nuestra consulta del modelo-->
+                                                                     <option value="" hidden selected >Seleccione una opción</option>
+                                                               <?php foreach ($estado as $estado) {
+                                                                 // code...
+                                                               ?>
+                                                               <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
+                                                             sera la el nombre del estado, pero para ello necesitamos el id y el nombre del estado que se seleccione segun el ID-->
+                                                                 <option value="<?=$estado->idEstados  ?>"><?= $estado->Nombre ?></option>
+
+
+                                                           <?php    } ?>
+                                                           </select>
+
+                                                      </div>
+                                                      <br>
 
 
 
+                                                      </div>
 
-                                                <div class="form-group">
-                                                    <label class="col-md-1 col-xs-12 control-label">Tipo
-                                                        de muestra</label>
-                                                    <div class="col-md-3 col-xs-12">
-                                                        <select class="form-control" name="tipodemuestra"
-                                                            id="tipodemuestra" required>
-                                                            <option value="" hidden selected>Seleccione una opción
-                                                            </option>
-                                                            <?php foreach ($tipomuestra as $tipomuestra) {
-                                                                    // code...
-                                                                    ?>
-
-                                                            <option value="<?=$tipomuestra->idTipoMuestra  ?>">
-                                                                <?= $tipomuestra->NombreMuestra ?>      </option>
-
-
-
-                                                            <?php    } ?>
-                                                        </select>
-
-                                                    </div>
-
-
-                                                    <div class="form-group">
-
-                                                        <label
-                                                            class="col-md-1 col-xs-12 control-label">Presentación</label>
-
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <textarea rows="4" maxlength="2000" id="mensaje" name="presentacion"
-                                                                rows="4" cols="107"
-                                                                placeholder="Escribe aqui tu descripcion, debe contener al menos 10 caracteres para que pueda ser valida. "
-                                                                required></textarea>
-                                                            <div id="contador">0/2000</div>
-                                                            <!-- Contador y limitar letras en campo -->
-                                                            <script>
-                                                            const mensaje = document.getElementById('mensaje');
-                                                            const contador = document.getElementById('contador');
-                                                            mensaje.addEventListener('input', function(e) {
-                                                                const target = e.target;
-                                                                const longitudMax = target.getAttribute(
-                                                                    'maxlength');
-                                                                const longitudAct = target.value.length;
-                                                                contador.innerHTML =
-                                                                    `${longitudAct}/${longitudMax}`;
-                                                            });
-                                                            </script>
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
 
 
 
                                                 <br>
-
-                                                <div class="form-group">
-
-                                                <label class="col-md-1 col-xs-12 control-label">Cantidad unidades</label>
-
-                                                    <div class="col-md-3 col-xs-12">
-                                                    <input type="text" class="form-control" name="cantunid"
-                                                            id="cantunid"
-                                                            placeholder="Ingrese el número de unidades"
-                                                            maxlength="4" onKeyPress="return soloNumeros(event)"
-                                                            required />
-
-                                                    </div>
-
-                                                    <label class="col-md-1 col-xs-12 control-label">
-                                                        Unidad de Medida</label>
-                                                    <div class="col-md-3 col-xs-12">
-
-                                                      <select class="form-control" name="unidadmed"
-                                                          id="unidadmed" required>
-                                                          <option value="" hidden selected>Seleccione una opción
-                                                          </option>
-                                                          <?php foreach ($umedida as $umedida) {
-                                                                  // code...
-                                                                  ?>
-
-                                                          <option value="<?=$umedida->idUmedida  ?>">
-                                                              <?= $umedida->Nombreum ?>      </option>
-
-                                                          <?php    } ?>
-                                                      </select>
-
-
-                                                    </div>
-
-                                                    <label class="col-md-1 col-xs-12 control-label">Adjuntar archivo</label>
-
-                                                      <div class="col-md-3 col-xs-12">
-                                                      <input  type="file" name="archivo" id="archivo" class="btn btn-primary">
-                                                      </div>
-
-
-                                                    </div>
 
 
 

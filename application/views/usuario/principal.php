@@ -230,7 +230,7 @@
 
                                              <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
+                                          <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
                                          </ul>
 
@@ -254,8 +254,8 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/users"><i class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
-                                             <li><a href="<?php echo base_url(); ?>index.php/userspda"><i class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
 
 

@@ -1,416 +1,445 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Mantenimiento de solicitudes</title>
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
+        <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mantenimiento de solicitudes</title>
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/Logo1.ico">
-    <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400"
-        rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/css/style.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/datatables/media/css/dataTables.bootstrap.css"
-        rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/css/dataTables.responsive.css"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.css" rel="stylesheet">
-    <script src="<?php echo base_url(); ?>/assets/plugins/pace/pace.min.js"></script>
+        <!-- scropt para Dar color a la tabla en la parte de los encabezados -->
+        <style type="text/css">
 
-    <!-- scropt para Dar color a la tabla en la parte de los encabezados -->
-    <style type="text/css">
-    table {
-        background-color: #EAEDED;
-        border: 5px solid black;
-        width: 100%;
+        table{
+          background-color: #EAEDED;
+          border: 5px solid black;
+          width: 100%;
+        }
 
-    }
-    </style>
+        </style>
 
 
-</head>
+    </head>
 
 
-<body>
+    <body>
 
 
-    <div id="container" class="effect mainnav-sm navbar-fixed mainnav-fixed">
+      <div id="container" class="effect mainnav-sm navbar-fixed mainnav-fixed">
 
-        <header id="navbar">
 
-            <div id="navbar-container" class="boxed">
+         <header id="navbar">
 
-                <div class="navbar-content clearfix">
-
-                    <ul class="nav navbar-top-links pull-left">
-
-                        <li class="tgl-menu-btn">
-
-                            <a class="mainnav-toggle" href="#"> <i class="fa fa-navicon fa-lg"></i> </a>
-
-                        </li>
-
-                    </ul>
-
-                    <ul class="nav navbar-top-links pull-right">
-
-                        <li class="hidden-xs" id="toggleFullscreen">
-
-                            <a class="fa fa-expand" data-toggle="fullscreen" href="#" role="button">
-
-                                <span class="sr-only">Toggle fullscreen</span>
-
-                            </a>
-
-                        </li>
+             <div id="navbar-container" class="boxed">
 
 
 
-                        <li id="dropdown-user" class="dropdown">
+                 <div class="navbar-content clearfix">
 
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
-
-                                <!--Abrimos llaves de php para poder llamar el tipo de variable session PARA llamar
-                                        el campo nombre que es el que se muestra en la vista, "parte superior derecha donde indica
-                                        el nombre del usuario que se ha logeado"-->
-
-                                <div class="username hidden-xs"> Bienvenido: <?php echo $_SESSION["nombre"]; ?></div>
-
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-right with-arrow">
+                     <ul class="nav navbar-top-links pull-left">
 
 
-                                <ul class="head-list">
 
-                                    <li>
+                         <li class="tgl-menu-btn">
 
-                                        <!-- Boton que sirve para poder redireccionar a la vista del login, cuando el usuario quiera salir, en este caso la funcion esta en el controlador
+                             <a class="mainnav-toggle" href="#"> <i class="fa fa-navicon fa-lg"></i> </a>
+
+                         </li>
+
+
+
+                     </ul>
+
+                     <ul class="nav navbar-top-links pull-right">
+
+
+
+                         <li class="hidden-xs" id="toggleFullscreen">
+
+                             <a class="fa fa-expand" data-toggle="fullscreen" href="#" role="button">
+
+                          <span class="sr-only">Toggle fullscreen</span>
+
+                             </a>
+                         </li>
+                         <li id="dropdown-user" class="dropdown">
+                             <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                               <!--Abrimos llaves de php para poder llamar el tipo de variable session PARA llamar
+                                el campo nombre que es el que se muestra en la vista, "parte superior derecha donde indica
+                                el nombre del usuario que se ha logeado"-->
+                                 <div class="username hidden-xs"> <?php echo $_SESSION["nombre"]; ?></div>
+                             </a>
+                             <div class="dropdown-menu dropdown-menu-right with-arrow">
+
+                                 <ul class="head-list">
+                                     <li>
+                                       <!-- Boton que sirve para poder redireccionar a la vista del login, cuando el usuario quiera salir, en este caso la funcion esta en el controlador
                                      welcome y la funcion se llama salir -->
-
-                                        <a href="<?php echo base_url(); ?>index.php/welcome/salir"> <i
-                                                class="fa fa-sign-out fa-fw"></i> Salir </a>
-
-                                    </li>
-
-                                </ul>
-
-                            </div>
-
-                        </li>
+                                           <a href="<?php echo base_url(); ?>index.php/welcome/salir"> <i class="fa fa-sign-out fa-fw"></i> Salir </a>
+                                     </li>
+                                 </ul>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+         </header>
 
 
-
-                    </ul>
-
-                </div>
+         <div class="boxed">
 
 
+             <div id="content-container">
 
-            </div>
+                 <div class="pageheader hidden-xs">
 
-        </header>
-
-
-        <div class="boxed">
-
-
-            <div id="content-container">
-
-                <div class="pageheader hidden-xs">
-
-                    <h3><i class="fa fa-home"></i> Inicio </h3>
-
-
-                </div>
-
-
-
-                <div id="page-content">
+                     <h3><i class="fa fa-home"></i>Mantenimiento de solicitudes</h3>
+                 </div>
+                 <div id="page-content">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Mantenimiento de solciitudes</h3>
-                                </div>
+                          <div class="col-md-12">
+                     <div class="panel">
 
-                                <div class="panel-body">
+                         <div class="panel-heading">
 
-                                    <div class="col-md-2">
+                             <h3 class="panel-title">Listado de solicitudes</h3>
+                         </div>
+                         <?php if ($response =="1") {
+                           echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
+                                 Datos Actualizados.
+                               </div>";
+                         } ?>
 
-                                        <div class="btn-group" role="group" aria-label="...">
+                         <div class="panel-body">
 
+                           <div class="btn-group" role="group" aria-label="...">
 
-                                            <!-- Boton que direcciona a la vista para agregar un nuevo punto de atención, lo llamamos por medio del controlador pda y usamos la funcion nuevo para poder
-mostrar la vista-->
-                                            <a href="http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo"
-                                                class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right"
-                                                title="Agregar Nuevo Punto de atención">
+                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
-                                                <span class="material-icons">
+                                 <span class="material-icons">
 
-                                                    add_circle_outline
+                                   add_circle_outline
 
-                                                </span>
+                                 </span>
 
-                                            </a>
+                               </a>
 
 
+                             </div>
+                             <br>
+                           <br>
 
-                                        </div>
+                           <table  class="table table-striped table-bordered">
+                                  <thead >
 
-                                    </div>
+                                      <tr>
+                                          <!--El nombre de los campos que se van a mostrar en la vista-->
+                                          <th>ID</th>
 
+                                          <th>Presentación</th>
 
-                                </div>
+                                          <th>Cantidad</th>
 
-                            </div>
+                                          <th>Tipo de muestra</th>
 
-                        </div>
+                                          <th>Unidad de medida</th>
 
-                    </div>
+                                          <th>Fecha de Creación</th>
 
-                </div>
+                                          <th>Archivo</th>
 
 
+                                          <th>
+                                      </tr>
+                                  </thead>
+                                  <tbody align="center">
+                                    <?php foreach ($datosmuestra as $datosmuestra){
+                                      // code...
+                                      ?>
+                                      <tr>
+                                            <!-- Llamado de campos de los datos que queremos mostrar  -->
+                                            <td><?= $datosmuestra->idMuestra ?></td>
 
-            </div>
+                                            <td><?= $datosmuestra->Presentacion ?></td>
 
+                                             <td><?= $datosmuestra->Cantidad ?></td>
 
+                                             <td><?= $datosmuestra->NombreMuestra ?></td>
 
-            <nav id="mainnav-container">
+                                             <td><?= $datosmuestra->Nombreum ?></td>
 
+                                             <td><?= $datosmuestra->FechaCreacion ?></td>
 
-                <div class="navbar-header">
+                                              <td><?= $datosmuestra->Nombre_archivo ?></td>
 
-                    <a href="<?php echo base_url(); ?>" class="navbar-brand">
 
-                        <!--Llamada  de imagen para el menú de nuestras vistas-->
 
-                        <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60">
-                            <font size="5" face="georgia">Menú LAB </font>
-                        </i>
+                                          <td>
+                                            <div class="btn-group">
+                                              <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
+                                            los datos del usuario que queremos editar-->
 
+                                            <?php
+                                            $direccion ="";
+                                            //  echo $usuario->nombre_archivo."<br>";
 
+                                            $direccion =  base_url()."index.php/muestra/mostrar?id=".$datosmuestra->idMuestra;
 
-                    </a>
 
-                </div>
+                                            ?>
 
+                                              <a href="<?php echo $direccion; ?>"  class="btn btn-default"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                                            </div>
+                                          </td>
+                                      </tr>
+                                          <?php          } ?>
 
 
-                <div id="mainnav">
+                                  </tbody>
 
+                              </table>
 
-                    <div id="mainnav-menu-wrap">
+                         </div>
 
-                        <div class="nano">
+                     </div>
 
-                            <div class="nano-content">
+                   </div>
 
-                                <ul id="mainnav-menu" class="list-group">
+                 </div>
 
+               </div>
 
-                                    <li class="list-header">Opciones De Navegación</li>
 
-                                    <li>
 
-                                        <a href="#">
+             </div>
 
-                                            <i class="fa fa-home"></i>
 
-                                            <span class="menu-title">Inicio</span>
 
-                                            <i class="arrow"></i>
+             <nav id="mainnav-container">
 
-                                        </a>
 
-                                        <!--Submenu-->
+                 <div class="navbar-header">
 
-                                        <ul class="collapse">
+                     <a href="<?php echo base_url(); ?>" class="navbar-brand">
 
-                                            <li><a href="<?php echo base_url(); ?>index.php/welcome"><i
-                                                        class="fa fa-caret-right"></i>Pantalla Principal</a></li>
 
-                                        </ul>
 
-                                    </li>
+                           <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60"> <font size="5" face="georgia">Menú Lab</font></i>
 
 
-                                    <li>
 
-                                        <a href="#">
+                     </a>
 
-                                            <i class="fa fa-briefcase"></i>
+                 </div>
 
-                                            <span class="menu-title">Mantenimiento</span>
 
-                                            <i class="arrow"></i>
 
-                                        </a>
+                 <div id="mainnav">
 
-                                        <!--Submenu-->
 
-                                        <ul class="collapse">
+                     <div id="mainnav-menu-wrap">
 
-                                            <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i
-                                                        class="fa fa-caret-right"></i>Análisis de muestras medicas /
-                                                    Clasificación / Mantenimiento</a></li>
+                         <div class="nano">
 
-                                            <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i
-                                                        class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o
-                                                    servicio no conforme</a></li>
+                             <div class="nano-content">
 
-                                        </ul>
+                                 <ul id="mainnav-menu" class="list-group">
 
-                                    </li>
 
+                                     <li class="list-header">Opciones De Navegación</li>
 
+                                     <li>
 
-                                    <li>
+                                         <a href="#">
 
-                                        <a href="#">
+                                         <i class="fa fa-home"></i>
 
-                                            <i class="fa fa-briefcase"></i>
+                                         <span class="menu-title">Inicio</span>
 
-                                            <span class="menu-title">Configuración</span>
+                                         <i class="arrow"></i>
 
-                                            <i class="arrow"></i>
+                                         </a>
 
-                                        </a>
+                                         <!--Submenu-->
 
-                                        <!--Submenu-->
+                                         <ul class="collapse">
 
-                                        <ul class="collapse">
+                                             <li><a href="<?php echo base_url(); ?>index.php/welcome"><i class="fa fa-caret-right"></i>Pantalla De Inicio</a></li>
 
-                                            <li><a href="<?php echo base_url(); ?>index.php/users"><i
-                                                        class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
-                                            <li><a href="<?php echo base_url(); ?>index.php/userspda"><i
-                                                        class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
+                                         </ul>
 
+                                     </li>
 
 
-                                        </ul>
+                                     <li>
 
-                                    </li>
+                                         <a href="#">
 
+                                         <i class="fa fa-briefcase"></i>
 
+                                         <span class="menu-title">Mantenimiento</span>
 
+                                         <i class="arrow"></i>
 
-                                </ul>
+                                         </a>
 
+                                         <!--Submenu-->
 
-                            </div>
+                                         <ul class="collapse">
 
-                        </div>
+                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
-                    </div>
+                                               <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
 
+                                         </ul>
 
+                                     </li>
 
-                </div>
 
-            </nav>
 
+                                     <li>
 
+                                         <a href="#">
 
-        </div>
+                                         <i class="fa fa-briefcase"></i>
 
+                                         <span class="menu-title">Configuración</span>
 
+                                         <i class="arrow"></i>
 
-        <footer id="footer">
+                                         </a>
 
+                                         <!--Submenu-->
 
-            <div class="show-fixed pull-right">
+                                         <ul class="collapse">
 
-                <ul class="footer-list list-inline">
+                                             <li><a href="<?php echo base_url(); ?>index.php/users"><i class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
+                                             <li><a href="<?php echo base_url(); ?>index.php/userspda"><i class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
 
-                    <li>
 
-                        <p class="text-sm">SEO Proggres</p>
 
-                        <div class="progress progress-sm progress-light-base">
+                                         </ul>
 
-                            <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+                                     </li>
 
-                        </div>
 
-                    </li>
 
-                    <li>
+                                 </ul>
 
-                        <p class="text-sm">Online Tutorial</p>
 
-                        <div class="progress progress-sm progress-light-base">
+                             </div>
 
-                            <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+                         </div>
 
-                        </div>
+                     </div>
 
-                    </li>
 
-                    <li>
 
-                        <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+                 </div>
 
-                    </li>
+             </nav>
 
-                </ul>
 
-            </div>
 
+         </div>
 
-            <div class="hide-fixed pull-right pad-rgt">Actualmente v1.0</div>
-            <p class="pad-lft">&#0169; 2021 Sistema Laboratorio "La Bendición S.A"</p>
-        </footer>
 
 
-        <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+         <footer id="footer">
 
-        <!--===================================================-->
 
-    </div>
+             <div class="show-fixed pull-right">
 
+                 <ul class="footer-list list-inline">
 
-    <script src="<?php echo base_url(); ?>/assets/js/jquery-2.1.1.min.js"></script>
+                     <li>
 
-    <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
+                         <p class="text-sm">SEO Proggres</p>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/fast-click/fastclick.min.js"></script>
+                         <div class="progress progress-sm progress-light-base">
 
-    <script src="<?php echo base_url(); ?>/assets/js/scripts.js"></script>
+                             <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+                         </div>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/metismenu/metismenu.min.js"></script>
+                     </li>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.js"></script>
+                     <li>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+                         <p class="text-sm">Online Tutorial</p>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/jquery.dataTables.js"></script>
+                         <div class="progress progress-sm progress-light-base">
 
+                             <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+                         </div>
 
+                     </li>
 
-    <script
-        src="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js">
-    </script>
+                     <li>
 
-    <script src="<?php echo base_url(); ?>/assets/plugins/screenfull/screenfull.js"></script>
+                         <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
 
-    <script src="<?php echo base_url(); ?>/assets/js/demo/tables-datatables.js"></script>
+                     </li>
 
+                 </ul>
 
-</body>
+             </div>
+             <div class="hide-fixed pull-right pad-rgt">Actualmente v1.0</div>
+             <p class="pad-lft">&#0169; 2021 Sistema Laboratorio "La Bendición S.A"</p>
+
+         </footer>
+
+
+         <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+
+         <!--===================================================-->
+
+     </div>
+
+
+        <script src="<?php echo base_url(); ?>/assets/js/jquery-2.1.1.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/js/bootstrap.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/fast-click/fastclick.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/js/scripts.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/metismenu/metismenu.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/switchery/switchery.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/jquery.dataTables.js"></script>
+
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/plugins/screenfull/screenfull.js"></script>
+
+        <script src="<?php echo base_url(); ?>/assets/js/demo/tables-datatables.js"></script>
+
+
+    </body>
 
 
 </html>
