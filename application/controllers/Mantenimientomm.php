@@ -11,18 +11,89 @@ class Mantenimientomm extends CI_Controller{
     $this->load->model('Model_Solicitud');
       $this->load->model('Model_Muestra');
 
+
+
+
+
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
         $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-
+        $data["response"]=trim(isset($_REQUEST["response"]));
+        $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
         $this->load->view('usuario/mantenimientomm',$data);
 
         break;
       case '2':
-      $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-      $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
-      $this->load->view('usuinterno/mantenimientomm',$data);
+
+      $estadosoli= trim($_REQUEST["estadosoli"]);
+      $noexpediente = trim($_REQUEST["noexpediente"]);
+      $nosolicitud = trim($_REQUEST["nosolicitud"]);
+      $noitem = trim($_REQUEST["noitem"]);
+
+        if (empty($nosolicitud)) {
+
+          if (empty($estadosoli)) {
+          //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
+            if (empty($noexpediente)) {
+              $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
+              $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+              $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+              $data["response"]=trim(isset($_REQUEST["response"]));
+              $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+              $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+              $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+              $this->load->view('usuinterno/mantenimientomm',$data);
+
+            }else {
+
+
+                              $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($noexpediente);
+                              $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                              $data["response"]=trim(isset($_REQUEST["response"]));
+                              $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                              $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+
+                              $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                              $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+                              $this->load->view('usuinterno/mantenimientomm',$data);
+
+
+            }
+        }else {
+
+          $data["datosoli"]= $this->Model_Solicitud->busquedafiltro($estadosoli);
+          $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+          $data["response"]=trim(isset($_REQUEST["response"]));
+          $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+
+          $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+          $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+          $this->load->view('usuinterno/mantenimientomm',$data);
+
+        }
+      }else {
+
+        $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
+        $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($nosolicitud);
+        $data["response"]=trim(isset($_REQUEST["response"]));
+        $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+
+        $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+        $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+        $this->load->view('usuinterno/mantenimientomm',$data);
+
+      }
+
+
+
+
 
         break;
       case '3':
@@ -45,61 +116,7 @@ class Mantenimientomm extends CI_Controller{
 
   }
 
-  //Función nuevo paara mostrar la vista para agregar un nuevo usuario
 
-  public function nuevo(){
-      // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
-    $this->load->helper('url');
-      // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
-    $this->load->library('session');
-    // Cargamos el modelo que vamos a utilizar para esta función nuevo
-    $this->load->model('Model_Solicitud');
-
-    // Esta varaible rol, almacena el tipo de rol que se va a estar logeando en el switch con los cases, dependiendo el rol,
-    // mostrará las vistas respectivas.
-    $rol= $_SESSION["role"];
-    switch ($rol) {
-      case '1':
-
-        if (empty($_REQUEST["numsoli"])) {
-          // code...
-          $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
-          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-          $this->load->view('usuario/nuevasoli',$data);
-        }else{
-          if (isset($_REQUEST["numsoli"])) {
-            $numsoli=$_REQUEST["numsoli"];
-            $data["datosexp"] = $this->Model_Solicitud->buscarsoli($numsoli);
-            $this->load->view('usuario/datosexpediente',$data);
-          // code...
-          }else{
-            $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
-          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-              $this->load->view('usuario/nuevasoli',$data);
-          }
-        }
-
-        break;
-      case '2':
-      // El rol 2 tiene restricción a esta vistas por ende redireccionará a la vista restrinct
-          redirect('restrinct');
-
-
-        break;
-      case '3':
-      redirect('restrinct');
-
-        break;
-
-
-
-      default:
-      redirect('restrinct');
-        // code...
-        break;
-    }
-
-  }
 
   public function pruebanitnombre(){
 
@@ -135,8 +152,6 @@ class Mantenimientomm extends CI_Controller{
   $rol= $_SESSION["role"];
   switch ($rol) {
     case '1':
-
-
 
       // code...
       $data["tiposolicitante"]= $this->Model_Solicitud->tiposolicitante();
@@ -215,6 +230,9 @@ public function correlativo(){
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('model_solicitud');
+    $this->load->model('model_login');
+
+
 
     $correlativo = $this->model_solicitud->codigosolisoporte();
     foreach ($correlativo as $key) {
@@ -228,6 +246,7 @@ public function correlativo(){
     $desc=trim($_REQUEST["desc"]);
     $numsoli=trim($_REQUEST["numsoli"]);
     $fecha= date('d-m-Y H:i:s');
+    $idusuario = $_SESSION["idusuario"];
 
     $tiposoporte=trim($_REQUEST["tiposoporte"]);
     $numsoporte=trim($_REQUEST["numsoporte"]);
@@ -237,19 +256,22 @@ public function correlativo(){
 
     if(empty($usuario)){
 
-      $data["guardar"] = $this->model_solicitud->guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha);
+      $data["guardar"] = $this->model_solicitud->guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha,$idusuario);
       $data["guardar"] = $this->model_solicitud->guardarsopcon($tiposoporte,$numsoporte,$telefono,$email,$rs);
 
-    header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
+    header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
       die();
     }
 
     else {
-      header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=2");
+      header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=2");
       die();
       }
 
     }
+
+
+
 
 // Sirve para mostrar la vista de editarsolicitud
 public function modificarestado(){
@@ -311,7 +333,7 @@ public function updatedata(){
 // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
   $data["datosoli"]= $this->model_solicitud->update($id,$estado,$fechamodifi);
 
-  header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/modificarestado?response=1");
+  header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/modificarestado?response=1");
               die();
 
             }
@@ -324,12 +346,96 @@ public function delete(){
   $id = trim($_REQUEST["id"]);
   $data["datosoli"]= $this->model_solicitud->eliminarsolicitud($id);
 
-  header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm?response=1");
+  header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm?response=1");
               die();
 
             }
 
+
+
+            public function asociar(){
+                  // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
+              $this->load->helper('url');
+                // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
+              $this->load->library('session');
+
+              $this->load->model('Model_Solicitud');
+                $this->load->model('Model_Muestra');
+
+              $rol= $_SESSION["role"];
+              switch ($rol) {
+                case '1':
+                redirect('restrinct');
+
+                  break;
+                case '2':
+
+                $this->load->view('usuinterno/mdatosasc');
+
+                  break;
+                case '3':
+                redirect('restrinct');
+
+                  break;
+                case '4':
+                    redirect('restrinct');
+                  break;
+                  case '5':
+
+                    redirect('restrinct');
+                    break;
+
+                default:
+                redirect('restrinct');
+                  // code...
+                  break;
+              }
+
+            }
+
+            public function asociarnuevo(){
+                  // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
+              $this->load->helper('url');
+                // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
+              $this->load->library('session');
+
+              $this->load->model('Model_Solicitud');
+                $this->load->model('Model_Muestra');
+
+              $rol= $_SESSION["role"];
+              switch ($rol) {
+                case '1':
+                redirect('restrinct');
+
+                  break;
+                case '2':
+
+                $this->load->view('usuinterno/asociardatos');
+
+                  break;
+                case '3':
+                redirect('restrinct');
+
+                  break;
+                case '4':
+                    redirect('restrinct');
+                  break;
+                  case '5':
+
+                    redirect('restrinct');
+                    break;
+
+                default:
+                redirect('restrinct');
+                  // code...
+                  break;
+              }
+
+            }
+
 }
+
+
 
 
 

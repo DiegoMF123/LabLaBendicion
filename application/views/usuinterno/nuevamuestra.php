@@ -201,6 +201,15 @@
 
                                         <div class="panel-body">
 
+                                          <?php
+                                                  foreach ($datos as $dato) {
+
+
+                                                      // code...
+                                                        }
+                                                        ?>
+
+
 
                                             <!-- Se abren llaves php para poder realizar un if con codigo php, es este caso declaramos una variable
                                             llamada "response" en la cual le estamos indicando que si es == 1, nos mostrara un mensaje, en este caso
@@ -214,6 +223,23 @@
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="registrationForm" name="formulario" class="form-horizontal"
                                                 method="post" action="" enctype="multipart/form-data">
+
+                                                <?php
+                                              foreach ($datos as $dato) {
+                                                  // code...
+                                                    }
+                                                    ?>
+                                                    <div class="form-group">
+                                                  <label class="col-md-1 col-xs-12 control-label">SOLICITUD:</label>
+                                                  <div class="col-md-3 col-xs-12">
+                                                      <!-- las llaves de php es donde llamamos y mostramos los datos segun el id que mandamos a editar del punto de atención-->
+                                                      <input type="text" class="form-control" name="idpda" value="<?= $dato->idSolicitud ?>" placeholder="" readonly/>
+                                                  </div>
+
+                                              </div>
+
+                                              <br>
+                                              <br>
 
 
 

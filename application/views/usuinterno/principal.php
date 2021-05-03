@@ -105,7 +105,7 @@
 
                  <div class="pageheader hidden-xs">
 
-                     <h3><i class="fa fa-home"></i>Mantenimiento de solicitudes</h3>
+                     <h3><i class="fa fa-home"></i>Bienvenido Usuario Interno</h3>
                  </div>
                  <div id="page-content">
                     <div class="row">
@@ -114,102 +114,16 @@
 
                          <div class="panel-heading">
 
-                             <h3 class="panel-title">Listado de solicitudes</h3>
+                             <h3 class="panel-title"> Usuario Interno</h3>
                          </div>
-                         <?php if ($response =="1") {
-                           echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                 Datos Actualizados.
-                               </div>";
-                         } ?>
-
+                             <center><img src="<?php echo base_url(); ?>/assets/img/logo.png" width="1000" ></center>
                          <div class="panel-body">
 
-                           <div class="btn-group" role="group" aria-label="...">
 
-                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
-
-                                 <span class="material-icons">
-
-                                   add_circle_outline
-
-                                 </span>
-
-                               </a>
-
-
-                             </div>
                              <br>
                            <br>
 
-                           <table  class="table table-striped table-bordered">
-                                  <thead >
 
-                                      <tr>
-                                          <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>ID</th>
-
-                                          <th>Presentación</th>
-
-                                          <th>Cantidad</th>
-
-                                          <th>Tipo de muestra</th>
-
-                                          <th>Unidad de medida</th>
-
-                                          <th>Fecha de Creación</th>
-
-                                          <th>Archivo</th>
-
-
-                                          <th>
-                                      </tr>
-                                  </thead>
-                                  <tbody align="center">
-                                    <?php foreach ($datosmuestra as $datosmuestra){
-                                      // code...
-                                      ?>
-                                      <tr>
-                                            <!-- Llamado de campos de los datos que queremos mostrar  -->
-                                            <td><?= $datosmuestra->idMuestra ?></td>
-
-                                            <td><?= $datosmuestra->Presentacion ?></td>
-
-                                             <td><?= $datosmuestra->Cantidad ?></td>
-
-                                             <td><?= $datosmuestra->NombreMuestra ?></td>
-
-                                             <td><?= $datosmuestra->Nombreum ?></td>
-
-                                             <td><?= $datosmuestra->FechaCreacion ?></td>
-
-                                              <td><?= $datosmuestra->Nombre_archivo ?></td>
-
-
-
-                                          <td>
-                                            <div class="btn-group">
-                                              <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
-                                            los datos del usuario que queremos editar-->
-
-                                            <?php
-                                            $direccion ="";
-                                            //  echo $usuario->nombre_archivo."<br>";
-
-                                            $direccion =  base_url()."index.php/muestra/mostrar?id=".$datosmuestra->idMuestra;
-
-
-                                            ?>
-
-                                              <a href="<?php echo $direccion; ?>"  class="btn btn-default"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
-                                            </div>
-                                          </td>
-                                      </tr>
-                                          <?php          } ?>
-
-
-                                  </tbody>
-
-                              </table>
 
                          </div>
 
@@ -301,7 +215,7 @@
 
                                            <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
 
-                                               <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i class="fa fa-caret-right"></i>Ingreso Quejas por Mal Servicio o servicio no conforme</a></li>
+
 
                                          </ul>
 
@@ -325,9 +239,8 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/users"><i class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a></li>
-                                             <li><a href="<?php echo base_url(); ?>index.php/userspda"><i class="fa fa-caret-right"></i>Asignar Usuarios por pda</a></li>
-
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
+                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
 
                                          </ul>

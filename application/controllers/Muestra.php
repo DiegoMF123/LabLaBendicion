@@ -8,17 +8,18 @@ class Muestra extends CI_Controller{
       // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
     $this->load->library('session');
     $this->load->model('Model_Muestra');
-
+    $this->load->model('model_solicitud');
+    $id = trim($_REQUEST["id"]);
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
 
-      //  $data["tiposoporte"]= $this->model_solicitud->tiposoporte();
-      //  $this->load->view('usuinterno/nuevamuestra',$data);
+    redirect('restrinct');
 
         break;
       case '2':
         $data["tipomuestra"]= $this->Model_Muestra->tipomuestra();
+        $data["datos"]= $this->model_solicitud->sidSolicitud($id);
         $data["response"]=trim(isset($_REQUEST["response"]));
         $data["umedida"]= $this->Model_Muestra->umedida();
         $this->load->view('usuinterno/nuevamuestra',$data);
@@ -40,8 +41,8 @@ class Muestra extends CI_Controller{
 
      }
 
-       $this->Model_Muestra->guardar($tipodemuestra,$presentacion,$cantunid,$unidadmed,$fecha,$nombre,$tamanio,$tipo);
-       header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
+       $this->Model_Muestra->guardar($tipodemuestra,$presentacion,$cantunid,$unidadmed,$fecha,$nombre,$tamanio,$tipo,$id);
+       header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
 
 
       }
@@ -119,12 +120,12 @@ foreach ($data as $key) {
  if(empty($usuario)){
 
    $data["guardar"] = $this->Model_Muestra->guardar($tipodemuestra,$presentacion,$cantunid,$unidadmed,$fecha,$nombre);
-   header("Location: http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
+   header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
    die();
  }
 
  else {
-   header("Location:  http://192.168.0.7:8888/LabLaBendicion/index.php/muestra/nuevo");
+   header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo");
    die();
    }
 
@@ -136,6 +137,30 @@ foreach ($data as $key) {
 
 
     }
+
+
+    public function delete(){
+    $this->load->helper('url');
+    $this->load->library('session');
+    $this->load->model('Model_Muestra');
+    //$data["boraruser"] = $this->model_user->delete();
+      if(isset($_REQUEST["id"])) {
+        // code...
+        $id = $_REQUEST["id"];
+        $data["borarmuestra"] = $this->Model_Muestra->delete($id);
+
+        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm?responsemuestra=1");
+        die();
+      }else {
+
+        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/welcome/mantenimientomm");
+        die();
+      }
+}
+
+
+
+
 
 
 

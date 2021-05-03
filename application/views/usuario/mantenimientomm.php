@@ -110,12 +110,15 @@
                  <div id="page-content">
                     <div class="row">
                           <div class="col-md-12">
-                     <div class="panel">
+                     <div class="panel" >
+
 
                          <div class="panel-heading">
 
                              <h3 class="panel-title">Listado de solicitudes</h3>
+
                          </div>
+
                          <?php if ($response =="1") {
                            echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
                                  Datos Actualizados.
@@ -124,7 +127,7 @@
 
                          <div class="panel-body">
 
-                           <div class="btn-group" role="group" aria-label="...">
+                           <div >
 
 
                                <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
@@ -135,12 +138,13 @@
 
                                  </span>
 
+
                                </a>
 
 
                              </div>
-                             <br>
-                           <br>
+
+
 
                            <table  class="table table-striped table-bordered">
                                   <thead >
@@ -195,7 +199,7 @@
 
                                              <td><?= $datosoli->Correo ?></td>
 
-                                             <td><?= $datosoli->Nombre ?></td>
+                                             <td><?= $datosoli->Nombrestado ?></td>
 
                                           <td>
                                             <div class="btn-group">
@@ -302,8 +306,6 @@
                                          <ul class="collapse">
 
                                            <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
-
-                                               <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
 
                                          </ul>
 
