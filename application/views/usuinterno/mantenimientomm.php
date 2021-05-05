@@ -235,8 +235,6 @@
                                                      <?php    } ?>
                                                  </select>
                                              </div>
-
-
                               <!--FECHAS-->
                             <label class="col-md-1 col-xs-12 control-label">Fecha  </label>
                                              <div class="col-md-3 col-xs-12">
