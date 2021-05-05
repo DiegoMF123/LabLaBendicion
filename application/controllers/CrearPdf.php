@@ -6,6 +6,18 @@ class CrearPdf extends CI_Controller {
 
   public function descargar(){
 
+    $this->load->model('Model_Muestra');
+
+    $idMuestra = trim($_REQUEST["idMuestra"]);
+    $muestra = $this->Model_Muestra->datamuestraid($idMuestra);
+
+    $generado= "".$this->generarCodigo(8)."";
+    $generadodos= "".$this->generarCodigodos(5)."";
+
+    foreach ($muestra as $muestradatos) {
+      // code...
+    }
+
 		$data = [];
 
 		$hoy = date("d-m-Y");
@@ -13,26 +25,25 @@ class CrearPdf extends CI_Controller {
         //load the view and saved it into $html variable
         $html =
         "<style>@page {
-			    margin-top: 2cm;
+			    margin-top: 1cm;
 			    margin-bottom: 2cm;
 			    margin-left: 2cm;
 			    margin-right: 2cm;
 			}
-			</style>".''."
-
-
-      <div style='width:1000px; height:100px; text-align:center;'><b>Formato para crear el pdf<b></div>
+			</style>".
+      "<body>
+      <div style='width:1000px; height:50px; text-align:center;'><b>Etiqueta muestra médica<b>  <div align='right'> <img src='assets/img/logo3.png' width='75'></div></div>"."
       <br>
-      <div style='width:1000px; height:50px;'><b>Muestra: <b></div>
-      <div style='width:1000px; height:50px;'><b>Solicitud: <b></div>
-      <div style='width:1000px; height:50px;'><b>Expediente: <b></div>
-      <div style='width:1000px; height:50px;'><b>Descripción: <b></div>
+
+      <div style='width:1000px; height:50px;'><b>Muestra:</b> ".$muestradatos->idMuestra." || <b>Soporte: </b>".$muestradatos->Abreviatura."-".$generado."-".$generadodos." </div>
+      <div style='width:1000px; height:50px;'><b>Solicitud: </b>".$muestradatos->idSolicitud." ||  <b>Tipo de solicitante: </b> ".$muestradatos->Abreviaturats."-".$generado."-".$generadodos."</div>
+      <div style='width:1000px; height:50px;'><b>Expediente: </b>".$muestradatos->Correlativo." </div>
+      <div style='width:1000px; height:50px;'><b>Descripcion de la presentación: </b>".$muestradatos->Presentacion." </div>
+      <div align='center'> <img src='assets/img/logo.png' width='250'></div>
+
+
         </body>";
 
-        // $html = $this->load->view('v_dpdf',$date,true);
-
- 		//$html="asdf";
-        //this the the PDF filename that user will get to download
         $pdfFilePath = "Etiqueta_".$hoy.".pdf";
 
         //load mPDF library
@@ -40,12 +51,24 @@ class CrearPdf extends CI_Controller {
         $mpdf = new mPDF('c', 'Carta');
  		    $mpdf->WriteHTML($html);
 		    $mpdf->Output($pdfFilePath, "D");
-       // //generate the PDF from the given html
-       //  $this->m_pdf->pdf->WriteHTML($html);
 
-       //  //download it.
-       //  $this->m_pdf->pdf->Output($pdfFilePath, "D");
 	}
+
+  public function generarCodigo($longitud) {
+       $key = '';
+       $pattern = '1234567890';
+       $max = strlen($pattern)-1;
+       for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+       return $key;
+    }
+
+    public function generarCodigodos($longitud) {
+         $key = '';
+         $pattern = '1234567890';
+         $max = strlen($pattern)-1;
+         for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+         return $key;
+      }
 
 
 }

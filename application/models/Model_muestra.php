@@ -7,13 +7,79 @@ class Model_Muestra extends CI_Model
     $this->load->database();
     $query = $this->db->query("
     select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
-    um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit
+    um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit, exp.Correlativo
     from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join TipoSolicitante ts inner join Expediente exp
     where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
     and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente;
 
       ");
     return $query->result();
+  }
+
+  public function datosmuestraporid($codigomuestra){
+
+    $this->load->database();
+    $query = $this->db->query("
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
+    um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit, exp.Correlativo
+    from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join TipoSolicitante ts inner join Expediente exp
+    where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+    and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente and mu.idMuestra = '".$codigomuestra."';
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datamuestraid($idMuestra){
+
+    $this->load->database();
+    $query = $this->db->query("
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
+      um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit, exp.Correlativo, tsp.Abreviatura, ts.Abreviaturats
+      from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli
+      inner join TipoSolicitante ts inner join Expediente exp inner join TipoSoporte tsp
+      where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+      and mu.Solicitud_idSolicitud = soli.idSolicitud
+      and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+      and mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = tsp.idTipoSoporte and mu.idMuestra = '".$idMuestra."';
+
+
+      ");
+    return $query->result();
+  }
+
+
+    public function muestradatos(){
+      $this->load->database();
+      $query = $this->db->query("
+      select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
+      um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit, exp.Correlativo
+      from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join TipoSolicitante ts inner join Expediente exp
+      where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+      and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente;
+
+        ");
+      return $query->result();
+
+
+    }
+
+
+    public function ultimamuestra(){
+
+
+
+    $this->load->database();
+
+    $query = $this->db->query("
+
+      SELECT * FROM Muestra WHERE idMuestra = (SELECT MAX(idMuestra) from Muestra);
+
+      ");
+
+    return $query->result();
+
   }
 
   public function tipomuestra(){
@@ -88,7 +154,7 @@ class Model_Muestra extends CI_Model
     }
 
 
-  public function busquedafiltro($nosolicitud){
+  public function busquedafiltro($numerosolicitud){
     $this->load->database();
     $query=$this->db->query("
     select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
@@ -97,7 +163,7 @@ class Model_Muestra extends CI_Model
    where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
    and mu.Solicitud_idSolicitud = soli.idSolicitud
    and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente and
- mu.Solicitud_idSolicitud = soli.idSolicitud and mu.Solicitud_idSolicitud = '".$nosolicitud."';
+ mu.Solicitud_idSolicitud = soli.idSolicitud and mu.Solicitud_idSolicitud = '".$numerosolicitud."';
     ");
     return $query->result();
   }

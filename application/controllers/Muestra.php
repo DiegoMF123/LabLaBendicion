@@ -18,6 +18,17 @@ class Muestra extends CI_Controller{
 
         break;
       case '2':
+
+      $codigo = $this->Model_Muestra->ultimamuestra();
+
+      foreach ($codigo as $key) {
+
+        $ids = "".$key->idMuestra."";
+        // code...
+      }
+
+      $data["ids"]=$ids;
+
         $data["tipomuestra"]= $this->Model_Muestra->tipomuestra();
         $data["datos"]= $this->model_solicitud->sidSolicitud($id);
         $data["response"]=trim(isset($_REQUEST["response"]));
@@ -71,6 +82,9 @@ class Muestra extends CI_Controller{
     }
 
   }
+
+
+
 
   public function mostrar(){
   $this->load->helper('url');

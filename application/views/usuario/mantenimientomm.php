@@ -130,7 +130,7 @@
                            <div >
 
 
-                               <a  href="http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
+                               <a  href="http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
 
                                  <span class="material-icons">
 

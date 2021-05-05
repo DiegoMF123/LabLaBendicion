@@ -216,7 +216,7 @@
                                           si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
                                             <?php if ($response =="1") {
                                                 echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                                      Se guardaron correctamente los datos de la muestra médica
+                                                      Se guardaron correctamente los datos de la muestra médica su código es el '".$ids."'
                                                     </div>";
                                               } ?>
 
@@ -233,14 +233,13 @@
                                                   <label class="col-md-1 col-xs-12 control-label">SOLICITUD:</label>
                                                   <div class="col-md-3 col-xs-12">
                                                       <!-- las llaves de php es donde llamamos y mostramos los datos segun el id que mandamos a editar del punto de atención-->
-                                                      <input type="text" class="form-control" name="idpda" value="<?= $dato->idSolicitud ?>" placeholder="" readonly/>
+                                                      <input type="text" class="form-control" name="id" value="<?= $dato->idSolicitud ?>" placeholder="" readonly/>
                                                   </div>
 
                                               </div>
 
                                               <br>
                                               <br>
-
 
 
 

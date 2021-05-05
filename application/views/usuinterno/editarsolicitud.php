@@ -240,7 +240,7 @@
                                                                ?>
                                                                <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
                                                              sera la el nombre del estado, pero para ello necesitamos el id y el nombre del estado que se seleccione segun el ID-->
-                                                                 <option value="<?=$estado->idEstados  ?>"><?= $estado->Nombre ?></option>
+                                                                 <option value="<?=$estado->idEstados  ?>"><?= $estado->Nombrestado ?></option>
 
 
                                                            <?php    } ?>

@@ -371,7 +371,7 @@
                                             //  echo "url: 'http://192.168.1.9:8888/BancoMiPistio/index.php/userspda/dpi',".$nombredetuvariable;
                                             ?>
 
-                                            url: "http://192.168.0.7:8888/LabLaBendicion/index.php/mantenimientomm/expediente",
+                                            url: "http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/expediente",
                                             getValue: "Correlativo",
                                             list: {
                                               onSelectItemEvent: function() {

@@ -12,9 +12,6 @@ class Mantenimientomm extends CI_Controller{
       $this->load->model('Model_Muestra');
 
 
-
-
-
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
@@ -29,67 +26,142 @@ class Mantenimientomm extends CI_Controller{
       $estadosoli= trim($_REQUEST["estadosoli"]);
       $noexpediente = trim($_REQUEST["noexpediente"]);
       $nosolicitud = trim($_REQUEST["nosolicitud"]);
+      $tiposolid = trim($_REQUEST["tiposolid"]);
+      $nosoporte = trim($_REQUEST["nosoporte"]);
+      $nit = trim($_REQUEST["nit"]);
+      $usuarioAsignacion = trim($_REQUEST["usuario"]);
+      //Filtrar las muestras
+      $numerosolicitud = trim($_REQUEST["numerosolicitud"]);
       $noitem = trim($_REQUEST["noitem"]);
 
-        if (empty($nosolicitud)) {
+    if (empty($numerosolicitud)) {
+       if (empty($estadosoli)) {
 
-          if (empty($estadosoli)) {
-          //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
-            if (empty($noexpediente)) {
-              $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-              $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
-              $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-              $data["response"]=trim(isset($_REQUEST["response"]));
-              $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-              $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
-              $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+        //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
+          if (empty($noexpediente)) {
+            //si no posee datos muestra toda la tabla
+                  if (empty($nosolicitud)) {
+                   //si no posee datos  solicitud
+                         if (empty($tiposolid)) {
+                           //si no posee datos  tipo solicitud
+                                 if (empty($nosoporte)) {
+                                   //si no posee datos  no soporte
+                                         if (empty($nit)) {
+                                           //si no posee datos nit
+                                                 if (empty($usuarioAsignacion)) {
+                                                   //si no posee datos Usuario
+                                                   $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
+                                                   $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                                                   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                   $data["response"]=trim(isset($_REQUEST["response"]));
+                                                   $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                                                   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
 
-              $this->load->view('usuinterno/mantenimientomm',$data);
+                                                         $this->load->view('usuinterno/mantenimientomm',$data);
+                                                 }
+                                                 else {
+                                                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroUsuarioAsigna($usuarioAsignacion);
+                                                       $data["response"]=trim(isset($_REQUEST["response"]));
+                                                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                                                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                                                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                       $this->load->view('usuinterno/mantenimientomm',$data);
+                                                 }
+                                         }
+                                         else {
+                                               $data["datosoli"]= $this->Model_Solicitud->busquedafiltroNit($nit);
+                                               $data["response"]=trim(isset($_REQUEST["response"]));
+                                               $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                                               $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                                               $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                               $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                               $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                               $this->load->view('usuinterno/mantenimientomm',$data);
+                                         }
+                                 }
+                                 else {
+                                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSoporte($nosoporte);
+                                       $data["response"]=trim(isset($_REQUEST["response"]));
+                                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                       $this->load->view('usuinterno/mantenimientomm',$data);
+                                 }
+                         }
 
-            }else {
+                         else {
+                               $data["datosoli"]= $this->Model_Solicitud->busquedafiltroTipoSolicitud($tiposolid);
+                               $data["response"]=trim(isset($_REQUEST["response"]));
+                               $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                               $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                               $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                               $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                               $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                               $this->load->view('usuinterno/mantenimientomm',$data);
+                         }
+                 }
+                 else {
+                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($nosolicitud);
+                       $data["response"]=trim(isset($_REQUEST["response"]));
+                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                       $this->load->view('usuinterno/mantenimientomm',$data);
+                 }
+
+          }
+          else {
+                $data["datosoli"]= $this->Model_Solicitud->busquedafiltroExpendiente($noexpediente);
+                $data["response"]=trim(isset($_REQUEST["response"]));
+                $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+                $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+                $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                $this->load->view('usuinterno/mantenimientomm',$data);
+          }
 
 
-                              $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($noexpediente);
-                              $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
-                              $data["response"]=trim(isset($_REQUEST["response"]));
-                              $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                              $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+       }
 
-                              $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
-                              $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+    else {
 
-                              $this->load->view('usuinterno/mantenimientomm',$data);
+     $data["datosoli"]= $this->Model_Solicitud->busquedafiltroEstado($estadosoli);
+     $data["response"]=trim(isset($_REQUEST["response"]));
+     $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+     $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+     $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+
+     $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+     $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+     $this->load->view('usuinterno/mantenimientomm',$data);
+
+   }
+ }else {
+
+   $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
+   $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($numerosolicitud);
+   $data["response"]=trim(isset($_REQUEST["response"]));
+   $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+
+   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+   $this->load->view('usuinterno/mantenimientomm',$data);
+
+ }
 
 
-            }
-        }else {
 
-          $data["datosoli"]= $this->Model_Solicitud->busquedafiltro($estadosoli);
-          $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
-          $data["response"]=trim(isset($_REQUEST["response"]));
-          $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-          $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-
-          $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
-          $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
-
-          $this->load->view('usuinterno/mantenimientomm',$data);
-
-        }
-      }else {
-
-        $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-        $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($nosolicitud);
-        $data["response"]=trim(isset($_REQUEST["response"]));
-        $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-
-        $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
-        $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
-
-        $this->load->view('usuinterno/mantenimientomm',$data);
-
-      }
 
 
 
@@ -207,6 +279,17 @@ public function expediente(){
   $data["numsoli"]= $this->model_solicitud->expediente();
 
   echo json_encode($data["numsoli"]);
+
+
+}
+
+public function mostrardatosmuestra(){
+  $this->load->helper('url');
+  $this->load->library('session');
+  $this->load->model('Model_Muestra');
+  $data["numuestra"]= $this->Model_Muestra->muestradatos();
+
+  echo json_encode($data["numuestra"]);
 
 
 }
@@ -353,14 +436,13 @@ public function delete(){
 
 
 
-            public function asociar(){
-                  // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
-              $this->load->helper('url');
-                // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
-              $this->load->library('session');
-
-              $this->load->model('Model_Solicitud');
-                $this->load->model('Model_Muestra');
+    public function asociar(){
+    // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
+      $this->load->helper('url');
+        // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
+      $this->load->library('session');
+      $this->load->model('Model_Solicitud');
+      $this->load->model('Model_Muestra');
 
               $rol= $_SESSION["role"];
               switch ($rol) {
@@ -369,8 +451,9 @@ public function delete(){
 
                   break;
                 case '2':
-
-                $this->load->view('usuinterno/mdatosasc');
+                $codigomuestra = trim($_REQUEST["codigomuestra"]);
+                $data["datosmuestra"]= $this->Model_Muestra->datosmuestraporid($codigomuestra);
+                $this->load->view('usuinterno/mdatosasc',$data);
 
                   break;
                 case '3':

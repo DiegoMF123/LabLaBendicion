@@ -195,9 +195,9 @@
 
                             <div class="form-group">
                                 <!--CODIGO SOLICITUD-->
-                              <label class="col-md-1 col-xs-12 control-label">Código Solicitud </label>
+                                <label class="col-md-1 col-xs-12 control-label">Código Solicitud </label>
                                                           <div class="col-md-3 col-xs-12">
-                                                              <input type="text" class="form-control" name="cod_solicitud" id="nombre" placeholder="Ingrese Código" />
+                                                              <input type="text" class="form-control" name="nosolicitud" id="nombre" placeholder="Ingrese Código" />
                                                           </div>
 
                                            <!-- EXPEDIENTE-->
@@ -209,7 +209,7 @@
                                           <!-- SOPORTE-->
                                           <label class="col-md-1 col-xs-12 control-label">No. soporte  </label>
                                                           <div class="col-md-3 col-xs-12">
-                                                              <input type="text" class="form-control" name="no_soporte" id="nombre" placeholder="Ingrese No. soporte " />
+                                                              <input type="text" class="form-control" name="nosoporte" id="nombre" placeholder="Ingrese No. soporte " />
                                                           </div>
 
                             </div>
@@ -228,9 +228,9 @@
                                                          // code...
                                                          ?>
 
-                                                     <option value="<?=$usuarioA->idUsuarios  ?>">
+                                                     <option value="<?=$usuarioA->idExpediente  ?>">
                                                          <?= $usuarioA->Nombre ?>
-                                                         <?= $usuarioA->NombreTipo ?></option>
+                                                         </option>
 
                                                      <?php    } ?>
                                                  </select>
@@ -240,18 +240,17 @@
                               <!--FECHAS-->
                             <label class="col-md-1 col-xs-12 control-label">Fecha  </label>
                                              <div class="col-md-3 col-xs-12">
-                                                 <input type="date" class="form-control" name="fecha_ini" id="nombre" placeholder="Ingrese Fecha" />
+                                                 <input type="date" class="form-control" name="fechaini" id="nombre" placeholder="Ingrese Fecha" />
                                              </div>
                               <!--FECHAS-->
                             <label class="col-md-1 col-xs-12 control-label">Fecha hasta </label>
                                              <div class="col-md-3 col-xs-12">
-                                                 <input type="date" class="form-control" name="fecha_fin" id="nombre" placeholder="Ingrese Nombre" />
+                                                 <input type="date" class="form-control" name="fechafin" id="nombre" placeholder="Ingrese Nombre" />
                                              </div>
 
 
 
                             </div>
-                            <br>
                             <br>
                             <br>
 
@@ -326,23 +325,29 @@
                            <table  class="table table-striped table-bordered">
                                   <thead >
 
-                                      <tr>
-                                          <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>No.Solicitud</th>
+                                    <tr>
+                                        <!--El nombre de los campos que se van a mostrar en la vista-->
+                                        <th>No.Solicitud</th>
 
-                                          <th>No.Expediente</th>
+                                        <th>No.Expediente</th>
 
-                                          <th>Fecha de creación</th>
+                                        <th>No.Soporte</th>
 
-                                          <th>Tipo de solicitud</th>
+                                        <th>Usuario Asignación</th>
 
-                                          <th>Tipo de solicitante</th>
+                                        <th>Fecha de creación</th>
 
-                                          <th>Estado</th>
+                                        <th>Nit</th>
+
+                                        <th>Tipo de solicitud</th>
+
+                                        <th>Tipo de solicitante</th>
+
+                                        <th>Estado</th>
 
 
-                                          <th>
-                                      </tr>
+                                        <th>
+                                    </tr>
                                   </thead>
                                   <tbody align="center">
                                     <?php foreach ($datosoli as $datosoli){
@@ -354,13 +359,20 @@
 
                                             <td><?= $datosoli->Nosolicitud ?></td>
 
+                                            <td><?= $datosoli->NumeroSoporte ?></td>
+
+                                            <td><?= $datosoli->Nombre ?></td>
+
                                              <td><?= $datosoli->Fechacreacion ?></td>
+
+                                             <td><?= $datosoli->Nit ?></td>
 
                                              <td><?= $datosoli->Abreviatura ?> = <?= $datosoli->NombreTipo ?></td>
 
                                              <td><?= $datosoli->Abreviaturats ?> = <?= $datosoli->Tiposolicitante ?></td>
 
                                              <td><?= $datosoli->Nombrestado ?></td>
+
 
 
                                           <td>
@@ -1106,9 +1118,9 @@
 
                               </table>
                               <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
-                                <a href="<?php echo base_url(); ?>index.php/report/reportegeneralcdos" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span></a>
+                                <a href="<?php echo base_url(); ?>index.php/report/reportegeneralcdos" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span> Exportar</a>
 
-                                <a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver etiqueta" ><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a>
+
 
                          </div>
 
@@ -1147,7 +1159,7 @@
                               <!--NÚMERO SOLICITUD-->
                             <label class="col-md-1 col-xs-12 control-label">No Solicitud </label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="nosolicitud" id="nosolicitud" placeholder="Ingrese Número de muestra" />
+                                                            <input type="text" class="form-control" name="numerosolicitud" id="numerosolicitud" placeholder="Ingrese Número de muestra" />
                                                         </div>
 
                                          <!-- NÚMERO DE ITEM-->
@@ -1255,6 +1267,8 @@
                                                 <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/desasociar?id=<?= $datosmuestra->idMuestra ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Desasociar"><span class="material-icons">thumb_down</span></a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="" data-toggle="modal" data-target="#myModalmuestraitems<?= $datosmuestra->idMuestra ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver items asociados"><span class="material-icons">folder</span></a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar?idMuestra=<?= $datosmuestra->idMuestra ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver etiqueta" ><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a></li>
                                                 <li class="divider"></li>
                                                 <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" onclick="return confirmarmuestra()" data-toggle="tooltip" data-placement="left" title="Elimina muestra"><span class="material-icons">delete_outline</span></a></li>
 
