@@ -25,7 +25,7 @@
           <link href="<?php echo base_url(); ?>assets/plugins/pace/pace.min.css" rel="stylesheet">
           <script src="<?php echo base_url(); ?>assets/plugins/pace/pace.min.js"></script>
           <script src="<?php echo base_url(); ?>/assets/js/jquery.min.js"></script>
-          <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validards.js"></script>
+          <script language="JavaScript" type="text/javascript" src="<?php echo base_url(); ?>assets/js/validarasoitem.js"></script>
           <link href="<?php echo base_url(); ?>assets/css/est.css" rel="stylesheet">
 
           <script src="<?php echo base_url(); ?>assets/js/sweetalert2.all.js"></script>
@@ -259,7 +259,7 @@
 
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
-                                            <form id="regiration_form" name="formulario" action="guardar"
+                                            <form id="regiration_form" name="formulario" action="updateasociaritem"
                                                 method="GET" onsubmit="return confirmar()">
                                                 <br>
 
@@ -288,7 +288,7 @@
                                                         <div class="col-md-3 col-xs-12">
 
                                                             <input type="text" class="form-control" name="numuestra"
-                                                                id="function-data" id="numuestra"
+                                                                id="function-data"
                                                                 placeholder="Ingrese el numero de muestra"
                                                                 maxlength="25"
                                                                 onKeyPress="return soloNumeros(event)" required />
@@ -339,7 +339,7 @@
 
                                                     </script>
 
-                                                    <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
+                                                    <a href="<?php echo base_url(); ?>index.php/muestra"
                                                         type="button" class="btn btn-danger"
                                                         onclick="limpiarFormulario()">Cancelar</a>
 
@@ -436,24 +436,24 @@
                                                         value="Siguiente" />
                                                 </fieldset>
                                                 <fieldset>
-                                                    <h2>Soporte y contacto</h2>
+                                                    <h2>Items a asociar</h2>
                                                     <br>
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Tipo
-                                                            de soporte</label>
+                                                        <label class="col-md-1 col-xs-12 control-label">Items
+                                                            </label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <select class="form-control" name="tiposoporte"
-                                                                id="tiposoporte" required/>
+                                                            <select class="form-control" name="items"
+                                                                id="items" required/>
 
                                                                 <option value="" hidden selected>Seleccione una opción
                                                                 </option>
-                                                                <?php foreach ($tiposoporte as $tiposoporte) {
+                                                                <?php foreach ($items as $items) {
                                                                     // code...
                                                                     ?>
 
-                                                                <option value="<?=$tiposoporte->idTipoSoporte  ?>">
-                                                                    <?= $tiposoporte->Abreviatura ?>
-                                                                    <?= $tiposoporte->Nombrets ?></option>
+                                                                <option value="<?=$items->idItems  ?>">
+                                                                    <?= $items->Nombreitem ?>
+                                                                  </option>
 
                                                                 <?php    } ?>
 
@@ -462,36 +462,15 @@
                                                             </select>
 
                                                         </div>
-                                                        <label class="col-md-1 col-xs-12 control-label">Número de
-                                                            soporte</label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="numsoporte"
-                                                                id="numsoporte"
-                                                                placeholder="Ingrese el numero de soporte" required />
-                                                        </div>
-                                                        <label class="col-md-1 col-xs-12 control-label">
-                                                            Teléfono</label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="telefono"
-                                                                id="telefono"
-                                                                placeholder="Ingrese un numero de teléfono" required />
 
-                                                        </div>
-                                                    </div>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-                                                    <br>
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">E-mail
-                                                        </label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <input type="email" class="form-control" name="email"
-                                                                id="email" placeholder="Ingrese su email" required />
-                                                        </div>
 
                                                     </div>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+                                                    <br>
+
+
                                                     <br>
                                                     <br>
                                                     <input type="button" name="previous"
@@ -577,37 +556,10 @@
                                                             class="fa fa-caret-right"></i>Análisis de muestras medicas /
                                                         Clasificación / Mantenimiento</a></li>
 
-                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
-
                                             </ul>
 
                                         </li>
 
-
-                                        <li>
-
-                                            <a href="#">
-
-                                            <i class="fa fa-briefcase"></i>
-
-                                            <span class="menu-title">Configuración</span>
-
-                                            <i class="arrow"></i>
-
-                                            </a>
-
-                                            <!--Submenu-->
-
-                                            <ul class="collapse">
-
-                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
-                                                <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
-
-
-
-                                            </ul>
-
-                                        </li>
 
 
 

@@ -313,30 +313,7 @@
 
 
 
-                                     <li>
-
-                                         <a href="#">
-
-                                         <i class="fa fa-briefcase"></i>
-
-                                         <span class="menu-title">Configuración</span>
-
-                                         <i class="arrow"></i>
-
-                                         </a>
-
-                                         <!--Submenu-->
-
-                                         <ul class="collapse">
-
-                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
-                                             <li><a href=""><i class="fa fa-caret-right"></i>Prueba</a></li>
-
-
-
-                                         </ul>
-
-                                     </li>
+                                
 
 
 

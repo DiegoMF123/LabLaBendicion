@@ -2,6 +2,71 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 class Muestra extends CI_Controller{
 
+  public function index(){
+      // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
+  $this->load->helper('url');
+    // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
+  $this->load->library('session');
+  $this->load->model('Model_Muestra');
+  $this->load->model('model_solicitud');
+  $id = trim($_REQUEST["id"]);
+  $rol= $_SESSION["role"];
+  switch ($rol) {
+    case '1':
+
+  redirect('restrinct');
+
+      break;
+    case '2':
+
+   //Filtrar las muestras
+    $numerosolicitud = trim($_REQUEST["numerosolicitud"]);
+    $noitem = trim($_REQUEST["noitem"]);
+
+      if (empty($numerosolicitud)) {
+        $data["response"]=trim(isset($_REQUEST["response"]));
+         $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+          $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+            $this->load->view('usuinterno/mdatosmuestra',$data);
+
+      }else {
+
+
+        $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($numerosolicitud);
+        $data["response"]=trim(isset($_REQUEST["response"]));
+        $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+
+
+        $this->load->view('usuinterno/mdatosmuestra',$data);
+
+      }
+
+
+
+      break;
+    case '3':
+    redirect('restrinct');
+
+      break;
+    case '4':
+        redirect('restrinct');
+      break;
+      case '5':
+
+        redirect('restrinct');
+        break;
+
+    default:
+    redirect('restrinct');
+      // code...
+      break;
+  }
+
+}
+
+
+
+
     public function nuevo(){
         // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
     $this->load->helper('url');
@@ -163,11 +228,11 @@ foreach ($data as $key) {
         $id = $_REQUEST["id"];
         $data["borarmuestra"] = $this->Model_Muestra->delete($id);
 
-        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm?responsemuestra=1");
+        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra?responsemuestra=1");
         die();
       }else {
 
-        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/welcome/mantenimientomm");
+        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra");
         die();
       }
 }

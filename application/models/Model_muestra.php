@@ -168,6 +168,36 @@ class Model_Muestra extends CI_Model
     return $query->result();
   }
 
+  public function items(){
+    $this->load->database();
+    $query = $this->db->query("
+    select * from items;
+      ");
+
+    return $query->result();
+
+  }
+
+// Asociar items
+  public function asociaritems($codigomuestra,$items,$fechamodifi){
+    $this->load->database();
+    $query = $this->db->query("
+    update Muestra
+      set idMuestra='".$codigomuestra."',
+         FechaModificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
+         idItems= '".$items."'
+         where idMuestra ='".$codigomuestra."'
+      ");
+
+  }
+
+
+
+
+
+
+
+
 
 
 }

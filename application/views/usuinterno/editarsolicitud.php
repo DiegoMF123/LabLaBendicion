@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Creacion de nueva solicitud</title>
+    <title> Cambio de estado</title>
     <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
 
     <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
@@ -102,7 +102,7 @@
         event.preventDefault();
 
             Swal.fire({
-            title: '¿Está seguro de guardar los cambios realizados?',
+            title: '¿Está seguro de guardar el cambio de estado realizado?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -181,7 +181,7 @@
 
             <div id="content-container">
                 <div class="pageheader hidden-xs">
-                    <h3><i class="fa fa-home"></i> Creación de muestras medicas</h3>
+                    <h3><i class="fa fa-home"></i> Cambio de estado </h3>
 
 
                 </div>
@@ -192,7 +192,7 @@
 
                             <div class="panel">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Datos para la muestra</h3>
+                                    <h3 class="panel-title">Datos</h3>
                                 </div>
 
                                 <div class="panel">
@@ -207,7 +207,7 @@
                                           si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
                                             <?php if ($response =="1") {
                                                 echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                                      Se guardaron correctamente los datos modificados de la solicitud
+                                                      El cambio de estado a la solicitud se realizó con éxito
                                                     </div>";
                                               } ?>
 
@@ -363,39 +363,12 @@
                                                             class="fa fa-caret-right"></i>Análisis de muestras medicas /
                                                         Clasificación / Mantenimiento</a></li>
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/IngQueja"><i
-                                                            class="fa fa-caret-right"></i>Ingreso Quejas por Mal
-                                                        Servicio o servicio no conforme</a></li>
 
                                             </ul>
 
                                         </li>
 
 
-                                        <li>
-
-                                            <a href="#">
-
-                                                <i class="fa fa-briefcase"></i>
-
-                                                <span class="menu-title">Configuración</span>
-
-                                                <i class="arrow"></i>
-
-                                            </a>
-
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-
-                                                <li><a href="<?php echo base_url(); ?>index.php/users"><i
-                                                            class="fa fa-caret-right"></i>Asignar nuevos Usuarios</a>
-                                                </li>
-
-
-
-
-                                            </ul>
-                                        </li>
 
 
 

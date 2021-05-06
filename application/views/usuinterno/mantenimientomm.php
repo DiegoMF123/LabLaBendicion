@@ -375,34 +375,45 @@
 
                                           <td>
 
-                                          <div  class="btn-group btn-group-xs" role="group" >
-
-
-                                                                                        <button type="button" class="btn btn-success dropdown-toggle"
-                                                                                        data-toggle="dropdown">
-                                                                                        Opciones <span class="caret"></span>
-                                                                                      </button>
-
-                                                                                      <ul class="dropdown-menu" role="menu">
-                                                                                          <li>  <a href="" data-toggle="modal" data-target="#myModal4<?= $datosoli->idSolicitud ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del expediente"><span class="material-icons">folder</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li><a href="" data-toggle="modal" data-target="#myModal3<?= $datosoli->idSolicitud ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del cliente"><span class="material-icons">contact_page</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosoli->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li>  <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestado?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Cambiar el estado de la solictud"><span class="material-icons">edit</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li><a href="<?php echo base_url(); ?>index.php/muestra/nuevo?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Crear muestra"><span class="material-icons">add</span></a></li>
-                                                                                          <li class="divider"></li>
-                                                                                          <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" onclick="return confirmar()" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
-
-                                                                                      </ul>
 
 
 
-                                            </div>
+
+                                            <div class="btn-group dropup">
+                                              <button type="button" class="btn btn-success">
+                                                Opciones</button>
+
+                                                <button type="button" class="btn btn-success dropdown-toggle"
+                                                data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Desplegar menú</span>
+                                                </button>
+
+                                                <ul class="dropdown-menu">
+
+                                                  <li>  <a href="" data-toggle="modal" data-target="#myModal4<?= $datosoli->idSolicitud ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del expediente"><span class="material-icons">folder</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li><a href="" data-toggle="modal" data-target="#myModal3<?= $datosoli->idSolicitud ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del cliente"><span class="material-icons">contact_page</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosoli->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li>  <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestado?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Cambiar el estado de la solictud"><span class="material-icons">edit</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/muestra/nuevo?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Crear muestra"><span class="material-icons">add</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/muestra" class="btn btn-primary"  data-toggle="tooltip" data-placement="left" title="Muestra"><span class="material-icons">inventory</span></a></li>
+                                                  <li class="divider"></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" onclick="return confirmar()" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
+
+
+                                                </ul>
+
+
+
+                                                    </div>
+
                                           </td>
 
 
@@ -973,10 +984,6 @@
                                                       </div>
 
 
-
-                                                        <a href="<?php echo base_url(); ?>index.php/report/reportestados" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar estados a excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span></a>
-
-
                                                   </div>
 
                                                   <div class="modal-footer">
@@ -1092,7 +1099,6 @@
 
 
 
-                                                          <a href="<?php echo base_url(); ?>index.php/report/reportestados" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar estados a excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span></a>
 
 
                                                     </div>
@@ -1131,520 +1137,6 @@
                </div>
 
 
-               <div id="page-content">
-                  <div class="row">
-                        <div class="col-md-12">
-                   <div class="panel">
-
-                       <div class="panel-heading">
-
-                           <h3 class="panel-title">Listado de muestras medicas</h3>
-                       </div>
-
-                       <?php if ($responsemuestra =="1") {
-                         echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                               Ha eliminado exitosamente la muestra.
-                             </div>";
-                       } ?>
-
-
-
-                       <div class="panel-body">
-
-                        <form  method="post">
-
-                          <div class="form-group">
-                              <!--NÚMERO SOLICITUD-->
-                            <label class="col-md-1 col-xs-12 control-label">No Solicitud </label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="numerosolicitud" id="numerosolicitud" placeholder="Ingrese Número de muestra" />
-                                                        </div>
-
-                                         <!-- NÚMERO DE ITEM-->
-                                         <label class="col-md-1 col-xs-12 control-label">No. item </label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="noitem" id="noitem" placeholder="Ingrese No. expediente" />
-                                                        </div>
-
-
-
-                          </div>
-
-                          <!--Boton buscar-->
-                            <div class="col-md-4" margin-left: auto>
-                                 <!-- Boton filtrar que nos va a servir para poder mandar la peticion a nuestro controlador y que capture nuestros datos que estamos solicitando-->
-                                     <input name ="buscarmuestra" type="submit" value="Filtrar Muestra" class="btn btn-primary ">
-                                      <a href="<?php echo base_url(); ?>index.php/mantenimientomm" class="btn btn-danger ">Limpiar</a>
-                             </div>
-
-                        </form>
-                        <br>
-                        <br>
-
-                         <br>
-
-                         <table  class="table table-striped table-bordered">
-                                <thead >
-
-                                    <tr>
-                                        <!--El nombre de los campos que se van a mostrar en la vista-->
-                                        <th>No. Muestra</th>
-
-                                        <th>No. Solicitud</th>
-
-                                        <th>Tipo de muestra</th>
-
-                                        <th>Cantidad Unidades</th>
-
-                                        <th>Unidad de medida</th>
-
-                                        <th>Fecha de Creación</th>
-
-
-
-
-                                        <th>Opciones
-                                    </tr>
-                                </thead>
-                                <tbody align="center">
-                                  <?php foreach ($datosmuestra as $datosmuestra){
-                                    // code...
-                                    ?>
-                                    <tr>
-                                          <!-- Llamado de campos de los datos que queremos mostrar  -->
-                                          <td><?= $datosmuestra->idMuestra ?></td>
-
-                                          <td><?= $datosmuestra->idSolicitud ?></td>
-
-                                           <td><?= $datosmuestra->NombreMuestra ?></td>
-
-                                           <td><?= $datosmuestra->Cantidad ?></td>
-
-                                           <td><?= $datosmuestra->Nombreum ?></td>
-
-                                           <td><?= $datosmuestra->FechaCreacion ?></td>
-
-
-
-
-
-                                        <td>
-                                          <div class="btn-group" role="group">
-                                            <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
-                                          los datos del usuario que queremos editar-->
-
-                                          <?php
-                                          $direccion ="";
-                                          //  echo $usuario->nombre_archivo."<br>";
-
-                                          $direccion =  base_url()."index.php/muestra/mostrar?id=".$datosmuestra->idMuestra;
-
-
-                                          ?>
-
-
-
-                                          <div class="btn-group dropup">
-                                            <button type="button" class="btn btn-primary">
-                                              Opciones</button>
-
-                                              <button type="button" class="btn btn-danger dropdown-toggle"
-                                              data-toggle="dropdown">
-                                              <span class="caret"></span>
-                                              <span class="sr-only">Desplegar menú</span>
-                                              </button>
-
-                                              <ul class="dropdown-menu">
-
-                                                <li><a href="<?php echo $direccion; ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver documento"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="" data-toggle="modal" data-target="#myModaldatosmuestra<?= $datosmuestra->idMuestra ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información de la muestra"><span class="material-icons">notes</span></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/asociar?codigomuestra=<?= $datosmuestra->idMuestra ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Asociar"><span class="material-icons">thumb_up</span></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/desasociar?id=<?= $datosmuestra->idMuestra ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Desasociar"><span class="material-icons">thumb_down</span></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="" data-toggle="modal" data-target="#myModalmuestraitems<?= $datosmuestra->idMuestra ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver items asociados"><span class="material-icons">folder</span></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar?idMuestra=<?= $datosmuestra->idMuestra ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver etiqueta" ><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" onclick="return confirmarmuestra()" data-toggle="tooltip" data-placement="left" title="Elimina muestra"><span class="material-icons">delete_outline</span></a></li>
-
-
-                                              </ul>
-
-
-
-                                                  </div>
-
-
-
-                                          </div>
-                                        </td>
-                                    </tr>
-
-
-                                    <div class="modal fade" id="myModalmuestraitems<?= $datosmuestra->idMuestra ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-
-                                        <div class="modal-dialog" role="document">
-
-                                          <div class="modal-content">
-
-                                            <div class="modal-header">
-
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                                              <h4 class="modal-title" id="myModalLabel">
-
-                                                <b>Items asociados</b>
-
-
-
-                                              </h4>
-
-                                            </div>
-
-                                            <div class="modal-body">
-
-                                                <div class="row">
-
-                                                    <div class="col-md-2">
-
-
-                                                    </div>
-
-                                                    <div class="col-md-8">
-
-                                                        <label for=""><b>Item</b></label><br>
-
-                                                        <input type="text" class="form-control" value="" readonly>
-
-
-
-                                                    </div>
-
-                                                    <div class="col-md-2">
-
-
-
-                                                    </div>
-
-                                                </div>
-
-
-                                                <div class="row">
-
-                                                    <div class="col-md-2">
-
-
-                                                    </div>
-
-                                                    <div class="col-md-8">
-
-                                                        <label for=""><b> </b></label><br>
-
-                                                        <input type="text" class="form-control" value="" readonly>
-
-
-
-                                                    </div>
-
-                                                    <div class="col-md-2">
-
-
-
-                                                    </div>
-
-                                                </div>
-
-
-
-                                                  <a href="<?php echo base_url(); ?>index.php/report/reportestados" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar estados a excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span></a>
-
-
-                                            </div>
-
-                                            <div class="modal-footer">
-
-                                              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                                            </div>
-
-                                          </div>
-
-                                        </div>
-
-                                      </div>
-
-                                      <!-- MODAL PARA VER LA Información de la muestra -->
-
-                                      <div class="modal fade" id="myModaldatosmuestra<?= $datosmuestra->idMuestra ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-
-                                          <div class="modal-dialog" role="document">
-
-                                            <div class="modal-content">
-
-                                              <div class="modal-header">
-
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                                                <h4 class="modal-title" id="myModalLabel">
-
-                                                  <b>Número de muestra:  <?= $datosmuestra->idSolicitud ?></b>
-
-
-
-                                                </h4>
-
-                                              </div>
-
-                                              <div class="modal-body">
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Número de solictud</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->idSolicitud?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-
-
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Descripción de la presentación</b></label><br>
-
-
-                                                            <textarea type="text" class="form-control"  readonly><?= $datosmuestra->Presentacion ?></textarea>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Cantidad de unidades</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Cantidad ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Tipo de muestra</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->NombreMuestra ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Unidad de medida</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Nombreum ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Fecha de creación</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->FechaCreacion  ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>Nombre del archivo adjunto</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Nombre_archivo  ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-                                                  <div class="row">
-
-                                                      <div class="col-md-2">
-
-                                                      </div>
-
-                                                      <div class="col-md-8">
-
-                                                          <label for=""><b>NIT ralcionado</b></label><br>
-
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Nit  ?>" readonly>
-
-
-
-                                                      </div>
-
-                                                      <div class="col-md-2">
-
-
-
-                                                      </div>
-
-                                                  </div>
-
-
-
-
-                                              </div>
-
-                                              <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-
-                                              </div>
-
-                                            </div>
-
-                                          </div>
-
-                                        </div>
-
-
-
-
-                                        <?php          } ?>
-
-
-                                </tbody>
-
-                            </table>
-
-                       </div>
-
-                   </div>
-
-                 </div>
-
-               </div>
-
-             </div>
 
 
 
@@ -1739,14 +1231,7 @@
 
                                          <ul class="collapse">
 
-                                            <li><a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar"><i class="fa fa-caret-right"></i>Etiquetas</a></li>
-
-                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/asociar"><i class="fa fa-caret-right"></i>Asociar</a></li>
-
                                              <li><a href="<?php echo base_url(); ?>index.php/report/reportegeneral"><i class="fa fa-caret-right"></i>Exportar a Excel</a></li>
-
-
-
 
                                          </ul>
 

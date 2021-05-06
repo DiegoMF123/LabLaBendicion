@@ -30,11 +30,9 @@ class Mantenimientomm extends CI_Controller{
       $nosoporte = trim($_REQUEST["nosoporte"]);
       $nit = trim($_REQUEST["nit"]);
       $usuarioAsignacion = trim($_REQUEST["usuario"]);
-      //Filtrar las muestras
-      $numerosolicitud = trim($_REQUEST["numerosolicitud"]);
-      $noitem = trim($_REQUEST["noitem"]);
 
-    if (empty($numerosolicitud)) {
+
+
        if (empty($estadosoli)) {
 
         //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
@@ -51,10 +49,8 @@ class Mantenimientomm extends CI_Controller{
                                                  if (empty($usuarioAsignacion)) {
                                                    //si no posee datos Usuario
                                                    $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-                                                   $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                                                    $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                                    $data["response"]=trim(isset($_REQUEST["response"]));
-                                                   $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
                                                    $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                                                    $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
 
@@ -63,8 +59,6 @@ class Mantenimientomm extends CI_Controller{
                                                  else {
                                                        $data["datosoli"]= $this->Model_Solicitud->busquedafiltroUsuarioAsigna($usuarioAsignacion);
                                                        $data["response"]=trim(isset($_REQUEST["response"]));
-                                                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                                                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                                                        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                                        $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                                                        $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -74,8 +68,6 @@ class Mantenimientomm extends CI_Controller{
                                          else {
                                                $data["datosoli"]= $this->Model_Solicitud->busquedafiltroNit($nit);
                                                $data["response"]=trim(isset($_REQUEST["response"]));
-                                               $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                                               $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                                                $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                                $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                                                $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -85,8 +77,6 @@ class Mantenimientomm extends CI_Controller{
                                  else {
                                        $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSoporte($nosoporte);
                                        $data["response"]=trim(isset($_REQUEST["response"]));
-                                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                                        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                        $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                                        $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -97,8 +87,6 @@ class Mantenimientomm extends CI_Controller{
                          else {
                                $data["datosoli"]= $this->Model_Solicitud->busquedafiltroTipoSolicitud($tiposolid);
                                $data["response"]=trim(isset($_REQUEST["response"]));
-                               $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                               $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                                $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                                $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -108,8 +96,6 @@ class Mantenimientomm extends CI_Controller{
                  else {
                        $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($nosolicitud);
                        $data["response"]=trim(isset($_REQUEST["response"]));
-                       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                       $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                        $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                        $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                        $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -120,8 +106,6 @@ class Mantenimientomm extends CI_Controller{
           else {
                 $data["datosoli"]= $this->Model_Solicitud->busquedafiltroExpendiente($noexpediente);
                 $data["response"]=trim(isset($_REQUEST["response"]));
-                $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-                $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
                 $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                 $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
                 $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
@@ -135,30 +119,14 @@ class Mantenimientomm extends CI_Controller{
 
      $data["datosoli"]= $this->Model_Solicitud->busquedafiltroEstado($estadosoli);
      $data["response"]=trim(isset($_REQUEST["response"]));
-     $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-     $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
      $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-
      $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
      $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
 
      $this->load->view('usuinterno/mantenimientomm',$data);
 
    }
- }else {
 
-   $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
-   $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($numerosolicitud);
-   $data["response"]=trim(isset($_REQUEST["response"]));
-   $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
-   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
-
-   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
-   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
-
-   $this->load->view('usuinterno/mantenimientomm',$data);
-
- }
 
 
 
@@ -452,7 +420,9 @@ public function delete(){
                   break;
                 case '2':
                 $codigomuestra = trim($_REQUEST["codigomuestra"]);
+                $data["response"]=trim(isset($_REQUEST["response"]));
                 $data["datosmuestra"]= $this->Model_Muestra->datosmuestraporid($codigomuestra);
+                $data["items"]= $this->Model_Muestra->items();
                 $this->load->view('usuinterno/mdatosasc',$data);
 
                   break;
@@ -476,7 +446,28 @@ public function delete(){
 
             }
 
-            public function asociarnuevo(){
+            // Funcionalidad para editar el formulario de los puntos de atención vista editarpda
+            public function updateasociaritem(){
+              $this->load->helper('url');
+              $this->load->library('session');
+              $this->load->model('Model_Muestra');
+            // Estas variables vienen de las vista editarpda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
+
+              $codigomuestra=trim($_REQUEST["codigomuestra"]);
+              $items=trim($_REQUEST["items"]);
+              $fechamodifi= date('d-m-Y H:i:s');
+
+
+            // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
+              $data["datosmuestra"]= $this->Model_Muestra->asociaritems($codigomuestra,$items,$fechamodifi);
+
+              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/asociar?response=1");
+                          die();
+
+                        }
+
+
+            public function desasociar(){
                   // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
               $this->load->helper('url');
                 // Tenemos esta libreria session para poder mantener cierto tiempo la session abierta
