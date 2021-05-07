@@ -330,6 +330,98 @@ public function prueba(){
     }
   }
 
+  public function resportemuestras(){
+    // create file name
+
+    // en los excel el campo de  categoria es el campo de operador
+    $this->load->library('session');
+    $rol = $_SESSION["role"];
+    $this->load->helper('form');
+        $this->load->helper('url');
+
+    switch ($rol) {
+      case '1':
+
+        redirect('restrinct');
+        break;
+      case '2':
+      $fileName = 'data-'.time().'.xlsx';
+      // load excel library
+      $this->load->library('excel');
+      $listInfo = $this->reportes->reportegeneralmuestras();
+      $objPHPExcel = new PHPExcel();
+      $objPHPExcel->setActiveSheetIndex(0);
+      // set Header
+      $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Código muestra  ');
+      $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tipo de muestra');
+      $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Código Solicitud');
+      $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'No. Expediente');
+      $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'NIT');
+      $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Presentación');
+      $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Usuario asignación');
+      $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Usuario creación');
+      $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Fecha creación');
+      $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Fecha recepción');
+      $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Estado solicitud');
+      $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Cantidad Unidades');
+      $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Unidad medida');
+      $objPHPExcel->getActiveSheet()->SetCellValue('N1', 'Cantidad Ítems');
+      $objPHPExcel->getActiveSheet()->SetCellValue('O1', 'Cantidad documentos');
+      $objPHPExcel->getActiveSheet()->SetCellValue('P1', 'Días vencimiento');
+
+
+      // set Row
+      $rowCount = 2;
+      foreach ($listInfo as $list) {
+          $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idMuestra);
+          $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->NombreMuestra);
+          $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->idSolicitud);
+          $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->Nosolicitud);
+          $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->Nit);
+          $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->Presentacion);
+          $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->Nombre);
+          $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->Nombre);
+          $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->FechaCreacion);
+          $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->FechaModificacion);
+          $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->Nombrestado);
+          $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->Cantidad);
+          $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $list->Nombreum);
+          $objPHPExcel->getActiveSheet()->SetCellValue('N' . $rowCount, $list->Nombreitem);
+          $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, $list->Nombre_archivo);
+          $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, $list->Diasvencimiento);
+
+
+          $rowCount++;
+      }
+      $filename = "Reporte general muestras"."-".date("d-m-Y").".xls";
+          header('Content-Type: application/vnd.ms-excel');
+          header('Content-Disposition: attachment;filename="'.$filename.'"');
+          header('Cache-Control: max-age=0');
+          $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+          $objWriter->save('php://output');
+
+        break;
+      case '3':
+      redirect('restrinct');
+      break;
+      case '4':
+
+        redirect('restrinct');
+
+      break;
+        case '5':
+
+        redirect('restrinct');
+
+          break;
+      default:
+      redirect('restrinct');
+        // code...
+        break;
+    }
+  }
+
+
 
 
 

@@ -484,7 +484,12 @@ public function delete(){
                   break;
                 case '2':
 
-                $this->load->view('usuinterno/asociardatos');
+                $id = trim($_REQUEST["id"]);
+                $data["response"]=trim(isset($_REQUEST["response"]));
+                $data["datosmuestra"]= $this->Model_Muestra->datosmuestraporid($id);
+                $data["items"]= $this->Model_Muestra->items();
+
+                $this->load->view('usuinterno/desasociar',$data);
 
                   break;
                 case '3':
@@ -506,6 +511,25 @@ public function delete(){
               }
 
             }
+
+            public function updateasociaritemdos(){
+              $this->load->helper('url');
+              $this->load->library('session');
+              $this->load->model('Model_Muestra');
+            // Estas variables vienen de las vista editarpda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
+
+              $codigomuestra=trim($_REQUEST["codigomuestra"]);
+              $items=trim($_REQUEST["items"]);
+              $fechamodifi= date('d-m-Y H:i:s');
+
+
+            // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
+              $data["datosmuestra"]= $this->Model_Muestra->deasociaritems($codigomuestra,$fechamodifi);
+
+              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/desasociar?response=1");
+                          die();
+
+                        }
 
 }
 

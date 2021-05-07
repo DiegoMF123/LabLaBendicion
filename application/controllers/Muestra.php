@@ -23,6 +23,8 @@ class Muestra extends CI_Controller{
     $numerosolicitud = trim($_REQUEST["numerosolicitud"]);
     $noitem = trim($_REQUEST["noitem"]);
 
+  if (empty($noitem)) {
+
       if (empty($numerosolicitud)) {
         $data["response"]=trim(isset($_REQUEST["response"]));
          $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
@@ -40,6 +42,18 @@ class Muestra extends CI_Controller{
         $this->load->view('usuinterno/mdatosmuestra',$data);
 
       }
+
+    }else {
+
+
+      $data["datosmuestra"]= $this->Model_Muestra->busquedafiltroporitem($noitem);
+      $data["response"]=trim(isset($_REQUEST["response"]));
+      $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
+
+
+      $this->load->view('usuinterno/mdatosmuestra',$data);
+
+    }
 
 
 
@@ -222,19 +236,13 @@ foreach ($data as $key) {
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('Model_Muestra');
-    //$data["boraruser"] = $this->model_user->delete();
-      if(isset($_REQUEST["id"])) {
-        // code...
-        $id = $_REQUEST["id"];
-        $data["borarmuestra"] = $this->Model_Muestra->delete($id);
+
+        $id = trim($_REQUEST["id"]);
+        $data["datosmuestra"] = $this->Model_Muestra->delete($id);
 
         header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra?responsemuestra=1");
         die();
-      }else {
 
-        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra");
-        die();
-      }
 }
 
 

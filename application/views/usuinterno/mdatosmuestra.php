@@ -46,29 +46,7 @@
 
         </style>
 
-        <script type="text/javascript">
 
-        function confirmar() {
-            event.preventDefault();
-
-            Swal.fire({
-                title: '¿Está seguro que desea eliminar la solictud?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si',
-                cancelButtonText: "No",
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-            }).then((result) => {
-                if (result.value) {
-                    return true;
-
-                }
-                return false;
-            })
-        }
-
-        </script>
 
         <script type="text/javascript">
 
@@ -84,7 +62,7 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
             }).then((result) => {
-                if (result.value) {
+                if (result.confirm) {
                     return true;
 
                 }
@@ -206,7 +184,7 @@
                                          <!-- NÚMERO DE ITEM-->
                                          <label class="col-md-1 col-xs-12 control-label">No. item </label>
                                                         <div class="col-md-3 col-xs-12">
-                                                            <input type="text" class="form-control" name="noitem" id="noitem" placeholder="Ingrese No. expediente" />
+                                                            <input type="text" class="form-control" name="noitem" id="noitem" placeholder="Ingrese No. de item" />
                                                         </div>
 
 
@@ -217,7 +195,7 @@
                             <div class="col-md-4" margin-left: auto>
                                  <!-- Boton filtrar que nos va a servir para poder mandar la peticion a nuestro controlador y que capture nuestros datos que estamos solicitando-->
                                      <input name ="buscarmuestra" type="submit" value="Filtrar Muestra" class="btn btn-primary ">
-                                      <a href="<?php echo base_url(); ?>index.php/mantenimientomm" class="btn btn-danger ">Limpiar</a>
+                                      <a href="<?php echo base_url(); ?>index.php/muestra" class="btn btn-danger ">Limpiar</a>
                              </div>
 
                         </form>
@@ -243,6 +221,10 @@
 
                                         <th>Fecha de Creación</th>
 
+                                        <th>No. Item</th>
+
+                                        <th>Nombre item</th>
+
 
 
 
@@ -266,6 +248,10 @@
                                            <td><?= $datosmuestra->Nombreum ?></td>
 
                                            <td><?= $datosmuestra->FechaCreacion ?></td>
+
+                                            <td><?= $datosmuestra->idItems ?></td>
+
+                                             <td><?= $datosmuestra->Nombreitem ?></td>
 
 
 
@@ -311,7 +297,7 @@
                                                 <li class="divider"></li>
                                                 <li><a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar?idMuestra=<?= $datosmuestra->idMuestra ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver etiqueta" ><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" onclick="return confirmarmuestra()" data-toggle="tooltip" data-placement="left" title="Elimina muestra"><span class="material-icons">delete_outline</span></a></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina muestra"><span class="material-icons">delete_outline</span></a></li>
 
 
                                               </ul>
@@ -360,7 +346,7 @@
 
                                                         <label for=""><b>Item</b></label><br>
 
-                                                        <input type="text" class="form-control" value="" readonly>
+                                                        <input type="text" class="form-control" value="<?= $datosmuestra->Nombreitem ?>" readonly>
 
 
 
@@ -384,9 +370,10 @@
 
                                                     <div class="col-md-8">
 
-                                                        <label for=""><b> </b></label><br>
+                                                        <label for=""><b>Fecha</b></label><br>
 
-                                                        <input type="text" class="form-control" value="" readonly>
+
+                                                        <input type="text" class="form-control" value="<?= $datosmuestra->FechaModificacion ?>" readonly>
 
 
 
@@ -636,9 +623,9 @@
 
                                                       <div class="col-md-8">
 
-                                                          <label for=""><b>NIT ralcionado</b></label><br>
+                                                          <label for=""><b>Expediente</b></label><br>
 
-                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Nit  ?>" readonly>
+                                                          <input type="text" class="form-control" value="<?= $datosmuestra->Nosolicitud ?>" readonly>
 
 
 
@@ -678,6 +665,9 @@
                                 </tbody>
 
                             </table>
+                            <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+                              <a href="<?php echo base_url(); ?>index.php/report/resportemuestras" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar excel"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span> Exportar</a>
+
 
                        </div>
 

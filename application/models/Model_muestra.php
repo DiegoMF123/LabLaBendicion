@@ -6,12 +6,13 @@ class Model_Muestra extends CI_Model
 
     $this->load->database();
     $query = $this->db->query("
-    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
-    um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit, exp.Correlativo
-    from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join TipoSolicitante ts inner join Expediente exp
-    where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
-    and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente;
-
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+      um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit
+      from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli
+      inner join TipoSolicitante ts inner join Expediente exp inner join Items item
+      where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+      and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+      and mu.idItems = item.idItems;
       ");
     return $query->result();
   }
@@ -114,7 +115,8 @@ class Model_Muestra extends CI_Model
         FechaCreacion,
         tamanio,
         tipo,
-        Solicitud_idSolicitud
+        Solicitud_idSolicitud,
+        idItems
         )values(
         '".$presentacion."',
         '".$cantunid."',
@@ -124,7 +126,8 @@ class Model_Muestra extends CI_Model
         STR_TO_DATE('".$fecha."', '%d-%m-%Y %H:%i:%s'),
         '".$tamanio."',
         '".$tipo."',
-        '".$id."'
+        '".$id."',
+        5
       );
 
       ");
@@ -157,21 +160,36 @@ class Model_Muestra extends CI_Model
   public function busquedafiltro($numerosolicitud){
     $this->load->database();
     $query=$this->db->query("
-    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra,
-   um.Nombreum, mu.FechaCreacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit
-   from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join TipoSolicitante ts inner join Expediente exp
-   where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
-   and mu.Solicitud_idSolicitud = soli.idSolicitud
-   and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente and
- mu.Solicitud_idSolicitud = soli.idSolicitud and mu.Solicitud_idSolicitud = '".$numerosolicitud."';
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+      um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit
+      from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli
+      inner join TipoSolicitante ts inner join Expediente exp inner join Items item
+      where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+      and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+      and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = '".$numerosolicitud."';
     ");
     return $query->result();
   }
 
+  public function busquedafiltroporitem($noitem){
+    $this->load->database();
+    $query=$this->db->query("
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+        um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nit
+        from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli
+        inner join TipoSolicitante ts inner join Expediente exp inner join Items item
+        where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+        and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+        and mu.idItems = item.idItems and mu.idItems = '".$noitem."';
+    ");
+    return $query->result();
+  }
+
+
   public function items(){
     $this->load->database();
     $query = $this->db->query("
-    select * from items;
+    SELECT * FROM Items LIMIT 0,4 ;
       ");
 
     return $query->result();
@@ -191,6 +209,17 @@ class Model_Muestra extends CI_Model
 
   }
 
+  public function deasociaritems($codigomuestra,$fechamodifi){
+    $this->load->database();
+    $query = $this->db->query("
+    update Muestra
+      set idMuestra='".$codigomuestra."',
+         FechaModificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
+         idItems= 5
+         where idMuestra ='".$codigomuestra."'
+      ");
+
+  }
 
 
 

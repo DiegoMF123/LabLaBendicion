@@ -49,7 +49,7 @@
         <script type="text/javascript">
 
         function confirmar() {
-            event.preventDefault();
+
 
             Swal.fire({
                 title: '¿Está seguro que desea eliminar la solictud?',
@@ -405,7 +405,7 @@
                                                   <li class="divider"></li>
                                                   <li><a href="<?php echo base_url(); ?>index.php/muestra" class="btn btn-primary"  data-toggle="tooltip" data-placement="left" title="Muestra"><span class="material-icons">inventory</span></a></li>
                                                   <li class="divider"></li>
-                                                  <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" onclick="return confirmar()" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
 
 
                                                 </ul>
