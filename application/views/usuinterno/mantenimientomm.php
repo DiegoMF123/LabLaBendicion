@@ -392,19 +392,21 @@
                                                 <ul class="dropdown-menu">
 
                                                   <li>  <a href="" data-toggle="modal" data-target="#myModal4<?= $datosoli->idSolicitud ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del expediente"><span class="material-icons">folder</span></a></li>
-                                                  <li class="divider"></li>
+
                                                   <li><a href="" data-toggle="modal" data-target="#myModal3<?= $datosoli->idSolicitud ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del cliente"><span class="material-icons">contact_page</span></a></li>
-                                                  <li class="divider"></li>
+
                                                   <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosoli->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
-                                                  <li class="divider"></li>
+
                                                   <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
-                                                  <li class="divider"></li>
-                                                  <li>  <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestado?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Cambiar el estado de la solictud"><span class="material-icons">edit</span></a></li>
-                                                  <li class="divider"></li>
+
+                                                  <li>    <a href="" data-toggle="modal" data-target="#myModalasignado<?= $datosoli->idSolicitud ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">task</span></a></li>
+
+                                                  <li>  <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestado?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Enviado"><span class="material-icons">edit</span></a></li>
+
                                                   <li><a href="<?php echo base_url(); ?>index.php/muestra/nuevo?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Crear muestra"><span class="material-icons">add</span></a></li>
-                                                  <li class="divider"></li>
+
                                                   <li><a href="<?php echo base_url(); ?>index.php/muestra" class="btn btn-primary"  data-toggle="tooltip" data-placement="left" title="Muestra"><span class="material-icons">inventory</span></a></li>
-                                                  <li class="divider"></li>
+
                                                   <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
 
 
