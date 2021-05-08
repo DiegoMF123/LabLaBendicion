@@ -366,6 +366,48 @@ redirect('restrinct');
     }
 }
 
+public function modificarestadodos(){
+
+  $this->load->helper('url');
+  $this->load->library('session');
+  $this->load->model('model_solicitud');
+  $id = trim($_REQUEST["id"]);
+  $rol= $_SESSION["role"];
+
+
+  switch ($rol) {
+    case '1':
+
+redirect('restrinct');
+      break;
+    case '2':
+    $data["estado"]= $this->model_solicitud->estado();
+    $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+    $data["response"]=trim(isset($_REQUEST["response"]));
+    $this->load->view('usuinterno/editarestado',$data);
+
+      break;
+    case '3':
+
+redirect('restrinct');
+
+      break;
+    case '4':
+
+redirect('restrinct');
+      break;
+      case '5':
+
+        redirect('restrinct');
+        break;
+
+    default:
+    redirect('restrinct');
+      break;
+    }
+}
+
+
 
 
 
@@ -388,6 +430,31 @@ public function updatedata(){
               die();
 
             }
+
+
+            // Funcionalidad para editar el formulario de los puntos de atención vista editarpda
+            public function updatedatados(){
+              $this->load->helper('url');
+              $this->load->library('session');
+              $this->load->model('model_solicitud');
+            // Estas variables vienen de las vista editarpda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
+
+              $id=trim($_REQUEST["id"]);
+              $estado=trim($_REQUEST["estado"]);
+              $fechamodifi= date('d-m-Y H:i:s');
+              $observaciones=trim($_REQUEST["observaciones"]);
+
+
+            // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
+              $data["datosoli"]= $this->model_solicitud->updatestadodos($id,$estado,$fechamodifi,$observaciones);
+
+              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/modificarestadodos?response=1");
+                          die();
+
+                        }
+
+
+
 
 
 public function delete(){

@@ -399,7 +399,7 @@
 
                                                   <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
 
-                                                  <li>    <a href="" data-toggle="modal" data-target="#myModalasignado<?= $datosoli->idSolicitud ?>" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">task</span></a></li>
+                                                  <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadodos?id=<?= $datosoli->idSolicitud  ?>"class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">task</span></a></li>
 
                                                   <li>  <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestado?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Enviado"><span class="material-icons">edit</span></a></li>
 
@@ -1085,10 +1085,8 @@
 
                                                                 <label for=""><b>Observaciones </b></label><br>
 
-                                                                <input type="text" class="form-control" value="" readonly>
-
-
-
+                                                                <textarea type="text" class="form-control"  readonly><?= $datosoli->Observaciones ?></textarea>
+    
                                                             </div>
 
                                                             <div class="col-md-2">

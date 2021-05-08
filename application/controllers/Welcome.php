@@ -33,7 +33,7 @@ class Welcome extends CI_Controller {
 
 						 case '3':
 						 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
- 							$this->load->view('usuexterno/principal',$data);
+ 							$this->load->view('autorizador/principal',$data);
  						 break;
 
 						default:

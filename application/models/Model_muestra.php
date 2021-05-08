@@ -6,13 +6,13 @@ class Model_Muestra extends CI_Model
 
     $this->load->database();
     $query = $this->db->query("
-    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, est.Nombrestado,item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
       um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nombre, exp.Nit, exp.Direccion, sc.NumeroSoporte, sc.Telefono, sc.Correo
       from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join SoporteContacto sc
-      inner join TipoSolicitante ts inner join Expediente exp inner join Items item
+      inner join TipoSolicitante ts inner join Expediente exp inner join Items item inner join Estados est
       where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
       and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
-      and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud ;
+      and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud and mu.Estados_idEstados = est.idEstados ;
 
       ");
     return $query->result();
@@ -117,7 +117,8 @@ class Model_Muestra extends CI_Model
         tamanio,
         tipo,
         Solicitud_idSolicitud,
-        idItems
+        idItems,
+        Estados_idEstados
         )values(
         '".$presentacion."',
         '".$cantunid."',
@@ -128,7 +129,8 @@ class Model_Muestra extends CI_Model
         '".$tamanio."',
         '".$tipo."',
         '".$id."',
-        5
+        5,
+        4
       );
 
       ");
@@ -220,6 +222,18 @@ class Model_Muestra extends CI_Model
          where idMuestra ='".$codigomuestra."'
       ");
 
+  }
+
+  public function documentoautorizar($id,$estado,$fechamodifi){
+
+  $this->load->database();
+  $query =  $this->db->query("
+  update Muestra
+    set idMuestra='".$id."',
+       FechaModificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
+       Estados_idEstados= '".$estado."'
+       where idMuestra ='".$id."'
+  ");
   }
 
 

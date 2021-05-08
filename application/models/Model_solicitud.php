@@ -6,7 +6,7 @@ class Model_Solicitud extends CI_Model
     $this->load->database();
     $query = $this->db->query("
 
-    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
      tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
      from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
      inner join Expediente exp
@@ -196,7 +196,20 @@ class Model_Solicitud extends CI_Model
 
       $query=$this->db->query("
 
-        SELECT * FROM Estados LIMIT 2,10 ;
+        SELECT * FROM Estados LIMIT 3,10 ;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estadodocumento(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 2,2;
 
       ");
 
@@ -208,7 +221,7 @@ class Model_Solicitud extends CI_Model
     $this->load->database();
     $query = $this->db->query("
 
-    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion, soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
   tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo
   from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
  where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
@@ -229,6 +242,19 @@ update Solicitud
   set idSolicitud='".$id."',
      Fechamodificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
      Estados_idEstados= '".$estado."'
+     where idSolicitud ='".$id."'
+");
+}
+
+public function updatestadodos($id,$estado,$fechamodifi,$observaciones){
+
+$this->load->database();
+$query =  $this->db->query("
+update Solicitud
+  set idSolicitud='".$id."',
+     Fechamodificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
+     Estados_idEstados= '".$estado."',
+     Observaciones= '".$observaciones."'
      where idSolicitud ='".$id."'
 ");
 }

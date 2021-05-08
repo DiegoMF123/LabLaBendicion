@@ -13,6 +13,8 @@ class CrearPdf extends CI_Controller {
 
     $generado= "".$this->generarCodigo(8)."";
     $generadodos= "".$this->generarCodigodos(5)."";
+    $generadotres= "".$this->generarCodigotres(8)."";
+    $generadocuatro= "".$this->generarCodigocuatro(5)."";
 
     foreach ($muestra as $muestradatos) {
       // code...
@@ -36,7 +38,7 @@ class CrearPdf extends CI_Controller {
       <br>
 
       <div style='width:1000px; height:50px;'><b>Muestra:</b> ".$muestradatos->idMuestra." || <b>Soporte: </b>".$muestradatos->Abreviatura."-".$generado."-".$generadodos." </div>
-      <div style='width:1000px; height:50px;'><b>Solicitud: </b>".$muestradatos->idSolicitud." ||  <b>Tipo de solicitante: </b> ".$muestradatos->Abreviaturats."-".$generado."-".$generadodos."</div>
+      <div style='width:1000px; height:50px;'><b>Solicitud: </b>".$muestradatos->idSolicitud." ||  <b>Tipo de solicitante: </b> ".$muestradatos->Abreviaturats."-".$generadotres."-".$generadocuatro."</div>
       <div style='width:1000px; height:50px;'><b>Expediente: </b>".$muestradatos->Correlativo." </div>
       <div style='width:1000px; height:50px;'><b>Descripcion de la presentación: </b>".$muestradatos->Presentacion." </div>
       <div align='center'> <img src='assets/img/logo.png' width='250'></div>
@@ -64,11 +66,27 @@ class CrearPdf extends CI_Controller {
 
     public function generarCodigodos($longitud) {
          $key = '';
-         $pattern = '1234567890';
+         $pattern = '9632587410';
          $max = strlen($pattern)-1;
          for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
          return $key;
       }
+
+      public function generarCodigotres($longitud) {
+           $key = '';
+           $pattern = '1234567890';
+           $max = strlen($pattern)-1;
+           for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+           return $key;
+        }
+
+        public function generarCodigocuatro($longitud) {
+             $key = '';
+             $pattern = '9632587410';
+             $max = strlen($pattern)-1;
+             for($i=0;$i < $longitud;$i++) $key .= $pattern{mt_rand(0,$max)};
+             return $key;
+          }
 
 
 }

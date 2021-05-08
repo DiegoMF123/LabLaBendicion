@@ -230,7 +230,7 @@
                                         <th>Nombre item</th>
 
                                         <th>Documento</th>
-
+                                        <th>Estado Documento</th>
 
 
 
@@ -260,6 +260,8 @@
                                              <td><?= $datosmuestra->Nombreitem ?></td>
 
                                              <td><?= $datosmuestra->Nombre_archivo ?></td>
+
+                                             <td><?= $datosmuestra->Nombrestado ?></td>
 
 
 
