@@ -212,7 +212,7 @@
                                               } ?>
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
-                                            <form  id="registrationForm" name="formulario" class="form-horizontal" action="updatedatados" method="GET" onsubmit="return confirmar()">
+                                            <form  id="registrationForm" name="formulario" class="form-horizontal" action="updatedata" method="GET" onsubmit="return confirmar()">
 
                                               <?php
                                                       foreach ($datosoli as $datosoli) {
@@ -221,71 +221,35 @@
                                               ?>
 
                                               <div class="form-group">
-                                                          <label class="col-md-1 col-xs-12 control-label">Número de solictud</label>
-                                                          <div class="col-md-2 col-xs-12">
+                                                          <label class="col-md-2 col-xs-12 control-label">Número de solictud</label>
+                                                          <div class="col-md-3 col-xs-12">
                                                               <input type="text" class="form-control" name="id" value="<?= $datosoli->idSolicitud ?>" placeholder="" readonly/>
                                                           </div>
 
+                                                          <label class="col-md-2 col-xs-12 control-label">Estado</label>
+                                                                <div class="col-md-3 col-xs-12">
+                                                                  <select class="form-control" name="estado" required>
+                                                                    <!-- Para poder llamar los datos de la base de datos, que en este caso son los cargos
+                                                                   abrimos llaves php y realizamos un nuevo foreach que en este caso le declaramos una variable que es la que
+                                                                 vamos a llamar en el controlador para poder mandarselos a nuestro modelo y que en el modelo nos retorne los datos
+                                                               que necesitamos, luego de as declaramos otra variable que es la que vamos a usar practicamente en nuestra vista para poder
+                                                               mostrar los datos o el dato que nos devuelva nuestra consulta del modelo-->
+                                                                     <option value="" hidden selected >Seleccione una opción</option>
+                                                               <?php foreach ($estado as $estado) {
+                                                                 // code...
+                                                               ?>
+                                                               <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
+                                                             sera la el nombre del estado, pero para ello necesitamos el id y el nombre del estado que se seleccione segun el ID-->
+                                                                 <option value="<?=$estado->idEstados  ?>"><?= $estado->Nombrestado ?></option>
 
-                                                          <label class="col-md-1 col-xs-12 control-label">Descripcion</label>
 
-                                                          <div class="col-md-3 col-xs-12">
-
-                                                            <textarea rows="3"  id="desc" class="form-control" name="desc" cols="100"  readonly><?= $datosoli->Descripcion ?></textarea>
-
+                                                           <?php    } ?>
+                                                           </select>
 
                                                       </div>
-
-                                                    <label class="col-md-1 col-xs-12 control-label">Estado Actual</label>
-
-                                                      <div class="col-md-2 col-xs-12">
-                                                          <input type="text" class="form-control" name="estadoprueba" value="<?= $datosoli->Nombrestado ?>" placeholder="" readonly/>
-                                                      </div>
-
-                                                      <br>
-                                                      <br>
-                                                      <br>
-
-                                                      <br>
-                                                      <br>
-                                                      <br>
                                                       <br>
 
 
-                                                      <div class="form-group">
-
-                                                        <label class="col-md-1 col-xs-12 control-label">Observaciones</label>
-
-                                                        <div class="col-md-3 col-xs-12">
-
-                                                          <textarea rows="3"  id="observaciones" class="form-control" name="observaciones" cols="60" ><?= $datosoli->Observaciones ?></textarea>
-
-
-                                                    </div>
-
-
-
-                                                        <label class="col-md-1 col-xs-12 control-label">Estado</label>
-                                                              <div class="col-md-3 col-xs-12">
-                                                                <select class="form-control" name="estado" required>
-                                                                  <!-- Para poder llamar los datos de la base de datos, que en este caso son los cargos
-                                                                 abrimos llaves php y realizamos un nuevo foreach que en este caso le declaramos una variable que es la que
-                                                               vamos a llamar en el controlador para poder mandarselos a nuestro modelo y que en el modelo nos retorne los datos
-                                                             que necesitamos, luego de as declaramos otra variable que es la que vamos a usar practicamente en nuestra vista para poder
-                                                             mostrar los datos o el dato que nos devuelva nuestra consulta del modelo-->
-                                                                   <option value="" hidden selected >Seleccione una opción</option>
-                                                             <?php foreach ($estado as $estado) {
-                                                               // code...
-                                                             ?>
-                                                             <!--Abrimos llaves de php para poder llamar los datos que necesitamos para poder mostrar los valores que en este caso
-                                                           sera la el nombre del estado, pero para ello necesitamos el id y el nombre del estado que se seleccione segun el ID-->
-                                                               <option value="<?=$estado->idEstados  ?>"><?= $estado->Nombrestado ?></option>
-
-
-                                                         <?php    } ?>
-                                                         </select>
-
-                                                    </div>
 
                                                       </div>
 
@@ -385,7 +349,7 @@
 
                                                 <i class="fa fa-briefcase"></i>
 
-                                                <span class="menu-title">Mantenimiento</span>
+                                                <span class="menu-title">Opciones</span>
 
                                                 <i class="arrow"></i>
 
@@ -395,9 +359,9 @@
 
                                             <ul class="collapse">
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i
-                                                            class="fa fa-caret-right"></i>Análisis de muestras medicas /
-                                                        Clasificación / Mantenimiento</a></li>
+                                              <li><a href="<?php echo base_url(); ?>index.php/Autorizar"><i class="fa fa-caret-right"></i>Autorizador De Documentos Para Muestras</a></li>
+
+                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Autorizar solicitudes</a></li>
 
 
                                             </ul>

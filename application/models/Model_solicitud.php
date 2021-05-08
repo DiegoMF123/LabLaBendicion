@@ -100,7 +100,7 @@ class Model_Solicitud extends CI_Model
        STR_TO_DATE('".$fecha."', '%d-%m-%Y %H:%i:%s'),
        '".$tiposoli."',
        '".$tiposolid."',
-       '3',
+       '4',
        '".$idusuario."'
        )
 

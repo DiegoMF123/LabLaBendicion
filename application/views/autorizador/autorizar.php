@@ -351,7 +351,7 @@
 
                                          <i class="fa fa-briefcase"></i>
 
-                                         <span class="menu-title">Mantenimiento</span>
+                                         <span class="menu-title">Opciones</span>
 
                                          <i class="arrow"></i>
 
@@ -361,7 +361,9 @@
 
                                          <ul class="collapse">
 
-                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
+                                            <li><a href="<?php echo base_url(); ?>index.php/Autorizar"><i class="fa fa-caret-right"></i>Autorizador De Documentos Para Muestras</a></li>
+
+                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Autorizar solicitudes</a></li>
 
                                          </ul>
 
