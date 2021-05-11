@@ -80,7 +80,6 @@ class Muestra extends CI_Controller{
 
 
 
-
     public function nuevo(){
         // Hace referencia para que pueda cargar la url que se va a usar en el proyecto, si no, no funciona
     $this->load->helper('url');
@@ -244,13 +243,6 @@ foreach ($data as $key) {
         die();
 
 }
-
-
-
-
-
-
-
 
 
     }

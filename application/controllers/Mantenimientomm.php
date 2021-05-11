@@ -10,12 +10,21 @@ class Mantenimientomm extends CI_Controller{
 
     $this->load->model('Model_Solicitud');
       $this->load->model('Model_Muestra');
-
+      $this->load->model('model_login');
 
     $rol= $_SESSION["role"];
     switch ($rol) {
       case '1':
-        redirect('restrinct');
+
+      $user = $_SESSION["idusuario"];
+
+      $data["datosoli"]= $this->Model_Solicitud->datosSolicitudusuario($user);
+      $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+      $data["response"]=trim(isset($_REQUEST["response"]));
+      $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+      $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+            $this->load->view('usuario/mantenimientomm',$data);
 
         break;
       case '2':

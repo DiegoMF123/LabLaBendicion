@@ -6,13 +6,31 @@ class Model_Solicitud extends CI_Model
     $this->load->database();
     $query = $this->db->query("
 
-    select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
-     tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
-     from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
-     inner join Expediente exp
-    where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
-    and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
-    and soli.Nosolicitud = exp.Correlativo  order by soli.idSolicitud asc;
+      select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudusuario($user){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Usuarios_idUsuarios = '".$user."' order by soli.idSolicitud asc;
 
 
 
@@ -93,7 +111,8 @@ class Model_Solicitud extends CI_Model
     idTipoSolicitud,
     idTipoSolicitante,
     Estados_idEstados,
-    Usuarios_idUsuarios
+    Usuarios_idUsuarios,
+    idEstadosE
      )values(
        '".$numsoli."',
        '".$desc."',
@@ -101,7 +120,8 @@ class Model_Solicitud extends CI_Model
        '".$tiposoli."',
        '".$tiposolid."',
        '4',
-       '".$idusuario."'
+       '".$idusuario."',
+       '1'
        )
 
     ");
@@ -262,8 +282,10 @@ update Solicitud
 public function eliminarsolicitud($id){
       $this->load->database();
       $query = $this->db->query("
-      delete from Solicitud
-      where idSolicitud ='".$id."'
+      update Solicitud
+        set idSolicitud='".$id."',
+           	idEstadosE= 2
+           where idSolicitud ='".$id."'
       ");
 
   }
@@ -283,7 +305,7 @@ public function eliminarsolicitud($id){
 
     $this->load->database();
     $query = $this->db->query("
-    Select * from estados
+    SELECT * FROM Estados LIMIT 3,10 ;
 
       ");
     return $query->result();

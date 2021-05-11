@@ -50,25 +50,22 @@
 
         <script type="text/javascript">
 
+
+
         function confirmarmuestra() {
-            event.preventDefault();
 
-            Swal.fire({
-                title: '¿Está seguro que desea eliminar la muestra?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si',
-                cancelButtonText: "No",
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-            }).then((result) => {
-                if (result.confirm) {
-                    return true;
+          var mensaje = confirm("¿Está seguro que desea eliminar la muestra?");
 
-                }
-                return false;
-            })
+          if (mensaje == true) {
+            return true;
+          }
+
+          else {
+            return false;
+          }
+
         }
+
 
         </script>
 
@@ -310,7 +307,7 @@
 
                                                 <li><a href="<?php echo base_url(); ?>index.php/CrearPdf/descargar?idMuestra=<?= $datosmuestra->idMuestra ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver etiqueta" ><i class="fa fa-file-pdf-o" aria-hidden="true" ></i></a></li>
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina muestra"><span class="material-icons">delete_outline</span></a></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/muestra/delete?id=<?= $datosmuestra->idMuestra  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina muestra" onclick="confirmarmuestra()"><span class="material-icons">delete_outline</span></a></li>
 
 
                                               </ul>

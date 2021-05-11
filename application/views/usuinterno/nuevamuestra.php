@@ -222,7 +222,7 @@
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
                                             <form id="registrationForm" name="formulario" class="form-horizontal"
-                                                method="post" action="" enctype="multipart/form-data">
+                                                method="post" action="" enctype="multipart/form-data" >
 
                                                 <?php
                                               foreach ($datos as $dato) {

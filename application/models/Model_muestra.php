@@ -6,13 +6,15 @@ class Model_Muestra extends CI_Model
 
     $this->load->database();
     $query = $this->db->query("
-    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, est.Nombrestado,item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
-      um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nombre, exp.Nit, exp.Direccion, sc.NumeroSoporte, sc.Telefono, sc.Correo
-      from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join SoporteContacto sc
-      inner join TipoSolicitante ts inner join Expediente exp inner join Items item inner join Estados est
-      where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
-      and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
-      and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud and mu.Estados_idEstados = est.idEstados ;
+
+        select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, est.Nombrestado,item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+        um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nombre, exp.Nit, exp.Direccion, sc.NumeroSoporte, sc.Telefono, sc.Correo
+        from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join SoporteContacto sc
+        inner join TipoSolicitante ts inner join Expediente exp inner join Items item inner join Estados est
+        where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+        and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+        and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud and mu.Estados_idEstados = est.idEstados  and mu.idEstadosE = 1;
+    
 
       ");
     return $query->result();
@@ -118,7 +120,8 @@ class Model_Muestra extends CI_Model
         tipo,
         Solicitud_idSolicitud,
         idItems,
-        Estados_idEstados
+        Estados_idEstados,
+        idEstadosE
         )values(
         '".$presentacion."',
         '".$cantunid."',
@@ -130,7 +133,8 @@ class Model_Muestra extends CI_Model
         '".$tipo."',
         '".$id."',
         5,
-        4
+        4,
+        1
       );
 
       ");
@@ -153,8 +157,12 @@ class Model_Muestra extends CI_Model
   public function delete($id){
         $this->load->database();
         $query = $this->db->query("
-        delete from Muestra
-        where idMuestra ='".$id."'
+
+        update Muestra
+          set idMuestra='".$id."',
+              idEstadosE= 2
+             where idMuestra ='".$id."'
+
         ");
       //  return $query->result();
     }

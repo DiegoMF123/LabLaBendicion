@@ -257,7 +257,7 @@
 
                                                   <li><a href="<?php echo $direccion; ?>"  class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Ver documento"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></li>
                                                   <li class="divider"></li>
-                                                <li><a href="<?php echo base_url(); ?>index.php/Autorizar/autorizardoc?codigomuestra=<?= $datosmuestra->idMuestra ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Desasociar"><span class="material-icons">thumb_up</span></a></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/Autorizar/autorizardoc?codigomuestra=<?= $datosmuestra->idMuestra ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Autorizar"><span class="material-icons">thumb_up</span></a></li>
 
 
                                               </ul>

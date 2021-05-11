@@ -46,52 +46,22 @@
 
         </style>
 
+
         <script type="text/javascript">
 
         function confirmar() {
 
+          var mensaje = confirm("¿Deseas eliminar la solictud?");
 
-            Swal.fire({
-                title: '¿Está seguro que desea eliminar la solictud?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si',
-                cancelButtonText: "No",
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-            }).then((result) => {
-                if (result.value) {
-                    return true;
+          if (mensaje == true) {
+            return true;
+          }
 
-                }
-                return false;
-            })
+          else {
+            return false;
+          }
+
         }
-
-        </script>
-
-        <script type="text/javascript">
-
-        function confirmarmuestra() {
-            event.preventDefault();
-
-            Swal.fire({
-                title: '¿Está seguro que desea eliminar la muestra?',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si',
-                cancelButtonText: "No",
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-            }).then((result) => {
-                if (result.value) {
-                    return true;
-
-                }
-                return false;
-            })
-        }
-
         </script>
 
 
@@ -407,7 +377,7 @@
 
                                                   <li><a href="<?php echo base_url(); ?>index.php/muestra" class="btn btn-primary"  data-toggle="tooltip" data-placement="left" title="Muestra"><span class="material-icons">inventory</span></a></li>
 
-                                                  <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina la solictud"><span class="material-icons">delete_outline</span></a></li>
+                                                  <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm/delete?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-danger" data-toggle="tooltip" data-placement="left" title="Elimina la solictud" onclick="confirmar()" ><span class="material-icons">delete_outline</span></a></li>
 
 
                                                 </ul>
@@ -1086,7 +1056,7 @@
                                                                 <label for=""><b>Observaciones </b></label><br>
 
                                                                 <textarea type="text" class="form-control"  readonly><?= $datosoli->Observaciones ?></textarea>
-    
+
                                                             </div>
 
                                                             <div class="col-md-2">
