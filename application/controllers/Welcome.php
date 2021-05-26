@@ -36,6 +36,21 @@ class Welcome extends CI_Controller {
  							$this->load->view('autorizador/principal',$data);
  						 break;
 
+						 case '4':
+						 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+								$this->load->view('analista/principal',$data);
+							 break;
+
+							 case '5':
+							 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+									$this->load->view('jefe/principal',$data);
+								 break;
+
+								 case '6':
+								 $data["datosmuestra"]= $this->Model_Muestra->datosmuestra();
+										$this->load->view('usuarioasignacion/principal',$data);
+									 break;
+
 						default:
 						// si se ingresa un rol no creado, no mostrara pantalla principal
 						 $redirect = base_url()."/index.php/welcome/login";
@@ -48,7 +63,7 @@ class Welcome extends CI_Controller {
 
     }else {
 			// Si no se cumple, seguirá mostrando el login
-      header("Location: http://192.168.0.10:8888/LabLaBendicion/");
+      header("Location: http://192.168.0.3:8888/LabLaBendicion/");
       die();
     }
 
@@ -96,7 +111,7 @@ class Welcome extends CI_Controller {
 							);
 							$this->session->set_userdata($newdata);
 							// Si se cumple el logeo y si existen el usuario y la contraseña, redireccionará a esta url
-							header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/welcome");
+							header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/welcome");
 							die();
 
 						}else {
@@ -108,9 +123,8 @@ class Welcome extends CI_Controller {
 
 // si no se ejecuta, mostrará el login
 			$this->load->view('login');
-
-
 	}
+
 
 	public function salir(){
 		$this->load->helper('url');
@@ -119,86 +133,15 @@ class Welcome extends CI_Controller {
 	// Cerramos la sesión
 	session_destroy();
 	// Nos redireccionará al login
-	header("Location: http://192.168.0.10:8888/LabLaBendicion/");
+	header("Location: http://192.168.0.3:8888/LabLaBendicion/");
 	die();
 	}
 
 
 
-								public function usuinterno(){
-
-									$this->load->helper('url');
-									$this->load->library('session');
-									$this->load->model("model_pda");
-
-										$rol= $_SESSION["role"];
-														switch ($rol) {
-															case '1':
-
-															$this->load->view('usuario/vstprin');
-
-																break;
-															case '2':
-
-																redirect('restrinct');
-																break;
-															case '3':
-															redirect('restrinct');
-
-																break;
-															case '4':
-															$this->load->view('usuario/vstprin');
-
-																break;
-																case '5':
-
-																redirect('restrinct');
-																	break;
-
-															default:
-															redirect('restrinct');
-																break;
-													}
-
-								}
 
 
-																public function usuexterno(){
 
-																	$this->load->helper('url');
-																	$this->load->library('session');
-																	$this->load->model("model_pda");
-
-																		$rol= $_SESSION["role"];
-																						switch ($rol) {
-																							case '1':
-
-																							$this->load->view('usuario/vstprin');
-
-																								break;
-																							case '2':
-
-																								redirect('restrinct');
-																								break;
-																							case '3':
-																							redirect('restrinct');
-
-																								break;
-																							case '4':
-																							$this->load->view('usuario/vstprin');
-
-																								break;
-																								case '5':
-
-																								redirect('restrinct');
-																									break;
-
-																							default:
-																							redirect('restrinct');
-																								break;
-																					}
-
-																}
 
 
 

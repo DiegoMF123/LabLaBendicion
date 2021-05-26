@@ -398,8 +398,8 @@
                                                   <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosoli->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
 
                                                   <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
-
-                                                        <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadodos?id=<?= $datosoli->idSolicitud  ?>"class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">edit</span></a></li>
+                                              
+                                                  <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadodos?id=<?= $datosoli->idSolicitud  ?>"class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">edit</span></a></li>
 
 
                                                 </ul>
@@ -1110,6 +1110,7 @@
                                   </tbody>
 
                               </table>
+
 
 
                          </div>

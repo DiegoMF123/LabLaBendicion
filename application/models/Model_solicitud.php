@@ -20,6 +20,132 @@ class Model_Solicitud extends CI_Model
     return $query->result();
   }
 
+  public function datosSolicitudautorizador(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 6 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudanalista(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 7 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudanalistados(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 8 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudjefe(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 9 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudjefefinalizado(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 10 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudjeferechazado(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 11 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosSolicitudasignacion(){
+    $this->load->database();
+    $query = $this->db->query("
+
+      select soli.idSolicitud, soli.Estados_idEstados, soli.Nosolicitud, soli.Descripcion,soli.Observaciones, soli.Fechacreacion, est.Nombrestado, tsd.Abreviatura,
+       tsd.NombreTipo, ts.Abreviaturats, ts.Tiposolicitante, sc.NumeroSoporte, sc.Telefono, sc.Correo, exp.Nit, exp.Correlativo,  exp.Direccion, exp.Nombre
+       from Solicitud as soli inner join TipoSolicitud tsd inner join TipoSolicitante ts inner join SoporteContacto sc inner join Estados est
+       inner join Expediente exp
+      where soli.idTipoSolicitud = tsd.idTipoSolicitud and soli.idTipoSolicitante = ts.idTipoSolicitante
+      and soli.idSolicitud = sc.Solicitud_idSolicitud and soli.Estados_idEstados = est.idEstados
+      and soli.Nosolicitud = exp.Correlativo and soli.idEstadosE = 1 and soli.Estados_idEstados = 5 order by soli.idSolicitud asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
   public function datosSolicitudusuario($user){
     $this->load->database();
     $query = $this->db->query("
@@ -157,8 +283,6 @@ class Model_Solicitud extends CI_Model
 
   public function codigosolisoporte(){
 
-
-
     $this->load->database();
 
     $query = $this->db->query("
@@ -216,13 +340,82 @@ class Model_Solicitud extends CI_Model
 
       $query=$this->db->query("
 
-        SELECT * FROM Estados LIMIT 3,10 ;
+        SELECT * FROM Estados LIMIT 5,1 ;
 
       ");
 
       return $query->result();
 
   }
+
+  public function estadoautorizar(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 4,1;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estadoasignar(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 6,1;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estadoanalista(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 7,1;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estadoanalistados(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 8,1;
+
+      ");
+
+      return $query->result();
+
+  }
+
+  public function estadofinalizado(){
+      $this->load->database();
+
+      $query=$this->db->query("
+
+        SELECT * FROM Estados LIMIT 9,10;
+
+      ");
+
+      return $query->result();
+
+  }
+
+
+
+
 
   public function estadodocumento(){
       $this->load->database();
@@ -279,12 +472,14 @@ update Solicitud
 ");
 }
 
-public function eliminarsolicitud($id){
+public function eliminarsolicitud($id,$fechaeliminacion,$ip){
       $this->load->database();
       $query = $this->db->query("
       update Solicitud
         set idSolicitud='".$id."',
-           	idEstadosE= 2
+           	idEstadosE= 2,
+            FechaEliminacion =  STR_TO_DATE('".$fechaeliminacion."', '%d-%m-%Y %H:%i:%s'),
+            ipeliminacion = '".$ip."'
            where idSolicitud ='".$id."'
       ");
 

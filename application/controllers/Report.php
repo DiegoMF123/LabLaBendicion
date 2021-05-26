@@ -14,28 +14,34 @@ public function prueba(){
   var_dump($listInfo);
 }
 
+//Creamos la función reportegeneral
   public function reportegeneral(){
-    // create file name
-
-    // en los excel el campo de  categoria es el campo de operador
+    //Cargamos la libreria session
     $this->load->library('session');
+    //Generamos una variable rol la cual nos adjuntara el tipo de rol al que estamos accediendo
     $rol = $_SESSION["role"];
+    //Cargamos el helper form
     $this->load->helper('form');
+    //Carmos la url para que nos cargue la pagina
         $this->load->helper('url');
 
     switch ($rol) {
       case '1':
-
+      // Para el usuario con el rol 1 no tiene acceso a descargar el excel
         redirect('restrinct');
         break;
       case '2':
+      //Definomos como se va a llamar el nombre del docuemento que vamos a descargar
       $fileName = 'data-'.time().'.xlsx';
-      // load excel library
+      // Cargamos la libreria excel
       $this->load->library('excel');
+      // Definimos una variable la cual le cargaremos los valores del modelo reportes de la función reportegeneral
       $listInfo = $this->reportes->reportegeneral();
+      //Creamos un objeto para llamar la función phphexcel de la librería
       $objPHPExcel = new PHPExcel();
+      // Con esto definimos que nuestro conteo de valores este vacío
       $objPHPExcel->setActiveSheetIndex(0);
-      // set Header
+      // Defininmos el valor de la primera fila en donde se pondrá el nombre de los campos que deseamos mostrar en el excel
       $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Código muestra');
       $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tipo muestra');
       $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Código solicitud');
@@ -55,6 +61,9 @@ public function prueba(){
 
       // set Row
       $rowCount = 2;
+      // Definimos un foreach para poder mandarle los datos que queremos mostrarle al excel, la variable listinfo nos define todos los valores que estamos agarrando de nuestro modelo
+      // Para luego mandarselos a una nueva variable llamada $list y esa variable list nos traera consigo el nombre de los campos que deseamos mandar a llamar.
+
       foreach ($listInfo as $list) {
           $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idMuestra);
           $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->Presentacion);
@@ -75,10 +84,14 @@ public function prueba(){
 
           $rowCount++;
       }
+      //Por ultmo definimos el nombre del archivo, le mandamos la fecha en la que se está descargando el archivo y el tipo de archivo que va a descargar en este caso es un .xls
+      // Que es un archivo de excel
       $filename = "Reporte general"."-".date("d-m-Y").".xls";
           header('Content-Type: application/vnd.ms-excel');
+          // Acada mandamos la variable $fileName la cual pues solo almacena el dato que anteriormente se explico
           header('Content-Disposition: attachment;filename="'.$filename.'"');
           header('Cache-Control: max-age=0');
+          //Definimos nada mas como queremos que nos aparezca la estructura del excel en este caso nos saldra una estructura bonita
           $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
           $objWriter->save('php://output');
 
@@ -87,6 +100,7 @@ public function prueba(){
         //$this->load->view('dashboard');
         break;
       case '3':
+      // Para el usuario con el rol 3 no tiene acceso a descargar el excel
       redirect('restrinct');
       break;
       case '4':
@@ -109,25 +123,32 @@ public function prueba(){
   public function reportegeneralcdos(){
     // create file name
 
-    // en los excel el campo de  categoria es el campo de operador
+//Cargamos la libreria session
     $this->load->library('session');
+  //Generamos una variable rol la cual nos adjuntara el tipo de rol al que estamos accediendo
     $rol = $_SESSION["role"];
+        //Cargamos el helper form
     $this->load->helper('form');
+      //Carmos la url para que nos cargue la pagina
         $this->load->helper('url');
 
     switch ($rol) {
       case '1':
-
+// Para el usuario con el rol 1 no tiene acceso a descargar el excel
         redirect('restrinct');
         break;
       case '2':
+      //Definomos como se va a llamar el nombre del docuemento que vamos a descargar
       $fileName = 'data-'.time().'.xlsx';
-      // load excel library
+      // Cargamos la libreria excel
       $this->load->library('excel');
+      // Definimos una variable la cual le cargaremos los valores del modelo reportes de la función reportegeneral
       $listInfo = $this->reportes->reportegeneral();
+      //Creamos un objeto para llamar la función phphexcel de la librería
       $objPHPExcel = new PHPExcel();
+      // Con esto definimos que nuestro conteo de valores este vacío
       $objPHPExcel->setActiveSheetIndex(0);
-      // set Header
+      // Defininmos el valor de la primera fila en donde se pondrá el nombre de los campos que deseamos mostrar en el excel
       $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Codigo solicitud  ');
       $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'No. expediente');
       $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'NIT');
@@ -147,9 +168,10 @@ public function prueba(){
       $objPHPExcel->getActiveSheet()->SetCellValue('Q1', 'Teléfonos ');
       $objPHPExcel->getActiveSheet()->SetCellValue('R1', 'Emails');
 
-
       // set Row
       $rowCount = 2;
+      // Definimos un foreach para poder mandarle los datos que queremos mostrarle al excel, la variable listinfo nos define todos los valores que estamos agarrando de nuestro modelo
+      // Para luego mandarselos a una nueva variable llamada $list y esa variable list nos traera consigo el nombre de los campos que deseamos mandar a llamar.
       foreach ($listInfo as $list) {
           $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idSolicitud);
           $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->Nosolicitud);
@@ -172,10 +194,14 @@ public function prueba(){
 
           $rowCount++;
       }
+      //Por ultmo definimos el nombre del archivo, le mandamos la fecha en la que se está descargando el archivo y el tipo de archivo que va a descargar en este caso es un .xls
+      // Que es un archivo de excel
       $filename = "Reporte general"."-".date("d-m-Y").".xls";
           header('Content-Type: application/vnd.ms-excel');
+          // Acada mandamos la variable $fileName la cual pues solo almacena el dato que anteriormente se explico
           header('Content-Disposition: attachment;filename="'.$filename.'"');
           header('Cache-Control: max-age=0');
+          //Definimos nada mas como queremos que nos aparezca la estructura del excel en este caso nos saldra una estructura bonita
           $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
           $objWriter->save('php://output');
 
@@ -201,27 +227,33 @@ public function prueba(){
   }
 
   public function reportestados(){
-    // create file name
+    //Cargamos la libreria session
+        $this->load->library('session');
+      //Generamos una variable rol la cual nos adjuntara el tipo de rol al que estamos accediendo
+        $rol = $_SESSION["role"];
+            //Cargamos el helper form
+        $this->load->helper('form');
+          //Carmos la url para que nos cargue la pagina
+            $this->load->helper('url');
 
-    // en los excel el campo de  categoria es el campo de operador
-    $this->load->library('session');
-    $rol = $_SESSION["role"];
-    $this->load->helper('form');
-        $this->load->helper('url');
 
     switch ($rol) {
       case '1':
-
+      // Para el usuario con el rol 1 no tiene acceso a descargar el excel
         redirect('restrinct');
         break;
       case '2':
+      //Definomos como se va a llamar el nombre del docuemento que vamos a descargar
       $fileName = 'data-'.time().'.xlsx';
-      // load excel library
+      // Cargamos la libreria excel
       $this->load->library('excel');
+      // Definimos una variable la cual le cargaremos los valores del modelo reportes de la función reportegeneral
       $listInfo = $this->reportes->reportegeneral();
+      //Creamos un objeto para llamar la función phphexcel de la librería
       $objPHPExcel = new PHPExcel();
+      // Con esto definimos que nuestro conteo de valores este vacío
       $objPHPExcel->setActiveSheetIndex(0);
-      // set Header
+            // Defininmos el valor de la primera fila en donde se pondrá el nombre de los campos que deseamos mostrar en el excel
       $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Codigo solicitud  ');
       $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Estados solicitud');
 
@@ -229,6 +261,8 @@ public function prueba(){
 
       // set Row
       $rowCount = 2;
+      // Definimos un foreach para poder mandarle los datos que queremos mostrarle al excel, la variable listinfo nos define todos los valores que estamos agarrando de nuestro modelo
+      // Para luego mandarselos a una nueva variable llamada $list y esa variable list nos traera consigo el nombre de los campos que deseamos mandar a llamar.
       foreach ($listInfo as $list) {
           $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idSolicitud);
           $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->Nombrestado);
@@ -236,10 +270,14 @@ public function prueba(){
 
           $rowCount++;
       }
+      //Por ultmo definimos el nombre del archivo, le mandamos la fecha en la que se está descargando el archivo y el tipo de archivo que va a descargar en este caso es un .xls
+      // Que es un archivo de excel
       $filename = "Reporte de estados"."-".date("d-m-Y").".xls";
           header('Content-Type: application/vnd.ms-excel');
+                // Acada mandamos la variable $fileName la cual pues solo almacena el dato que anteriormente se explico
           header('Content-Disposition: attachment;filename="'.$filename.'"');
           header('Cache-Control: max-age=0');
+          //Definimos nada mas como queremos que nos aparezca la estructura del excel en este caso nos saldra una estructura bonita
           $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
           $objWriter->save('php://output');
 
@@ -276,25 +314,32 @@ public function prueba(){
 
     switch ($rol) {
       case '1':
-
+  // Para el usuario con el rol 1 no tiene acceso a descargar el excel
         redirect('restrinct');
         break;
       case '2':
+
+      //Definomos como se va a llamar el nombre del docuemento que vamos a descargar
       $fileName = 'data-'.time().'.xlsx';
-      // load excel library
+      // Cargamos la libreria excel
       $this->load->library('excel');
+      // Definimos una variable la cual le cargaremos los valores del modelo reportes de la función reportegeneral
       $listInfo = $this->reportes->reportegeneral();
+      //Creamos un objeto para llamar la función phphexcel de la librería
       $objPHPExcel = new PHPExcel();
+      // Con esto definimos que nuestro conteo de valores este vacío
       $objPHPExcel->setActiveSheetIndex(0);
-      // set Header
+      // Defininmos el valor de la primera fila en donde se pondrá el nombre de los campos que deseamos mostrar en el excel
       $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Codigo de muestra  ');
       $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Cantidad de items');
-      $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Caracteristicas');
+      $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Caracteristicas');
 
 
 
       // set Row
       $rowCount = 2;
+      // Definimos un foreach para poder mandarle los datos que queremos mostrarle al excel, la variable listinfo nos define todos los valores que estamos agarrando de nuestro modelo
+      // Para luego mandarselos a una nueva variable llamada $list y esa variable list nos traera consigo el nombre de los campos que deseamos mandar a llamar.
       foreach ($listInfo as $list) {
           $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idSolicitud);
           $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->Nombrestado);
@@ -302,10 +347,14 @@ public function prueba(){
 
           $rowCount++;
       }
+      //Por ultmo definimos el nombre del archivo, le mandamos la fecha en la que se está descargando el archivo y el tipo de archivo que va a descargar en este caso es un .xls
+      // Que es un archivo de excel
       $filename = "Reporte de estados"."-".date("d-m-Y").".xls";
           header('Content-Type: application/vnd.ms-excel');
+              // Acada mandamos la variable $fileName la cual pues solo almacena el dato que anteriormente se explico
           header('Content-Disposition: attachment;filename="'.$filename.'"');
           header('Cache-Control: max-age=0');
+          //Definimos nada mas como queremos que nos aparezca la estructura del excel en este caso nos saldra una estructura bonita
           $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
           $objWriter->save('php://output');
 
@@ -345,13 +394,17 @@ public function prueba(){
         redirect('restrinct');
         break;
       case '2':
+      //Definomos como se va a llamar el nombre del docuemento que vamos a descargar
       $fileName = 'data-'.time().'.xlsx';
-      // load excel library
+      // Cargamos la libreria excel
       $this->load->library('excel');
+      // Definimos una variable la cual le cargaremos los valores del modelo reportes de la función reportegeneral
       $listInfo = $this->reportes->reportegeneralmuestras();
+      //Creamos un objeto para llamar la función phphexcel de la librería
       $objPHPExcel = new PHPExcel();
+      // Con esto definimos que nuestro conteo de valores este vacío
       $objPHPExcel->setActiveSheetIndex(0);
-      // set Header
+      // Defininmos el valor de la primera fila en donde se pondrá el nombre de los campos que deseamos mostrar en el excel
       $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Código muestra  ');
       $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Tipo de muestra');
       $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Código Solicitud');
@@ -372,6 +425,8 @@ public function prueba(){
 
       // set Row
       $rowCount = 2;
+      // Definimos un foreach para poder mandarle los datos que queremos mostrarle al excel, la variable listinfo nos define todos los valores que estamos agarrando de nuestro modelo
+      // Para luego mandarselos a una nueva variable llamada $list y esa variable list nos traera consigo el nombre de los campos que deseamos mandar a llamar.
       foreach ($listInfo as $list) {
           $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->idMuestra);
           $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->NombreMuestra);
@@ -393,10 +448,14 @@ public function prueba(){
 
           $rowCount++;
       }
+      //Por ultmo definimos el nombre del archivo, le mandamos la fecha en la que se está descargando el archivo y el tipo de archivo que va a descargar en este caso es un .xls
+      // Que es un archivo de excel
       $filename = "Reporte general muestras"."-".date("d-m-Y").".xls";
           header('Content-Type: application/vnd.ms-excel');
+                    // Acada mandamos la variable $fileName la cual pues solo almacena el dato que anteriormente se explico
           header('Content-Disposition: attachment;filename="'.$filename.'"');
           header('Cache-Control: max-age=0');
+          //Definimos nada mas como queremos que nos aparezca la estructura del excel en este caso nos saldra una estructura bonita
           $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
           $objWriter->save('php://output');
 

@@ -398,9 +398,7 @@
                                                   <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosoli->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
 
                                                   <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosoli->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
-
-                                                        <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadodos?id=<?= $datosoli->idSolicitud  ?>"class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">edit</span></a></li>
-
+                                                  <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadodos?id=<?= $datosoli->idSolicitud  ?>"class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">edit</span></a></li>
 
                                                 </ul>
 
@@ -1110,6 +1108,809 @@
                                   </tbody>
 
                               </table>
+
+
+                              <br>
+                              <br>
+                              <br>
+
+
+
+                                                            <table  class="table table-striped table-bordered">
+                                                                   <thead >
+
+                                                                     <tr>
+                                                                         <!--El nombre de los campos que se van a mostrar en la vista-->
+                                                                         <th>No.Solicitud</th>
+
+                                                                         <th>No.Expediente</th>
+
+                                                                         <th>No.Soporte</th>
+
+                                                                         <th>Usuario Asignación</th>
+
+                                                                         <th>Fecha de creación</th>
+
+                                                                         <th>Nit</th>
+
+                                                                         <th>Tipo de solicitud</th>
+
+                                                                         <th>Tipo de solicitante</th>
+
+                                                                         <th>Estado</th>
+
+
+                                                                         <th>
+                                                                     </tr>
+                                                                   </thead>
+                                                                   <tbody align="center">
+                                                                     <?php foreach ($datosolidos as $datosolidos){
+                                                                       // code...
+                                                                       ?>
+                                                                       <tr>
+                                                                             <!-- Llamado de campos de los datos que queremos mostrar  -->
+                                                                             <td><?= $datosolidos->idSolicitud ?></td>
+
+                                                                             <td><?= $datosolidos->Nosolicitud ?></td>
+
+                                                                             <td><?= $datosolidos->NumeroSoporte ?></td>
+
+                                                                             <td><?= $datosolidos->Nombre ?></td>
+
+                                                                              <td><?= $datosolidos->Fechacreacion ?></td>
+
+                                                                              <td><?= $datosolidos->Nit ?></td>
+
+                                                                              <td><?= $datosolidos->Abreviatura ?> = <?= $datosolidos->NombreTipo ?></td>
+
+                                                                              <td><?= $datosolidos->Abreviaturats ?> = <?= $datosolidos->Tiposolicitante ?></td>
+
+                                                                              <td><?= $datosolidos->Nombrestado ?></td>
+
+
+
+                                                                           <td>
+
+
+
+
+
+                                                                             <div class="btn-group dropup">
+                                                                               <button type="button" class="btn btn-success">
+                                                                                 Opciones</button>
+
+                                                                                 <button type="button" class="btn btn-success dropdown-toggle"
+                                                                                 data-toggle="dropdown">
+                                                                                 <span class="caret"></span>
+                                                                                 <span class="sr-only">Desplegar menú</span>
+                                                                                 </button>
+
+                                                                                 <ul class="dropdown-menu">
+
+                                                                                   <li>  <a href="" data-toggle="modal" data-target="#myModal4<?= $datosolidos->idSolicitud ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del expediente"><span class="material-icons">folder</span></a></li>
+
+                                                                                   <li><a href="" data-toggle="modal" data-target="#myModal3<?= $datosolidos->idSolicitud ?>" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right" title="Ver información del cliente"><span class="material-icons">contact_page</span></a></li>
+
+                                                                                   <li><a href="" data-toggle="modal" data-target="#myModal<?= $datosolidos->idSolicitud ?>" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="right" title="Ver datos de la solicitud"><span class="material-icons">notes</span></a></li>
+
+                                                                                   <li>    <a href="" data-toggle="modal" data-target="#myModal2<?= $datosolidos->idSolicitud ?>" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="right" title="Trazabilidad"><span class="material-icons">task</span></a></li>
+
+
+                                                                                   <li>    <a href="<?php echo base_url(); ?>index.php/mantenimientomm/modificarestadoanalista?id=<?= $datosolidos->idSolicitud  ?>"class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Asignado"><span class="material-icons">edit</span></a></li>
+
+
+                                                                                 </ul>
+
+
+
+                                                                                     </div>
+
+                                                                           </td>
+
+
+                                                                       </tr>
+                                                                       <!-- Modal 1 -->
+                                                                       <div class="modal fade" id="myModal<?= $datosolidos->idSolicitud ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                                                                           <div class="modal-dialog" role="document">
+
+                                                                             <div class="modal-content">
+
+                                                                               <div class="modal-header">
+
+                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                                                                 <h4 class="modal-title" id="myModalLabel">
+
+                                                                                   <b>Número de solictud:  <?= $datosolidos->idSolicitud ?></b>
+
+
+
+                                                                                 </h4>
+
+                                                                               </div>
+
+                                                                               <div class="modal-body">
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Número de expediente</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Nosolicitud?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+
+
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Descripción</b></label><br>
+
+
+                                                                                             <textarea type="text" class="form-control"  readonly><?= $datosolidos->Descripcion ?></textarea>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Fecha de creación</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Fechacreacion ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Tipo de solictud</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Abreviatura ?> = <?= $datosolidos->NombreTipo ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Tipo de solicitante</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Abreviaturats ?> = <?= $datosolidos->Tiposolicitante ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Número de Soporte</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->NumeroSoporte  ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Teléfono</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Telefono  ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Correo</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Correo  ?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+                                                                                   <div class="row">
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-8">
+
+                                                                                           <label for=""><b>Estado de la solicitud</b></label><br>
+
+                                                                                           <input type="text" class="form-control" value="<?= $datosolidos->Nombrestado?>" readonly>
+
+
+
+                                                                                       </div>
+
+                                                                                       <div class="col-md-2">
+
+
+
+                                                                                       </div>
+
+                                                                                   </div>
+
+
+                                                                               </div>
+
+                                                                               <div class="modal-footer">
+
+                                                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                                                               </div>
+
+                                                                             </div>
+
+                                                                           </div>
+
+                                                                         </div>
+
+                                                                         <!-- Modal 2-->
+
+                                                                         <div class="modal fade" id="myModal2<?= $datosolidos->idSolicitud ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                                                                             <div class="modal-dialog" role="document">
+
+                                                                               <div class="modal-content">
+
+                                                                                 <div class="modal-header">
+
+                                                                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                                                                   <h4 class="modal-title" id="myModalLabel">
+
+                                                                                     <b>Estados por lo que la solicitud ha pasado, No de solicitud:  <?= $datosolidos->idSolicitud ?></b>
+
+
+
+                                                                                   </h4>
+
+                                                                                 </div>
+
+                                                                                 <div class="modal-body">
+
+                                                                                     <div class="row">
+
+                                                                                         <div class="col-md-2">
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-8">
+
+                                                                                             <label for=""><b>Estado</b></label><br>
+
+                                                                                             <input type="text" class="form-control" value="<?= $datosolidos->Nombrestado?>" readonly>
+
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-2">
+
+
+
+                                                                                         </div>
+
+                                                                                     </div>
+
+                                                                                     <div class="row">
+
+                                                                                         <div class="col-md-2">
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-8">
+
+                                                                                             <label for=""><b></b></label><br>
+
+                                                                                             <input type="text" class="form-control" value="" readonly>
+
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-2">
+
+
+
+                                                                                         </div>
+
+                                                                                     </div>
+
+                                                                                     <div class="row">
+
+                                                                                         <div class="col-md-2">
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-8">
+
+                                                                                             <label for=""><b></b></label><br>
+
+                                                                                             <input type="text" class="form-control" value="" readonly>
+
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-2">
+
+
+
+                                                                                         </div>
+
+                                                                                     </div>
+
+                                                                                     <div class="row">
+
+                                                                                         <div class="col-md-2">
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-8">
+
+                                                                                             <label for=""><b></b></label><br>
+
+                                                                                             <input type="text" class="form-control" value="" readonly>
+
+
+
+                                                                                         </div>
+
+                                                                                         <div class="col-md-2">
+
+
+
+                                                                                         </div>
+
+                                                                                     </div>
+
+
+                                                                                 </div>
+
+                                                                                 <div class="modal-footer">
+
+                                                                                   <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                                                                 </div>
+
+                                                                               </div>
+
+                                                                             </div>
+
+                                                                           </div>
+
+
+                                                                           <!-- Modal 3-->
+
+                                                                           <div class="modal fade" id="myModal3<?= $datosolidos->idSolicitud ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                                                                               <div class="modal-dialog" role="document">
+
+                                                                                 <div class="modal-content">
+
+                                                                                   <div class="modal-header">
+
+                                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                                                                     <h4 class="modal-title" id="myModalLabel">
+
+                                                                                       <b>Información del cliente</b>
+
+
+
+                                                                                     </h4>
+
+                                                                                   </div>
+
+                                                                                   <div class="modal-body">
+
+                                                                                       <div class="row">
+
+                                                                                           <div class="col-md-2">
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-8">
+
+                                                                                               <label for=""><b>NIT</b></label><br>
+
+                                                                                               <input type="text" class="form-control" value="<?= $datosolidos->Nit?>" readonly>
+
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-2">
+
+
+
+                                                                                           </div>
+
+                                                                                       </div>
+
+                                                                                       <div class="row">
+
+                                                                                           <div class="col-md-2">
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-8">
+
+                                                                                               <label for=""><b>Nombre</b></label><br>
+
+                                                                                               <input type="text" class="form-control" value="<?= $datosolidos->Nombre ?>" readonly>
+
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-2">
+
+
+
+                                                                                           </div>
+
+                                                                                       </div>
+
+                                                                                       <div class="row">
+
+                                                                                           <div class="col-md-2">
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-8">
+
+                                                                                               <label for=""><b>Dirección</b></label><br>
+
+                                                                                               <input type="text" class="form-control" value="<?= $datosolidos->Direccion ?>" readonly>
+
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-2">
+
+
+
+                                                                                           </div>
+
+                                                                                       </div>
+
+                                                                                       <div class="row">
+
+                                                                                           <div class="col-md-2">
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-8">
+
+                                                                                               <label for=""><b>Teléfono</b></label><br>
+
+                                                                                               <input type="text" class="form-control" value="<?= $datosolidos->Telefono ?>" readonly>
+
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-2">
+
+
+
+                                                                                           </div>
+
+                                                                                       </div>
+
+                                                                                       <div class="row">
+
+                                                                                           <div class="col-md-2">
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-8">
+
+                                                                                               <label for=""><b>Emails</b></label><br>
+
+                                                                                               <input type="text" class="form-control" value="<?= $datosolidos->Correo ?>" readonly>
+
+
+
+                                                                                           </div>
+
+                                                                                           <div class="col-md-2">
+
+
+
+                                                                                           </div>
+
+                                                                                       </div>
+
+
+                                                                                   </div>
+
+                                                                                   <div class="modal-footer">
+
+                                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                                                                   </div>
+
+                                                                                 </div>
+
+                                                                               </div>
+
+                                                                             </div>
+
+                                                                             <!--Modal 4 -->
+
+                                                                             <div class="modal fade" id="myModal4<?= $datosolidos->idSolicitud ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+                                                                                 <div class="modal-dialog" role="document">
+
+                                                                                   <div class="modal-content">
+
+                                                                                     <div class="modal-header">
+
+                                                                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                                                                                       <h4 class="modal-title" id="myModalLabel">
+
+                                                                                         <b>Información del expediente</b>
+
+
+
+                                                                                       </h4>
+
+                                                                                     </div>
+
+                                                                                     <div class="modal-body">
+
+                                                                                         <div class="row">
+
+                                                                                             <div class="col-md-2">
+
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-8">
+
+                                                                                                 <label for=""><b>No. expediente</b></label><br>
+
+                                                                                                 <input type="text" class="form-control" value="<?= $datosolidos->Correlativo?>" readonly>
+
+
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-2">
+
+
+
+                                                                                             </div>
+
+                                                                                         </div>
+
+                                                                                         <div class="row">
+
+                                                                                             <div class="col-md-2">
+
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-8">
+
+                                                                                                 <label for=""><b>Origen</b></label><br>
+
+                                                                                                 <input type="text" class="form-control" value="" readonly>
+
+
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-2">
+
+
+
+                                                                                             </div>
+
+                                                                                         </div>
+
+                                                                                         <div class="row">
+
+                                                                                             <div class="col-md-2">
+
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-8">
+
+                                                                                                 <label for=""><b>Observaciones </b></label><br>
+
+                                                                                                 <textarea type="text" class="form-control"  readonly><?= $datosolidos->Observaciones ?></textarea>
+
+                                                                                             </div>
+
+                                                                                             <div class="col-md-2">
+
+
+
+                                                                                             </div>
+
+                                                                                         </div>
+
+
+
+
+
+                                                                                     </div>
+
+                                                                                     <div class="modal-footer">
+
+                                                                                       <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                                                                     </div>
+
+                                                                                   </div>
+
+                                                                                 </div>
+
+                                                                               </div>
+
+                                                                           <?php          } ?>
+
+
+                                                                   </tbody>
+
+                                                               </table>
+
+
+
+
 
 
                          </div>

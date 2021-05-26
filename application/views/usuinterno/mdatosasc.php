@@ -310,7 +310,7 @@
                                             //  echo "url: 'http://192.168.1.9:8888/BancoMiPistio/index.php/userspda/dpi',".$nombredetuvariable;
                                             ?>
 
-                                            url: "http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/mostrardatosmuestra",
+                                            url: "http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/mostrardatosmuestra",
                                             getValue: "idMuestra",
                                             list: {
                                               onSelectItemEvent: function() {
@@ -439,32 +439,44 @@
                                                     <h2>Items a asociar</h2>
                                                     <br>
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Items
-                                                            </label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <select class="form-control" name="items"
-                                                                id="items" required/>
-
-                                                                <option value="" hidden selected>Seleccione una opción
-                                                                </option>
-                                                                <?php foreach ($items as $items) {
-                                                                    // code...
-                                                                    ?>
-
-                                                                <option value="<?=$items->idItems  ?>">
-                                                                    <?= $items->Nombreitem ?>
-                                                                  </option>
-
-                                                                <?php    } ?>
 
 
-
-                                                            </select>
-
-                                                        </div>
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox1" name="cbox1" value="1" > Microbiotico</label><br>
+                                                      </div>
 
 
                                                     </div>
+
+                                                    <div class="form-group">
+
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox2"  name="cbox2" value="2"> Trigliceridos-diabetes-embarazo</label><br>
+                                                      </div>
+
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox3"  name="cbox3" value="3">Test de dogras-Test de enfermedades renal </label><br>
+                                                      </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox4"  name="cbox4" value="4">Bacteriana </label><br>
+                                                      </div>
+
+                                                    </div>
+
+
+
                                                     <br>
                                                     <br>
                                                     <br>

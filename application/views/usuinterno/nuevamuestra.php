@@ -96,29 +96,24 @@
     }
     </script>
 
+  
+
     <script type="text/javascript">
+
     function confirmar() {
-        event.preventDefault();
 
-        Swal.fire({
-            title: '¿Está seguro que desea crear la muestra?',
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Si',
-            cancelButtonText: "No",
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-        }).then((result) => {
-            if (result.value) {
-                document.formulario.submit();
+      var mensaje = confirm("¿Está seguro que desea crear la muestra?");
 
+      if (mensaje == true) {
+        return true;
+      }
 
-            }
-            return false;
-        })
+      else {
+        return false;
+      }
+
     }
     </script>
-
 
 
 
@@ -208,7 +203,6 @@
                                                       // code...
                                                         }
                                                         ?>
-
 
 
                                             <!-- Se abren llaves php para poder realizar un if con codigo php, es este caso declaramos una variable
@@ -360,7 +354,7 @@
                                                         <div class="col-md-5 col-xs-12">
                                                             <!--  Boton guardar, y guardar los datos y mandar los datos a modificar ingresados al controlador -->
                                                             <input type="submit" class="btn btn-primary" name="subir"
-                                                                value="Siguiente" id="btnSend">
+                                                                value="Siguiente" id="btnSend" onclick="confirmar()">
                                                             <!--  Boton Cancelar los datos y direccionar a la vista donde se muestran el listado de usuarios creados-->
                                                             <!--llamamos el Script que esta arriba con un onclick para que puedar realizar la validacion del mismo-->
                                                             <a href="<?php echo base_url(); ?>index.php/mantenimientomm"

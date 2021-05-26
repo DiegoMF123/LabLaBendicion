@@ -167,7 +167,7 @@ class Mantenimientomm extends CI_Controller{
                                            //si no posee datos nit
                                                  if (empty($usuarioAsignacion)) {
                                                    //si no posee datos Usuario
-                                                   $data["datosoli"]= $this->Model_Solicitud->datosSolicitud();
+                                                   $data["datosoli"]= $this->Model_Solicitud->datosSolicitudautorizador();
                                                    $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
                                                    $data["response"]=trim(isset($_REQUEST["response"]));
                                                    $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
@@ -249,12 +249,348 @@ class Mantenimientomm extends CI_Controller{
 
         break;
       case '4':
-          redirect('restrinct');
+      $estadosoli= trim($_REQUEST["estadosoli"]);
+      $noexpediente = trim($_REQUEST["noexpediente"]);
+      $nosolicitud = trim($_REQUEST["nosolicitud"]);
+      $tiposolid = trim($_REQUEST["tiposolid"]);
+      $nosoporte = trim($_REQUEST["nosoporte"]);
+      $nit = trim($_REQUEST["nit"]);
+      $usuarioAsignacion = trim($_REQUEST["usuario"]);
+
+
+
+       if (empty($estadosoli)) {
+
+        //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
+          if (empty($noexpediente)) {
+            //si no posee datos muestra toda la tabla
+                  if (empty($nosolicitud)) {
+                   //si no posee datos  solicitud
+                         if (empty($tiposolid)) {
+                           //si no posee datos  tipo solicitud
+                                 if (empty($nosoporte)) {
+                                   //si no posee datos  no soporte
+                                         if (empty($nit)) {
+                                           //si no posee datos nit
+                                                 if (empty($usuarioAsignacion)) {
+                                                   //si no posee datos Usuario
+                                                   $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                                                   $data["datosoli"]= $this->Model_Solicitud->datosSolicitudanalista();
+                                                   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                   $data["response"]=trim(isset($_REQUEST["response"]));
+                                                   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+                                                         $this->load->view('analista/mantenimientomm',$data);
+                                                 }
+                                                 else {
+                                                   $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                                                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroUsuarioAsigna($usuarioAsignacion);
+                                                       $data["response"]=trim(isset($_REQUEST["response"]));
+                                                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                       $this->load->view('analista/mantenimientomm',$data);
+                                                 }
+                                         }
+                                         else {
+                                           $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                                               $data["datosoli"]= $this->Model_Solicitud->busquedafiltroNit($nit);
+                                               $data["response"]=trim(isset($_REQUEST["response"]));
+                                               $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                               $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                               $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                               $this->load->view('analista/mantenimientomm',$data);
+                                         }
+                                 }
+                                 else {
+                                   $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSoporte($nosoporte);
+                                       $data["response"]=trim(isset($_REQUEST["response"]));
+                                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                       $this->load->view('analista/mantenimientomm',$data);
+                                 }
+                         }
+
+                         else {
+                           $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                               $data["datosoli"]= $this->Model_Solicitud->busquedafiltroTipoSolicitud($tiposolid);
+                               $data["response"]=trim(isset($_REQUEST["response"]));
+                               $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                               $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                               $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                               $this->load->view('analista/mantenimientomm',$data);
+                         }
+                 }
+                 else {
+                   $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($nosolicitud);
+                       $data["response"]=trim(isset($_REQUEST["response"]));
+                       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                       $this->load->view('analista/mantenimientomm',$data);
+                 }
+
+          }
+          else {
+            $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudanalistados();
+                $data["datosoli"]= $this->Model_Solicitud->busquedafiltroExpendiente($noexpediente);
+                $data["response"]=trim(isset($_REQUEST["response"]));
+                $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                $this->load->view('analista/mantenimientomm',$data);
+          }
+
+
+       }
+
+    else {
+
+     $data["datosoli"]= $this->Model_Solicitud->busquedafiltroEstado($estadosoli);
+     $data["response"]=trim(isset($_REQUEST["response"]));
+     $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+     $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+     $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+     $this->load->view('analista/mantenimientomm',$data);
+
+   }
         break;
         case '5':
 
-          redirect('restrinct');
+        $estadosoli= trim($_REQUEST["estadosoli"]);
+        $noexpediente = trim($_REQUEST["noexpediente"]);
+        $nosolicitud = trim($_REQUEST["nosolicitud"]);
+        $tiposolid = trim($_REQUEST["tiposolid"]);
+        $nosoporte = trim($_REQUEST["nosoporte"]);
+        $nit = trim($_REQUEST["nit"]);
+        $usuarioAsignacion = trim($_REQUEST["usuario"]);
+
+
+
+         if (empty($estadosoli)) {
+
+          //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
+            if (empty($noexpediente)) {
+              //si no posee datos muestra toda la tabla
+                    if (empty($nosolicitud)) {
+                     //si no posee datos  solicitud
+                           if (empty($tiposolid)) {
+                             //si no posee datos  tipo solicitud
+                                   if (empty($nosoporte)) {
+                                     //si no posee datos  no soporte
+                                           if (empty($nit)) {
+                                             //si no posee datos nit
+                                                   if (empty($usuarioAsignacion)) {
+                                                     //si no posee datos Usuario
+                                                     $data["datosoli"]= $this->Model_Solicitud->datosSolicitudjefe();
+                                                     $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                                                      $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                                                     $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                     $data["response"]=trim(isset($_REQUEST["response"]));
+                                                     $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                     $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+                                                           $this->load->view('jefe/mantenimientomm',$data);
+                                                   }
+                                                   else {
+                                                     $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                                                      $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                                                         $data["datosoli"]= $this->Model_Solicitud->busquedafiltroUsuarioAsigna($usuarioAsignacion);
+                                                         $data["response"]=trim(isset($_REQUEST["response"]));
+                                                         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                         $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                         $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                         $this->load->view('jefe/mantenimientomm',$data);
+                                                   }
+                                           }
+                                           else {
+                                             $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                                              $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                                                 $data["datosoli"]= $this->Model_Solicitud->busquedafiltroNit($nit);
+                                                 $data["response"]=trim(isset($_REQUEST["response"]));
+                                                 $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                 $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                 $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                 $this->load->view('jefe/mantenimientomm',$data);
+                                           }
+                                   }
+                                   else {
+                                     $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                                      $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                                         $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSoporte($nosoporte);
+                                         $data["response"]=trim(isset($_REQUEST["response"]));
+                                         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                         $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                         $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                         $this->load->view('jefe/mantenimientomm',$data);
+                                   }
+                           }
+
+                           else {
+                             $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                              $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                                 $data["datosoli"]= $this->Model_Solicitud->busquedafiltroTipoSolicitud($tiposolid);
+                                 $data["response"]=trim(isset($_REQUEST["response"]));
+                                 $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                 $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                 $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                 $this->load->view('jefe/mantenimientomm',$data);
+                           }
+                   }
+                   else {
+                     $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+                      $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                         $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($nosolicitud);
+                         $data["response"]=trim(isset($_REQUEST["response"]));
+                         $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                         $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                         $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                         $this->load->view('jefe/mantenimientomm',$data);
+                   }
+
+            }
+            else {
+              $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+               $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+                  $data["datosoli"]= $this->Model_Solicitud->busquedafiltroExpendiente($noexpediente);
+                  $data["response"]=trim(isset($_REQUEST["response"]));
+                  $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                  $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                  $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                  $this->load->view('jefe/mantenimientomm',$data);
+            }
+
+
+         }
+
+      else {
+        $data["datosolidos"]= $this->Model_Solicitud->datosSolicitudjefefinalizado();
+         $data["datosolitres"]= $this->Model_Solicitud->datosSolicitudjeferechazado();
+
+       $data["datosoli"]= $this->Model_Solicitud->busquedafiltroEstado($estadosoli);
+       $data["response"]=trim(isset($_REQUEST["response"]));
+       $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+       $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+       $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+       $this->load->view('jefe/mantenimientomm',$data);
+
+     }
           break;
+
+          case '6':
+
+                  $estadosoli= trim($_REQUEST["estadosoli"]);
+                  $noexpediente = trim($_REQUEST["noexpediente"]);
+                  $nosolicitud = trim($_REQUEST["nosolicitud"]);
+                  $tiposolid = trim($_REQUEST["tiposolid"]);
+                  $nosoporte = trim($_REQUEST["nosoporte"]);
+                  $nit = trim($_REQUEST["nit"]);
+                  $usuarioAsignacion = trim($_REQUEST["usuario"]);
+
+
+
+                   if (empty($estadosoli)) {
+
+                    //$data["tareas"]= $this->model_subproyectos->listado_subproyectos();
+                      if (empty($noexpediente)) {
+                        //si no posee datos muestra toda la tabla
+                              if (empty($nosolicitud)) {
+                               //si no posee datos  solicitud
+                                     if (empty($tiposolid)) {
+                                       //si no posee datos  tipo solicitud
+                                             if (empty($nosoporte)) {
+                                               //si no posee datos  no soporte
+                                                     if (empty($nit)) {
+                                                       //si no posee datos nit
+                                                             if (empty($usuarioAsignacion)) {
+                                                               //si no posee datos Usuario
+                                                               $data["datosoli"]= $this->Model_Solicitud->datosSolicitudasignacion();
+                                                               $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                               $data["response"]=trim(isset($_REQUEST["response"]));
+                                                               $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                               $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+                                                                     $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                                                             }
+                                                             else {
+                                                                   $data["datosoli"]= $this->Model_Solicitud->busquedafiltroUsuarioAsigna($usuarioAsignacion);
+                                                                   $data["response"]=trim(isset($_REQUEST["response"]));
+                                                                   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                                   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                                   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                                   $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                                                             }
+                                                     }
+                                                     else {
+                                                           $data["datosoli"]= $this->Model_Solicitud->busquedafiltroNit($nit);
+                                                           $data["response"]=trim(isset($_REQUEST["response"]));
+                                                           $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                           $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                           $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                           $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                                                     }
+                                             }
+                                             else {
+                                                   $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSoporte($nosoporte);
+                                                   $data["response"]=trim(isset($_REQUEST["response"]));
+                                                   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                                   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                                   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                                   $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                                             }
+                                     }
+
+                                     else {
+                                           $data["datosoli"]= $this->Model_Solicitud->busquedafiltroTipoSolicitud($tiposolid);
+                                           $data["response"]=trim(isset($_REQUEST["response"]));
+                                           $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                           $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                           $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                           $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                                     }
+                             }
+                             else {
+                                   $data["datosoli"]= $this->Model_Solicitud->busquedafiltroSolicitud($nosolicitud);
+                                   $data["response"]=trim(isset($_REQUEST["response"]));
+                                   $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                                   $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                                   $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                                   $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                             }
+
+                      }
+                      else {
+                            $data["datosoli"]= $this->Model_Solicitud->busquedafiltroExpendiente($noexpediente);
+                            $data["response"]=trim(isset($_REQUEST["response"]));
+                            $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                            $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                            $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+                            $this->load->view('usuarioasignacion/mantenimientomm',$data);
+                      }
+
+
+                   }
+
+                else {
+
+                 $data["datosoli"]= $this->Model_Solicitud->busquedafiltroEstado($estadosoli);
+                 $data["response"]=trim(isset($_REQUEST["response"]));
+                 $data["tiposolicitud"]= $this->Model_Solicitud->tiposolicitud();
+                 $data["usuarioA"]= $this->Model_Solicitud->usuarioasignacion();
+                 $data["estadoS"]= $this->Model_Solicitud->estadosolicitud();
+
+                 $this->load->view('usuarioasignacion/mantenimientomm',$data);
+
+               }
+
+
+            break;
 
       default:
       redirect('restrinct');
@@ -418,12 +754,12 @@ public function correlativo(){
       $data["guardar"] = $this->model_solicitud->guardartsoli($tiposoli,$numsoli,$tiposolid,$desc,$fecha,$idusuario);
       $data["guardar"] = $this->model_solicitud->guardarsopcon($tiposoporte,$numsoporte,$telefono,$email,$rs);
 
-    header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
+    header("Location:  http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=1");
       die();
     }
 
     else {
-      header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=2");
+      header("Location:  http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba?response=2");
       die();
       }
 
@@ -456,7 +792,7 @@ redirect('restrinct');
       break;
     case '3':
 
-    $data["estado"]= $this->model_solicitud->estado();
+    $data["estado"]= $this->model_solicitud->estadoautorizar();
     $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
     $data["response"]=trim(isset($_REQUEST["response"]));
     $this->load->view('autorizador/editarsolicitud',$data);
@@ -464,18 +800,82 @@ redirect('restrinct');
       break;
     case '4':
 
-redirect('restrinct');
+    $data["estado"]= $this->model_solicitud->estadoanalista();
+    $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+    $data["response"]=trim(isset($_REQUEST["response"]));
+    $this->load->view('analista/editarsolicitud',$data);
       break;
       case '5':
-
-        redirect('restrinct');
+      $data["estado"]= $this->model_solicitud->estadofinalizado();
+      $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+      $data["response"]=trim(isset($_REQUEST["response"]));
+      $this->load->view('jefe/editarsolicitud',$data);
         break;
+
+        case '6':
+        $data["estado"]= $this->model_solicitud->estadoasignar();
+        $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+        $data["response"]=trim(isset($_REQUEST["response"]));
+        $this->load->view('usuarioasignacion/editarsolicitud',$data);
+          break;
 
     default:
     redirect('restrinct');
       break;
     }
 }
+
+
+public function modificarestadoanalista(){
+
+  $this->load->helper('url');
+  $this->load->library('session');
+  $this->load->model('model_solicitud');
+  $id = trim($_REQUEST["id"]);
+  $rol= $_SESSION["role"];
+
+
+  switch ($rol) {
+    case '1':
+
+redirect('restrinct');
+      break;
+    case '2':
+
+    redirect('restrinct');
+
+      break;
+    case '3':
+
+
+    redirect('restrinct');
+
+      break;
+    case '4':
+
+    $data["estado"]= $this->model_solicitud->estadoanalistados();
+    $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+    $data["response"]=trim(isset($_REQUEST["response"]));
+    $this->load->view('analista/editarestado',$data);
+      break;
+      case '5':
+
+      redirect('restrinct');
+        break;
+
+        case '6':
+
+        redirect('restrinct');
+          break;
+
+    default:
+    redirect('restrinct');
+      break;
+    }
+}
+
+
+
 
 public function modificarestadodos(){
 
@@ -500,17 +900,33 @@ redirect('restrinct');
       break;
     case '3':
 
-redirect('restrinct');
+    $data["estado"]= $this->model_solicitud->estadoautorizar();
+    $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+    $data["response"]=trim(isset($_REQUEST["response"]));
+    $this->load->view('autorizador/editarestado',$data);
 
       break;
     case '4':
-
-redirect('restrinct');
+    $data["estado"]= $this->model_solicitud->estadoanalista();
+    $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+    $data["response"]=trim(isset($_REQUEST["response"]));
+    $this->load->view('analista/editarestado',$data);
       break;
       case '5':
+      $data["estado"]= $this->model_solicitud->estadofinalizado();
+      $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+      $data["response"]=trim(isset($_REQUEST["response"]));
+      $this->load->view('jefe/editarestado',$data);
 
-        redirect('restrinct');
         break;
+
+        case '6':
+        $data["estado"]= $this->model_solicitud->estadoasignar();
+        $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
+        $data["response"]=trim(isset($_REQUEST["response"]));
+        $this->load->view('autorizador/editarestado',$data);
+
+          break;
 
     default:
     redirect('restrinct');
@@ -537,7 +953,7 @@ public function updatedata(){
 // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
   $data["datosoli"]= $this->model_solicitud->update($id,$estado,$fechamodifi);
 
-  header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/modificarestado?response=1");
+  header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/modificarestado?response=1");
               die();
 
             }
@@ -559,13 +975,34 @@ public function updatedata(){
             // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
               $data["datosoli"]= $this->model_solicitud->updatestadodos($id,$estado,$fechamodifi,$observaciones);
 
-              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/modificarestadodos?response=1");
+              header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/modificarestadodos?response=1");
                           die();
 
                         }
 
 
-
+          public function ip()
+                	{
+                          // funcion para capturar la ip del visitante y guardarla
+                          if (getenv('HTTP_CLIENT_IP')) {
+                              $ip = getenv('HTTP_CLIENT_IP');
+                            } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+                              $ip = getenv('HTTP_X_FORWARDED_FOR');
+                            } elseif (getenv('HTTP_X_FORWARDED')) {
+                              $ip = getenv('HTTP_X_FORWARDED');
+                            } elseif (getenv('HTTP_FORWARDED_FOR')) {
+                              $ip = getenv('HTTP_FORWARDED_FOR');
+                            } elseif (getenv('HTTP_FORWARDED')) {
+                              $ip = getenv('HTTP_FORWARDED');
+                            } else {
+                          // Método por defecto de obtener la IP del usuario
+                          // Si se utiliza un proxy, esto nos daría la IP del proxy
+                          // y no la IP real del usuario.
+                              $ip = $_SERVER['REMOTE_ADDR'];
+                              }
+                              //echo "Su IP parece ser: ".$ip;
+                      				return $ip;
+                      	}
 
 
 public function delete(){
@@ -573,9 +1010,11 @@ public function delete(){
   $this->load->library('session');
   $this->load->model('model_solicitud');
   $id = trim($_REQUEST["id"]);
-  $data["datosoli"]= $this->model_solicitud->eliminarsolicitud($id);
+  $ip= $this->ip();
+  $fechaeliminacion = date('d-m-Y H:i:s');
+  $data["datosoli"]= $this->model_solicitud->eliminarsolicitud($id,$fechaeliminacion,$ip);
 
-  header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm?response=1");
+  header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm?response=1");
               die();
 
             }
@@ -632,14 +1071,17 @@ public function delete(){
             // Estas variables vienen de las vista editarpda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
 
               $codigomuestra=trim($_REQUEST["codigomuestra"]);
-              $items=trim($_REQUEST["items"]);
+              $cbox1=trim($_REQUEST["cbox1"]);
+              $cbox2=trim($_REQUEST["cbox2"]);
+              $cbox3=trim($_REQUEST["cbox3"]);
+              $cbox4=trim($_REQUEST["cbox4"]);
               $fechamodifi= date('d-m-Y H:i:s');
 
 
             // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
-              $data["datosmuestra"]= $this->Model_Muestra->asociaritems($codigomuestra,$items,$fechamodifi);
+              $data["datosmuestra"]= $this->Model_Muestra->asociaritems($codigomuestra,$cbox1,$cbox2,$cbox3,$cbox4,$fechamodifi);
 
-              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/asociar?response=1");
+              header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/asociar?response=1");
                           die();
 
                         }
@@ -697,14 +1139,17 @@ public function delete(){
             // Estas variables vienen de las vista editarpda, las letras verdes son los datos quue viene de la vista y las variables CON el signo $ son para declarar las nuevas variables donde mandaras los datos a tu consulta
 
               $codigomuestra=trim($_REQUEST["codigomuestra"]);
-              $items=trim($_REQUEST["items"]);
+              $cbox1=trim($_REQUEST["cbox1"]);
+              $cbox2=trim($_REQUEST["cbox2"]);
+              $cbox3=trim($_REQUEST["cbox3"]);
+              $cbox4=trim($_REQUEST["cbox4"]);
               $fechamodifi= date('d-m-Y H:i:s');
 
 
             // La variable "datos" que esta con letras color verde, viene del foreach que traslada los datos del formulario de la vista edtarpda, y las variables con signo $ son las que mandas a traer arriba
-              $data["datosmuestra"]= $this->Model_Muestra->deasociaritems($codigomuestra,$fechamodifi);
+              $data["datosmuestra"]= $this->Model_Muestra->deasociaritems($codigomuestra,$fechamodifi,$cbox1,$cbox2,$cbox3,$cbox4);
 
-              header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/mantenimientomm/desasociar?response=1");
+              header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/desasociar?response=1");
                           die();
 
                         }

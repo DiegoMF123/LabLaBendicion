@@ -13,12 +13,9 @@ class Muestra extends CI_Controller{
   $rol= $_SESSION["role"];
   switch ($rol) {
     case '1':
-
   redirect('restrinct');
-
       break;
     case '2':
-
    //Filtrar las muestras
     $numerosolicitud = trim($_REQUEST["numerosolicitud"]);
     $noitem = trim($_REQUEST["noitem"]);
@@ -33,7 +30,6 @@ class Muestra extends CI_Controller{
 
       }else {
 
-
         $data["datosmuestra"]= $this->Model_Muestra->busquedafiltro($numerosolicitud);
         $data["response"]=trim(isset($_REQUEST["response"]));
         $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
@@ -45,7 +41,6 @@ class Muestra extends CI_Controller{
 
     }else {
 
-
       $data["datosmuestra"]= $this->Model_Muestra->busquedafiltroporitem($noitem);
       $data["response"]=trim(isset($_REQUEST["response"]));
       $data["responsemuestra"]=trim(isset($_REQUEST["responsemuestra"]));
@@ -54,8 +49,6 @@ class Muestra extends CI_Controller{
       $this->load->view('usuinterno/mdatosmuestra',$data);
 
     }
-
-
 
       break;
     case '3':
@@ -131,7 +124,7 @@ class Muestra extends CI_Controller{
      }
 
        $this->Model_Muestra->guardar($tipodemuestra,$presentacion,$cantunid,$unidadmed,$fecha,$nombre,$tamanio,$tipo,$id);
-       header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
+       header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
 
 
       }
@@ -212,12 +205,12 @@ foreach ($data as $key) {
  if(empty($usuario)){
 
    $data["guardar"] = $this->Model_Muestra->guardar($tipodemuestra,$presentacion,$cantunid,$unidadmed,$fecha,$nombre);
-   header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
+   header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/muestra/nuevo?response=1");
    die();
  }
 
  else {
-   header("Location:  http://192.168.0.10:8888/LabLaBendicion/index.php/muestra/nuevo");
+   header("Location:  http://192.168.0.3:8888/LabLaBendicion/index.php/muestra/nuevo");
    die();
    }
 
@@ -231,15 +224,45 @@ foreach ($data as $key) {
     }
 
 
+
+
+              public function ip()
+                    	{
+                              // funcion para capturar la ip del visitante y guardarla
+                              if (getenv('HTTP_CLIENT_IP')) {
+                                  $ip = getenv('HTTP_CLIENT_IP');
+                                } elseif (getenv('HTTP_X_FORWARDED_FOR')) {
+                                  $ip = getenv('HTTP_X_FORWARDED_FOR');
+                                } elseif (getenv('HTTP_X_FORWARDED')) {
+                                  $ip = getenv('HTTP_X_FORWARDED');
+                                } elseif (getenv('HTTP_FORWARDED_FOR')) {
+                                  $ip = getenv('HTTP_FORWARDED_FOR');
+                                } elseif (getenv('HTTP_FORWARDED')) {
+                                  $ip = getenv('HTTP_FORWARDED');
+                                } else {
+                              // Método por defecto de obtener la IP del usuario
+                              // Si se utiliza un proxy, esto nos daría la IP del proxy
+                              // y no la IP real del usuario.
+                                  $ip = $_SERVER['REMOTE_ADDR'];
+                                  }
+                                  //echo "Su IP parece ser: ".$ip;
+                          				return $ip;
+                          	}
+
+
+
+
     public function delete(){
     $this->load->helper('url');
     $this->load->library('session');
     $this->load->model('Model_Muestra');
 
         $id = trim($_REQUEST["id"]);
-        $data["datosmuestra"] = $this->Model_Muestra->delete($id);
+        $ipelim = $this->ip();
+        $fechadeeliminacion = date('d-m-Y H:i:s');
+        $data["datosmuestra"] = $this->Model_Muestra->delete($id,$ipelim,$fechadeeliminacion);
 
-        header("Location: http://192.168.0.10:8888/LabLaBendicion/index.php/muestra?responsemuestra=1");
+        header("Location: http://192.168.0.3:8888/LabLaBendicion/index.php/muestra?responsemuestra=1");
         die();
 
 }

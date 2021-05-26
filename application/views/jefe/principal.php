@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mantenimiento de solicitudes</title>
+        <title>Bienvenido</title>
         <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
         <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
@@ -105,117 +105,25 @@
 
                  <div class="pageheader hidden-xs">
 
-                     <h3><i class="fa fa-home"></i>Mantenimiento de solicitudes</h3>
+                     <h3><i class="fa fa-home"></i>Bienvenido Usuario Jefe</h3>
                  </div>
                  <div id="page-content">
                     <div class="row">
                           <div class="col-md-12">
-                     <div class="panel" >
-
+                     <div class="panel">
 
                          <div class="panel-heading">
 
-                             <h3 class="panel-title">Listado de solicitudes</h3>
-
+                             <h3 class="panel-title">Jefe</h3>
                          </div>
-
-                         <?php if ($response =="1") {
-                           echo "<div class=\"alert alert-success fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                 Datos Actualizados.
-                               </div>";
-                         } ?>
-
+                             <center><img src="<?php echo base_url(); ?>/assets/img/logo.png" width="1000" ></center>
                          <div class="panel-body">
 
-                           <div >
+
+                             <br>
+                           <br>
 
 
-                               <a  href="http://192.168.0.3:8888/LabLaBendicion/index.php/mantenimientomm/nuevoprueba" class="btn btn-link btn-lg" data-toggle="tooltip" data-placement="right" title="Crear Solicitud">
-
-                                 <span class="material-icons">
-
-                                   add_circle_outline
-
-                                 </span>
-
-
-                               </a>
-
-
-                             </div>
-
-
-
-                           <table  class="table table-striped table-bordered">
-                                  <thead >
-
-                                      <tr>
-                                          <!--El nombre de los campos que se van a mostrar en la vista-->
-                                          <th>No.Solicitud</th>
-
-                                          <th>No.Expediente</th>
-
-                                          <th>Descripción</th>
-
-                                          <th>Fecha de creación</th>
-
-                                          <th>Tipo de solicitud</th>
-
-                                          <th>Tipo de solicitante</th>
-
-                                          <th>No.Soporte</th>
-
-                                          <th>Teléfono</th>
-
-                                          <th>Correo</th>
-
-                                          <th>Estado</th>
-
-
-                                          <th>
-                                      </tr>
-                                  </thead>
-                                  <tbody align="center">
-                                    <?php foreach ($datosoli as $datosoli){
-                                      // code...
-                                      ?>
-                                      <tr>
-                                            <!-- Llamado de campos de los datos que queremos mostrar  -->
-                                            <td><?= $datosoli->idSolicitud ?></td>
-
-                                            <td><?= $datosoli->Nosolicitud ?></td>
-
-                                             <td><?= $datosoli->Descripcion ?></td>
-
-                                             <td><?= $datosoli->Fechacreacion ?></td>
-
-                                             <td><?= $datosoli->Abreviatura ?> = <?= $datosoli->NombreTipo ?></td>
-
-                                             <td><?= $datosoli->Abreviaturats ?> = <?= $datosoli->Tiposolicitante ?></td>
-
-                                             <td><?= $datosoli->NumeroSoporte ?></td>
-
-                                             <td><?= $datosoli->Telefono ?></td>
-
-                                             <td><?= $datosoli->Correo ?></td>
-
-                                             <td><?= $datosoli->Nombrestado ?></td>
-
-                                          <td>
-                                            <div class="btn-group">
-                                              <!-- Boton editar, llamamos nuestro controlador pda con la funcion update y le mandamos el id del usuario que queremos modificar para que nos muestre
-                                            los datos del usuario que queremos editar-->
-                                              <a href="#"  class="btn btn-default "><i class="fa fa-edit"></i></a>
-
-                                            </div>
-                                          </td>
-                                      </tr>
-                                          <?php          } ?>
-
-
-                                  </tbody>
-
-                              </table>
 
                          </div>
 
@@ -295,7 +203,7 @@
 
                                          <i class="fa fa-briefcase"></i>
 
-                                         <span class="menu-title">Mantenimiento</span>
+                                         <span class="menu-title">Opciones</span>
 
                                          <i class="arrow"></i>
 
@@ -305,13 +213,13 @@
 
                                          <ul class="collapse">
 
-                                           <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
+                                           <li><a href="<?php echo base_url(); ?>index.php/Autorizar"><i class="fa fa-caret-right"></i>Autorizador De Documentos Para Muestras</a></li>
+
+                                          <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Autorizar solicitudes</a></li>
 
                                          </ul>
 
                                      </li>
-
-
 
 
 

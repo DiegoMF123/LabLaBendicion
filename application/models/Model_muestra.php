@@ -7,14 +7,35 @@ class Model_Muestra extends CI_Model
     $this->load->database();
     $query = $this->db->query("
 
+    select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, mu.idItemsdos, mu.idItemstres, mu.idItemscuatro, est.Nombrestado, item.Nombreitem,item.Nombreitem,item.Nombreitem,item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
+         um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nombre, exp.Nit, exp.Direccion, sc.NumeroSoporte, sc.Telefono, sc.Correo
+         from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join SoporteContacto sc
+         inner join TipoSolicitante ts inner join Expediente exp inner join Items item inner join Estados est
+         where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
+         and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
+         and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud
+         and mu.Estados_idEstados = est.idEstados  and mu.idEstadosE = 1 order by mu.idMuestra asc;
+
+
+
+      ");
+    return $query->result();
+  }
+
+  public function datosmuestrautorizador(){
+
+    $this->load->database();
+    $query = $this->db->query("
+
         select mu.idMuestra, mu.Presentacion, mu.Cantidad, tm.NombreMuestra, item.idItems, est.Nombrestado,item.Nombreitem,item.Diasvencimiento, soli.Nosolicitud,
         um.Nombreum, mu.FechaCreacion,mu.FechaModificacion, mu.Nombre_archivo, soli.idSolicitud, exp.Nombre, exp.Nit, exp.Direccion, sc.NumeroSoporte, sc.Telefono, sc.Correo
         from Muestra as mu inner join TipoMuestra tm inner join Umedida um inner join Solicitud soli inner join SoporteContacto sc
         inner join TipoSolicitante ts inner join Expediente exp inner join Items item inner join Estados est
         where mu.TipoMuestra_idTipoMuestra = tm.idTipoMuestra and mu.Umedida_idUmedida = um.idUmedida
         and mu.Solicitud_idSolicitud = soli.idSolicitud and  mu.Solicitud_idSolicitud = soli.idSolicitud = ts.idTipoSolicitante = exp.idExpediente
-        and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud and mu.Estados_idEstados = est.idEstados  and mu.idEstadosE = 1;
-    
+        and mu.idItems = item.idItems and mu.Solicitud_idSolicitud = soli.idSolicitud = sc.Solicitud_idSolicitud and mu.Estados_idEstados = est.idEstados
+        and mu.Estados_idEstados = 4 order by mu.idMuestra asc;
+
 
       ");
     return $query->result();
@@ -154,13 +175,15 @@ class Model_Muestra extends CI_Model
   }
 
 
-  public function delete($id){
+  public function delete($id,$ipelim,$fechadeeliminacion){
         $this->load->database();
         $query = $this->db->query("
 
         update Muestra
           set idMuestra='".$id."',
-              idEstadosE= 2
+              idEstadosE= 2,
+              FechadeEliminacion =  STR_TO_DATE('".$fechadeeliminacion."', '%d-%m-%Y %H:%i:%s'),
+              ipdeEliminacion = '".$ipelim."'
              where idMuestra ='".$id."'
 
         ");
@@ -208,25 +231,31 @@ class Model_Muestra extends CI_Model
   }
 
 // Asociar items
-  public function asociaritems($codigomuestra,$items,$fechamodifi){
+  public function asociaritems($codigomuestra,$cbox1,$cbox2,$cbox3,$cbox4,$fechamodifi){
     $this->load->database();
     $query = $this->db->query("
     update Muestra
       set idMuestra='".$codigomuestra."',
          FechaModificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
-         idItems= '".$items."'
+         idItems= '".$cbox1."',
+         idItemsdos= '".$cbox2."',
+         idItemstres= '".$cbox3."',
+         idItemscuatro= '".$cbox4."'
          where idMuestra ='".$codigomuestra."'
       ");
 
   }
 
-  public function deasociaritems($codigomuestra,$fechamodifi){
+  public function deasociaritems($codigomuestra,$fechamodifi,$cbox1,$cbox2,$cbox3,$cbox4){
     $this->load->database();
     $query = $this->db->query("
     update Muestra
       set idMuestra='".$codigomuestra."',
          FechaModificacion = STR_TO_DATE('".$fechamodifi."', '%d-%m-%Y %H:%i:%s'),
-         idItems= 5
+         idItems= '".$cbox1."',
+         idItemsdos= '".$cbox2."',
+         idItemstres= '".$cbox3."',
+         idItemscuatro= '".$cbox4."'
          where idMuestra ='".$codigomuestra."'
       ");
 

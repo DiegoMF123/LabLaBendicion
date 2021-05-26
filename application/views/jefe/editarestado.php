@@ -207,31 +207,61 @@
                                           si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
                                             <?php if ($response =="1") {
                                                 echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                                      El documento se ha autorizado y el cambio de estado se realizó con éxito
+                                                      El cambio de estado a la solicitud se realizó con éxito
                                                     </div>";
                                               } ?>
 
                                             <!--Formulario que sirve para poder realizar la filtracion por regiones de un nuevo usuario-->
-                                            <form  id="registrationForm" name="formulario" class="form-horizontal" action="updatedata" method="GET" onsubmit="return confirmar()">
+                                            <form  id="registrationForm" name="formulario" class="form-horizontal" action="updatedatados" method="GET" onsubmit="return confirmar()">
 
                                               <?php
-                                                      foreach ($datosmuestra as $datosmuestra) {
+                                                      foreach ($datosoli as $datosoli) {
                                                         // code...
                                                             }
                                               ?>
 
                                               <div class="form-group">
-                                                          <label class="col-md-1 col-xs-12 control-label">Número de muestra</label>
+                                                          <label class="col-md-1 col-xs-12 control-label">Número de solictud</label>
                                                           <div class="col-md-2 col-xs-12">
-                                                              <input type="text" class="form-control" name="id" value="<?= $datosmuestra->idMuestra ?>" placeholder="" readonly/>
+                                                              <input type="text" class="form-control" name="id" value="<?= $datosoli->idSolicitud ?>" placeholder="" readonly/>
                                                           </div>
 
 
+                                                          <label class="col-md-1 col-xs-12 control-label">Descripcion</label>
+
+                                                          <div class="col-md-3 col-xs-12">
+
+                                                            <textarea rows="3"  id="desc" class="form-control" name="desc" cols="100"  readonly><?= $datosoli->Descripcion ?></textarea>
 
 
+                                                      </div>
+
+                                                    <label class="col-md-1 col-xs-12 control-label">Estado Actual</label>
+
+                                                      <div class="col-md-2 col-xs-12">
+                                                          <input type="text" class="form-control" name="estadoprueba" value="<?= $datosoli->Nombrestado ?>" placeholder="" readonly/>
+                                                      </div>
+
+                                                      <br>
+                                                      <br>
+                                                      <br>
+
+                                                      <br>
+                                                      <br>
+                                                      <br>
+                                                      <br>
 
 
                                                       <div class="form-group">
+
+                                                        <label class="col-md-1 col-xs-12 control-label">Observaciones</label>
+
+                                                        <div class="col-md-3 col-xs-12">
+
+                                                          <textarea rows="3"  id="observaciones" class="form-control" name="observaciones" cols="60" ><?= $datosoli->Observaciones ?></textarea>
+
+
+                                                    </div>
 
 
 
@@ -284,7 +314,7 @@
                                                                 value="Siguiente" id="btnSend">
                                                             <!--  Boton Cancelar los datos y direccionar a la vista donde se muestran el listado de usuarios creados-->
                                                             <!--llamamos el Script que esta arriba con un onclick para que puedar realizar la validacion del mismo-->
-                                                            <a href="<?php echo base_url(); ?>index.php/Autorizar"
+                                                            <a href="<?php echo base_url(); ?>index.php/mantenimientomm"
                                                                 type="button" class="btn btn-danger"
                                                                 onclick="limpiarFormulario()">Cancelar</a>
                                                         </div>
@@ -317,7 +347,6 @@
 
                     <div id="mainnav">
 
-
                         <div id="mainnav-menu-wrap">
 
                             <div class="nano">
@@ -326,18 +355,16 @@
 
                                     <ul id="mainnav-menu" class="list-group">
 
-
                                         <li class="list-header">Opciones De Navegación</li>
-
                                         <li>
 
                                             <a href="#">
 
-                                            <i class="fa fa-home"></i>
+                                                <i class="fa fa-home"></i>
 
-                                            <span class="menu-title">Inicio</span>
+                                                <span class="menu-title">Inicio</span>
 
-                                            <i class="arrow"></i>
+                                                <i class="arrow"></i>
 
                                             </a>
 
@@ -345,22 +372,22 @@
 
                                             <ul class="collapse">
 
-                                                <li><a href="<?php echo base_url(); ?>index.php/welcome"><i class="fa fa-caret-right"></i>Pantalla De Inicio</a></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/welcome"><i
+                                                            class="fa fa-caret-right"></i>Pantalla De Inicio</a></li>
 
                                             </ul>
 
                                         </li>
 
-
                                         <li>
 
                                             <a href="#">
 
-                                            <i class="fa fa-briefcase"></i>
+                                                <i class="fa fa-briefcase"></i>
 
-                                            <span class="menu-title">Opciones</span>
+                                                <span class="menu-title">Mantenimiento</span>
 
-                                            <i class="arrow"></i>
+                                                <i class="arrow"></i>
 
                                             </a>
 
@@ -368,13 +395,15 @@
 
                                             <ul class="collapse">
 
-                                              <li><a href="<?php echo base_url(); ?>index.php/Autorizar"><i class="fa fa-caret-right"></i>Autorizador De Documentos Para Muestras</a></li>
+                                                <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i
+                                                            class="fa fa-caret-right"></i>Análisis de muestras medicas /
+                                                        Clasificación / Mantenimiento</a></li>
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Autorizar solicitudes</a></li>
 
                                             </ul>
 
                                         </li>
+
 
 
 
@@ -388,8 +417,6 @@
                             </div>
 
                         </div>
-
-
 
                     </div>
 

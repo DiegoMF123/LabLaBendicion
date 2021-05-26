@@ -308,32 +308,42 @@
                                                     <h2>Items a desasociar</h2>
                                                     <br>
                                                     <div class="form-group">
-                                                        <label class="col-md-1 col-xs-12 control-label">Items
-                                                            </label>
-                                                        <div class="col-md-3 col-xs-12">
-                                                            <select class="form-control" name="items"
-                                                                id="items" />
-
-                                                                <option value="" hidden selected>Seleccione una opción
-                                                                </option>
-                                                                <?php foreach ($items as $items) {
-                                                                    // code...
-                                                                    ?>
-
-                                                                <option value="<?=$items->idItems  ?>">
-                                                                    <?= $items->Nombreitem ?>
-                                                                  </option>
-
-                                                                <?php    } ?>
 
 
-
-                                                            </select>
-
-                                                        </div>
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox1" name="cbox1" value="" > Microbiotico</label><br>
+                                                      </div>
 
 
                                                     </div>
+
+                                                    <div class="form-group">
+
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox2"  name="cbox2" value=""> Trigliceridos-diabetes-embarazo</label><br>
+                                                      </div>
+
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox3"  name="cbox3" value="">Test de dogras-Test de enfermedades renal </label><br>
+                                                      </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                      <div class="col-md-3 col-xs-12">
+                                                        <label><input type="checkbox" id="cbox4"  name="cbox4" value="">Bacteriana </label><br>
+                                                      </div>
+
+                                                    </div>
+
                                                     <br>
                                                     <br>
                                                     <br>

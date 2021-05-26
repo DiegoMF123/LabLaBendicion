@@ -354,7 +354,7 @@
 
                                                     <div class="col-md-8">
 
-                                                        <label for=""><b>Item</b></label><br>
+                                                        <label for=""><b>Item 1</b></label><br>
 
                                                         <input type="text" class="form-control" value="<?= $datosmuestra->Nombreitem ?>" readonly>
 
@@ -368,7 +368,88 @@
 
                                                     </div>
 
+
                                                 </div>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-2">
+
+
+                                                    </div>
+
+                                                    <div class="col-md-8">
+
+                                                        <label for=""><b>Item 2</b></label><br>
+
+                                                        <input type="text" class="form-control" value="<?= $datosmuestra->Nombreitem ?>" readonly>
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-2">
+
+
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-2">
+
+
+                                                    </div>
+
+                                                    <div class="col-md-8">
+
+                                                        <label for=""><b>Item 3</b></label><br>
+
+                                                        <input type="text" class="form-control" value="<?= $datosmuestra->Nombreitem ?>" readonly>
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-2">
+
+
+
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="row">
+
+                                                    <div class="col-md-2">
+
+
+                                                    </div>
+
+                                                    <div class="col-md-8">
+
+                                                        <label for=""><b>Item 4</b></label><br>
+
+                                                        <input type="text" class="form-control" value="<?= $datosmuestra->Nombreitem ?>" readonly>
+
+
+
+                                                    </div>
+
+                                                    <div class="col-md-2">
+
+
+
+                                                    </div>
+
+
+                                                </div>
+
+
 
 
                                                 <div class="row">
