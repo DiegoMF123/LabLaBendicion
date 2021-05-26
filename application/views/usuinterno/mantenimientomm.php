@@ -653,6 +653,8 @@
 
                                               <div class="modal-footer">
 
+                                                  <a href="<?php echo base_url(); ?>index.php/report/reportedesolicitud?id=<?= $datosoli->idSolicitud  ?>" class="btn btn-default " data-toggle="tooltip" data-placement="left" title="Exportar solicitud"><span class="iconify" data-icon="mdi-file-excel" data-inline="false" width="25"></span></a>
+
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 
                                               </div>

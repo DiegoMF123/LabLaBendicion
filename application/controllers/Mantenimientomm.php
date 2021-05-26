@@ -924,7 +924,7 @@ redirect('restrinct');
         $data["estado"]= $this->model_solicitud->estadoasignar();
         $data["datosoli"]= $this->model_solicitud->mostrardatoseditar($id);
         $data["response"]=trim(isset($_REQUEST["response"]));
-        $this->load->view('autorizador/editarestado',$data);
+        $this->load->view('usuarioasignacion/editarestado',$data);
 
           break;
 

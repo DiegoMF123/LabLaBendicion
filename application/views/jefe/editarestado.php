@@ -181,7 +181,7 @@
 
             <div id="content-container">
                 <div class="pageheader hidden-xs">
-                    <h3><i class="fa fa-home"></i> Cambio de estado </h3>
+                    <h3><i class="fa fa-home"></i> Finalizar o rechazar la solictud </h3>
 
 
                 </div>

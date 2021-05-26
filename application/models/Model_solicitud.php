@@ -422,7 +422,7 @@ class Model_Solicitud extends CI_Model
 
       $query=$this->db->query("
 
-        SELECT * FROM Estados LIMIT 2,2;
+        SELECT * FROM Estados where idEstados = 3;
 
       ");
 

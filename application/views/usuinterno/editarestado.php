@@ -181,7 +181,7 @@
 
             <div id="content-container">
                 <div class="pageheader hidden-xs">
-                    <h3><i class="fa fa-home"></i> Cambio de estado </h3>
+                    <h3><i class="fa fa-home"></i> Envío de la solictud </h3>
 
 
                 </div>
@@ -207,7 +207,7 @@
                                           si los datos se actualizan y hacen bien su proceso en el controlador Users y en el respectivo modelo. -->
                                             <?php if ($response =="1") {
                                                 echo "<div class=\"alert alert-primary fade in\" role=\"alert\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">
-                                                      El cambio de estado a la solicitud se realizó con éxito
+                                                      La solicitud ha sido enviada a su respectivo usuario para su asignación.
                                                     </div>";
                                               } ?>
 

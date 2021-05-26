@@ -311,7 +311,7 @@
 
 
                                                       <div class="col-md-3 col-xs-12">
-                                                        <label><input type="checkbox" id="cbox1" name="cbox1" value="" > Microbiotico</label><br>
+                                                        <label><input type="checkbox" id="cbox1" name="cbox1" value="5" > Microbiotico</label><br>
                                                       </div>
 
 
@@ -321,7 +321,7 @@
 
 
                                                       <div class="col-md-3 col-xs-12">
-                                                        <label><input type="checkbox" id="cbox2"  name="cbox2" value=""> Trigliceridos-diabetes-embarazo</label><br>
+                                                        <label><input type="checkbox" id="cbox2"  name="cbox2" value="5"> Trigliceridos-diabetes-embarazo</label><br>
                                                       </div>
 
 
@@ -331,7 +331,7 @@
 
 
                                                       <div class="col-md-3 col-xs-12">
-                                                        <label><input type="checkbox" id="cbox3"  name="cbox3" value="">Test de dogras-Test de enfermedades renal </label><br>
+                                                        <label><input type="checkbox" id="cbox3"  name="cbox3" value="5">Test de dogras-Test de enfermedades renal </label><br>
                                                       </div>
 
                                                     </div>
@@ -339,7 +339,7 @@
                                                     <div class="form-group">
 
                                                       <div class="col-md-3 col-xs-12">
-                                                        <label><input type="checkbox" id="cbox4"  name="cbox4" value="">Bacteriana </label><br>
+                                                        <label><input type="checkbox" id="cbox4"  name="cbox4" value="5">Bacteriana </label><br>
                                                       </div>
 
                                                     </div>
