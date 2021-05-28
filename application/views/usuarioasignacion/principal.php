@@ -105,7 +105,7 @@
 
                  <div class="pageheader hidden-xs">
 
-                     <h3><i class="fa fa-home"></i>Bienvenido Usuario asignado</h3>
+                     <h3><i class="fa fa-home"></i>Bienvenido Usuario Centralizador</h3>
                  </div>
                  <div id="page-content">
                     <div class="row">
@@ -114,7 +114,7 @@
 
                          <div class="panel-heading">
 
-                             <h3 class="panel-title">Asignado</h3>
+                             <h3 class="panel-title">Centralizador</h3>
                          </div>
                              <center><img src="<?php echo base_url(); ?>/assets/img/logo.png" width="1000" ></center>
                          <div class="panel-body">
