@@ -2,50 +2,62 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Login LabLaBendicion</title>
-	<link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/logo1.ico">
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style2.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-	<img class="wave" src="<?php echo base_url(); ?>assets/img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="<?php echo base_url(); ?>assets/img/logo3.1.png">
-		</div>
-		<div class="login-content">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-			<form method="get">
+    <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/Ico.ico">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
-				<img src="<?php echo base_url(); ?>assets/img/avatar.svg">
-				<h2 class="title">Bienvenido</h2>
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Usuario</h5>
-           		   		<input type="text" class="input" name="Usuario">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
-           		   <div class="i">
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Contraseña</h5>
-           		    	<input type="password" class="input" name="Password">
-            	   </div>
-            	</div>
-            	<a href="#">Restaurar Contraseña</a>
-            	<input type="submit" class="btn" value="Entrar" name="Entrar">
-            </form>
+     <link rel="stylesheet" href="<?php echo base_url(); ?>/assets/css/master2.css">
+    <title>Login Vuelos</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form  method="GET">
+            <img src="<?php echo base_url(); ?>assets/img/BMP.png" width="600" alt="">
+            <br>
+            <br>
+            <img src="<?php echo base_url(); ?>assets/img/User.png" width="160" alt="">
+            <h2 class="title">Bienvenido al sistema</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" name="Usuario" placeholder="Usuario" >
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" name="Password" placeholder="Contraseña" >
+            </div>
+            <input type="submit" name="Entrar" value="Entrar" class="btn solid" >
+
+
+          </form>
+
         </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Bienvenido al Sistema de vuelos avioncito de papel</h3>
+            <p>
+              Inicia sesión
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Adelante
+            </button>
+
+          </div>
+
+          <img src="<?php echo base_url(); ?>assets/img/register.svg" width="250" class="image" alt="" />
+        </div>
+
+      </div>
     </div>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>
-</body>
+
+    <script src="<?php echo base_url(); ?>/assets/js/app.js"></script>
+  </body>
 </html>

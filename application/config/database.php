@@ -77,10 +77,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '192.168.0.3',
-	'username' => 'root',
+	'hostname' => '192.168.0.7',
+	'username' => 'toor',
 	'password' => 'dsmf',
-	'database' => 'db_lablb',
+	'database' => 'db_vuelos',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

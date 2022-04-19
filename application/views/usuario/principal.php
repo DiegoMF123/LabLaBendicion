@@ -135,7 +135,7 @@
                           <div class="col-md-12">
                      <div class="panel">
                          <div class="panel-heading">
-                             <h3 class="panel-title">Bienvenido Usuario</h3>
+                             <h3 class="panel-title">Bienvenido Usuario al Sistema de vuelos avioncito de papel</h3>
                          </div>
 
                          <div class="panel-body">
@@ -165,7 +165,7 @@
 
                          <!--Llamada  de imagen para el menú de nuestras vistas-->
 
-                           <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60"> <font size="5" face="georgia">Menú LAB </font></i>
+                           <i><img src="<?php echo base_url(); ?>/assets/img/logo1.png" width="60"> <font size="5" face="georgia">Menú ADP </font></i>
 
 
 
@@ -218,7 +218,7 @@
 
                                          <i class="fa fa-briefcase"></i>
 
-                                         <span class="menu-title">Mantenimiento</span>
+                                         <span class="menu-title">Consulta</span>
 
                                          <i class="arrow"></i>
 
@@ -228,7 +228,7 @@
 
                                          <ul class="collapse">
 
-                                             <li><a href="<?php echo base_url(); ?>index.php/mantenimientomm"><i class="fa fa-caret-right"></i>Análisis de muestras medicas / Clasificación / Mantenimiento</a></li>
+                                             <li><a href="<?php echo base_url(); ?>index.php/vuelos"><i class="fa fa-caret-right"></i>Vuelos pendientes</a></li>
 
                                          </ul>
 
@@ -305,7 +305,7 @@
 
 
              <div class="hide-fixed pull-right pad-rgt">Actualmente v1.0</div>
-             <p class="pad-lft">&#0169; 2021 Sistema Laboratorio "La Bendición S.A"</p>
+             <p class="pad-lft">&#0169; 2022 Sistema de vuelos avioncito de papel S.A</p>
          </footer>
 
 
